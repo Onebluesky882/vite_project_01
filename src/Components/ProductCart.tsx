@@ -33,6 +33,8 @@ const ProductCart = ({ id, name, meat, price, image, slug }: Prop) => {
         boxShadow: "0 1px 10px #E1D3DF",
         borderRadius: "6px",
         display: "grid",
+        alignItems: "center",
+        justifyContent: "center",
       }}
     >
       <Link

@@ -18,7 +18,7 @@ export default function Header() {
         Home
       </Link>
       <img
-        src={"src/assets/arroy_dee_logo.png"}
+        src={"/src/assets/arroy_dee_logo.png"}
         alt="logoname"
         style={{ height: 40 }}
       />
@@ -32,7 +32,7 @@ export default function Header() {
         }}
       >
         <img
-          src="src/assets/cart_icons.png"
+          src="/src/assets/cart_icons.png"
           style={{ width: "30px", height: "30px" }}
         />
         <span
