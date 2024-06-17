@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import Logo from "/src/assets/arroy_dee_logo.png";
+import cart from "/src/assets/cart_icons.png";
 
 export default function Header() {
   return (
@@ -17,11 +19,7 @@ export default function Header() {
       >
         Home
       </Link>
-      <img
-        src={"/src/assets/arroy_dee_logo.png"}
-        alt="logoname"
-        style={{ height: 40 }}
-      />
+      <img src={Logo} alt="logoname" style={{ height: 40 }} />
       <div
         style={{
           width: "10px",
@@ -31,10 +29,7 @@ export default function Header() {
           position: "relative",
         }}
       >
-        <img
-          src="/src/assets/cart_icons.png"
-          style={{ width: "30px", height: "30px" }}
-        />
+        <img src={cart} style={{ width: "30px", height: "30px" }} />
         <span
           style={{
             position: "absolute",
