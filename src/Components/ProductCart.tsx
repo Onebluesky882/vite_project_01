@@ -5,23 +5,30 @@ import { useState } from "react";
 interface Prop {
   id: number;
   name: string;
-  meat: Meat;
-  price: Price;
+  meat: string;
+  price: number;
   image: string;
   slug: string;
 }
 
-interface Meat {
-  meat: string[];
-}
-
-interface Price {
-  price: Number[];
-}
 const ProductCart = ({ id, name, meat, price, image, slug }: Prop) => {
+  /*const dispatch = useDispatch();
+  const handleAddToCart = () => {
+    dispatch(
+      addToCart({
+        productId: id,
+        quantity: 1,
+      })
+    );
+  };
+  const carts = useSelector((menu) => menu.cart.items);
+  */
+
   const [count, setCount] = useState(0);
+
   return (
     <div
+      key={id}
       style={{
         boxShadow: "0 1px 10px #E1D3DF",
         borderRadius: "6px",
@@ -53,9 +60,16 @@ const ProductCart = ({ id, name, meat, price, image, slug }: Prop) => {
             justifyContent: "center",
           }}
         >
-          {name}
+          {name + meat}
         </h3>
       </Link>
+
+      <p
+        style={{ justifyContent: "center", display: "flex", color: "#1E1E20" }}
+      >
+        {price}
+      </p>
+
       <div
         style={{
           display: "flex",
@@ -88,6 +102,7 @@ const ProductCart = ({ id, name, meat, price, image, slug }: Prop) => {
             paddingRight: "10px",
             paddingLeft: "10px",
           }}
+          //onClick={handleAddToCart}
         >
           Add to Cart
         </button>
