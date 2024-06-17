@@ -1,4 +1,4 @@
-import { Container, TwoColum } from "../Style/divColum";
+import { Container } from "../Style/divColum";
 
 export default function MenuBar() {
   const menulist = [
