@@ -1,5 +1,3 @@
-import Layout from "../Components/Layout";
-
 export default function Detail() {
   return (
     <div>
