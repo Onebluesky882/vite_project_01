@@ -4,7 +4,6 @@ import { Menus } from "../Data";
 const HomePage = () => {
   return (
     <div>
-      <h1 style={{ fontSize: "18px" }}>Menu</h1>
       <div
         style={{
           display: "grid",

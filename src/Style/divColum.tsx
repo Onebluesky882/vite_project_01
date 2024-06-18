@@ -1,5 +1,4 @@
 export const Container = {
-  margin: "5px",
   width: "100%",
 };
 

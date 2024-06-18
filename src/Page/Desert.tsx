@@ -1,10 +1,10 @@
 import Layout from "../Components/Layout";
 
-export default function Detail() {
+export default function Desert() {
   return (
     <div>
       <Layout />
-      <h1>Information</h1>;
+      <h1>desert</h1>;
     </div>
   );
 }

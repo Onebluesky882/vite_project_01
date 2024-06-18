@@ -11,22 +11,18 @@ export default function MenuBar() {
 
   return (
     <>
-      <div style={Container}>
-        <div
-          style={{
-            width: "50%",
-            listStyle: "none",
-            display: "flex",
-            justifyContent: "space-around",
-          }}
-        >
-          {menulist.map((menu) => (
-            <li style={{ fontSize: "10px" }}>{menu}</li>
-          ))}
-        </div>
-        <div style={{ width: "50%", display: "flex" }}>
-          <p>hello</p>
-        </div>
+      <div
+        style={{
+          width: "100%",
+          listStyle: "none",
+          display: "flex",
+          justifyContent: "space-evenly",
+          marginBottom: "-15px",
+        }}
+      >
+        {menulist.map((menu) => (
+          <li style={{ fontSize: "10px" }}>{menu}</li>
+        ))}
       </div>
     </>
   );
