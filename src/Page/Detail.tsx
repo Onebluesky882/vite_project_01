@@ -3,7 +3,6 @@ import Layout from "../Components/Layout";
 export default function Detail() {
   return (
     <div>
-      <Layout />
       <h1>Information</h1>;
     </div>
   );
