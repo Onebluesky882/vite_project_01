@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import Logo from "/src/assets/arroy_dee_logo.png";
 import cart from "/src/assets/cart_icons.png";
 import { FaHome } from "react-icons/fa";
-import MenuBar from "./MenuBar";
+import { Navbar, menulist } from "./Navbar";
 
 export default function Header() {
   return (
@@ -99,7 +99,9 @@ export default function Header() {
           justifyContent: "space-evenly",
         }}
       >
-        {<MenuBar />}
+        {menulist.map((menu) => (
+          <Navbar id={menu.id} name={menu.name} slug={menu.slug} />
+        ))}
       </div>
     </header>
   );

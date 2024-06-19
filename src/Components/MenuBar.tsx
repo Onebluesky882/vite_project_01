@@ -1,12 +1,6 @@
-export default function MenuBar() {
-  const menulist = [
-    "เมนูหลัก",
-    "อาหารทานเล่น",
-    "เมนูกับข้าว",
-    "ของหวาน",
-    "เครื่องดื่ม",
-  ];
+import { menulist } from "./Navbar";
 
+export default function MenuBar() {
   return (
     <>
       <div
@@ -19,7 +13,7 @@ export default function MenuBar() {
         }}
       >
         {menulist.map((menu) => (
-          <li style={{ fontSize: "10px" }}>{menu}</li>
+          <li style={{ fontSize: "10px" }}>{menu.name}</li>
         ))}
       </div>
     </>
