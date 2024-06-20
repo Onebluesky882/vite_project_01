@@ -1,8 +1,6 @@
 export const menulist = [
   { id: 0, name: "เมนูหลัก", slug: "" },
-  { id: 1, name: "Pork", slug: "desert" },
-  { id: 2, name: "เครื่องดื่ม", slug: "drink" },
-  { id: 3, name: "รายละเอียด", slug: "information" },
+  { id: 1, name: "Pork", slug: "pork" },
 ];
 
 interface Props {
