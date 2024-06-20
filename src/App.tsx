@@ -1,11 +1,11 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout";
-import Detail from "./Page/Detail";
+import Detail from "./Page/Seafood";
 import HomePage from "./Page/Homepage";
-import Desert from "./Page/Desert";
-import Fruits from "./Page/Fruits";
+import Desert from "./Page/PorkPage";
 import Drinks from "./Page/Drink";
+import PorkPage from "./Page/PorkPage";
 
 function App() {
   return (
@@ -13,10 +13,10 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/:slug" element={<Fruits />} />
-          <Route path="/:slug" element={<Desert />} />
-          <Route path="/:slug" element={<Drinks />} />
-          <Route path="/:slug" element={<Detail />} />
+          <Route path="/pork" element={<PorkPage />} />
+          <Route path="/desert" element={<Desert />} />
+          <Route path="/drink" element={<Drinks />} />
+          <Route path="/detail" element={<Detail />} />
         </Route>
       </Routes>
     </BrowserRouter>

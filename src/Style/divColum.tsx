@@ -1,5 +1,6 @@
 export const Container = {
   width: "100%",
+  display: "flex",
 };
 
 export const OneColum = {

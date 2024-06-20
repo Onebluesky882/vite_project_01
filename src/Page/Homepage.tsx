@@ -1,23 +1,7 @@
-import ProductCart from "../Components/ProductCart";
-import { Menus } from "../Data";
+import ProductCard from "../Components/ProductCard";
+import { Pork } from "../Data/pork";
 
 const HomePage = () => {
-  return (
-    <div>
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns: "repeat(3,1fr) ",
-          gridTemplateRows: "repeat(3,1fa)",
-          columnGap: "2px",
-          rowGap: "2px",
-        }}
-      >
-        {Menus.map((menu, index) => (
-          <ProductCart key={index} {...menu} />
-        ))}
-      </div>
-    </div>
-  );
+  return <h1 style={{ textAlign: "center", padding: "100px" }}>Homepage</h1>;
 };
 export default HomePage;

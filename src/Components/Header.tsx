@@ -1,22 +1,20 @@
 import { Link } from "react-router-dom";
-import Logo from "/src/assets/arroy_dee_logo.png";
-import cart from "/src/assets/cart_icons.png";
 import { FaHome } from "react-icons/fa";
 import { Navbar, menulist } from "./Navbar";
+import { Container } from "../Style/divColum";
 
 export default function Header() {
   return (
     <header>
       <div
         style={{
-          width: "100%",
-          display: "flex",
+          ...Container,
+          padding: "10px",
+
           justifyContent: "space-between",
 
-          background:
-            " linear-gradient(0deg, rgba(254,247,235,1) 0%, rgba(255,215,230,0.39420572916666663) 100%",
+          background: "#F5EAC8",
           marginBottom: "-5px",
-          borderRadius: " 10px",
         }}
       >
         <div
@@ -51,7 +49,7 @@ export default function Header() {
             justifyContent: "center",
           }}
         >
-          <img src={Logo} alt="logoname" style={{ height: 70 }} />
+          <img src={"/mmd_logo_1.png"} alt="logoname" style={{ height: 70 }} />
         </div>
         <div
           style={{
@@ -68,7 +66,10 @@ export default function Header() {
               display: "flex",
             }}
           >
-            <img src={cart} style={{ width: "20px", height: "20px" }} />
+            <img
+              src={"/cart_icons.png"}
+              style={{ width: "20px", height: "20px" }}
+            />
             <span
               style={{
                 position: "absolute",
