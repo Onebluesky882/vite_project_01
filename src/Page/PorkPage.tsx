@@ -3,7 +3,7 @@ import { Pork } from "../Data/pork";
 
 const PorkPage = () => {
   return (
-    <div className="ProductCardContainer">
+    <div className="ProductCardContainer" style={{ overflow: "hidden" }}>
       {Pork.map((meat) => (
         <ProductCard
           key={meat.id}

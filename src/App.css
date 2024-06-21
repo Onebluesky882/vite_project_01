@@ -21,3 +21,24 @@
     grid-template-columns: repeat(3, 1fr);
   }
 }
+
+.box {
+  border: 1;
+  border-style: solid;
+  color: black;
+}
+
+.sidebar {
+  width: auto;
+  height: auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+.nav-left {
+  display: flex;
+}
+
+.nav-right {
+  display: flex;
+}

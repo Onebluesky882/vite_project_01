@@ -10,6 +10,7 @@ interface Prop {
 }
 
 const ProductCard = ({ id, name, price, image }: Prop) => {
+  const [menu, setMenu] = useState("");
   const [count, setCount] = useState(0);
 
   return (
@@ -39,7 +40,7 @@ const ProductCard = ({ id, name, price, image }: Prop) => {
             justifyContent: "center",
           }}
         />
-        <h3
+        <p
           style={{
             display: "flex",
             fontSize: "12px",
@@ -49,9 +50,7 @@ const ProductCard = ({ id, name, price, image }: Prop) => {
           }}
         >
           {name}
-        </h3>
-
-        <p>{price}</p>
+        </p>
       </Link>
 
       <p
@@ -65,6 +64,7 @@ const ProductCard = ({ id, name, price, image }: Prop) => {
           display: "flex",
           justifyContent: "center",
           alignItems: "center",
+          margin: "10px",
         }}
       >
         <CiCirclePlus
@@ -86,11 +86,13 @@ const ProductCard = ({ id, name, price, image }: Prop) => {
           style={{
             fontSize: "8px",
             borderStyle: "hidden",
-
+            backgroundColor: "#F0E4B8",
             borderRadius: "8px",
             listStyle: "none",
             paddingRight: "10px",
             paddingLeft: "10px",
+            paddingTop: "5px",
+            paddingBottom: "5px",
           }}
           //onClick={handleAddToCart}
         >
