@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { useState } from "react";
 
 interface Prop {
   id: number;
@@ -10,9 +9,6 @@ interface Prop {
 }
 
 const ProductCard = ({ id, name, price, image }: Prop) => {
-  const [menu, setMenu] = useState("");
-  const [count, setCount] = useState(0);
-
   return (
     <div
       key={id}
@@ -67,21 +63,8 @@ const ProductCard = ({ id, name, price, image }: Prop) => {
           margin: "10px",
         }}
       >
-        <CiCirclePlus
-          style={{}}
-          onClick={() => {
-            setCount(count + 1);
-          }}
-        />
-        <p style={{ fontWeight: "200", fontSize: "12px" }}>{count}</p>
-        <CiCircleMinus
-          onClick={() => {
-            if (count === 0) {
-              return;
-            }
-            setCount(count - 1);
-          }}
-        />
+        <CiCirclePlus style={{}} onClick={() => {}} />
+        <CiCircleMinus onClick={() => {}} />
         <button
           style={{
             fontSize: "8px",
