@@ -1,9 +1,6 @@
 import { Link } from "react-router-dom";
 import { FaHome } from "react-icons/fa";
 import { Container } from "../Style/divColum";
-import SideBar from "./Sidebar";
-import { leftMenuList } from "./Sidebar/LeftMenu";
-import { rightMenuList } from "./Sidebar/RightMenu";
 import SidebarRight from "./SidebarRight";
 import SidebarLeft from "./SidebarLeft";
 
@@ -97,26 +94,8 @@ export default function Header() {
         </div>
       </div>
 
-      <SidebarLeft>
-        {leftMenuList.map((left) => (
-          <SideBar
-            id={left.id}
-            name={left.name}
-            slug={left.slug}
-            img={left.img}
-          />
-        ))}
-      </SidebarLeft>
-      <SidebarRight>
-        {rightMenuList.map((right) => (
-          <SideBar
-            id={right.id}
-            name={right.name}
-            slug={right.slug}
-            img={right.img}
-          />
-        ))}
-      </SidebarRight>
+      <SidebarLeft />
+      <SidebarRight />
     </header>
   );
 }
