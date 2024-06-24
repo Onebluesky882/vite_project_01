@@ -1,11 +1,11 @@
-import ProductCard from "../Components/ProductCard";
-import { Pork } from "../Data/pork";
+import { MenuCard } from "@/Components/menuCard/MenuCard";
+import { porkMenu } from "../Data/porkMenu";
 
 const PorkPage = () => {
   return (
-    <div className="ProductCardContainer" style={{ overflow: "hidden" }}>
-      {Pork.map((meat) => (
-        <ProductCard
+    <div className="ProductCardContainer">
+      {porkMenu.map((meat) => (
+        <MenuCard
           key={meat.id}
           image={meat.image}
           name={meat.name}

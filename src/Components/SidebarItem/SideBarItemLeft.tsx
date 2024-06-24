@@ -1,9 +1,6 @@
-import { SideBarItemProps } from ".";
+import { SideBarItemProps } from "./SidebarItem";
 import { SideBarItemBase } from "./SideBarItemBase";
 
 export const SideBarItemLeft = (props: SideBarItemProps) => {
-  return (
-    <SideBarItemBase {...props} position="left" />
-    // <SideBarItemBase id={props.id} img={props.img} name={props.name} slug={props.slug} position='left' />
-  );
+  return <SideBarItemBase {...props} position="left" />;
 };

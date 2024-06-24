@@ -1,25 +1,16 @@
 import { Link } from "react-router-dom";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
-interface Prop {
+export interface ProductCardProps {
   id: number;
   name: string;
   price: number;
   image: string;
 }
 
-const ProductCard = ({ id, name, price, image }: Prop) => {
+const ProductCard = ({ id, name, price, image }: ProductCardProps) => {
   return (
-    <div
-      key={id}
-      style={{
-        boxShadow: "0 1px 10px #E1D3DF",
-        borderRadius: "6px",
-        display: "grid",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
+    <div key={id} className="product-card">
       <Link
         to={image}
         style={{

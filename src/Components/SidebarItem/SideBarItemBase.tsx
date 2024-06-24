@@ -1,4 +1,4 @@
-import { SideBarItemProps } from ".";
+import { SideBarItemProps } from "./SidebarItem";
 
 export const SideBarItemBase = ({
   id,
@@ -21,32 +21,37 @@ export const SideBarItemBase = ({
   }
 
   return (
-    <nav className="sidebar-item">
-      <div>
-        <img src={img} />
-      </div>
+    <nav>
       <a
         key={id}
         style={{
           justifyContent: "center",
-          textAlign: "center",
           textDecoration: "none",
-          fontSize: "10px",
-          fontWeight: "200",
+          fontSize: "15px",
+          fontWeight: "400",
         }}
         href={slug}
       >
         <li
           style={{
             listStyleType: "none",
-            padding: "20px",
+            padding: "30px",
             backgroundColor: "#f7e7bd",
             ...roundedStyle,
             marginTop: "10px",
-            marginLeft: "-10px",
           }}
           key={id}
         >
+          <img
+            style={{
+              position: "fixed",
+              marginTop: "30px",
+              justifyContent: "center",
+              alignItems: "center",
+            }}
+            src={img}
+            width={40}
+          />
           {name}
         </li>
       </a>

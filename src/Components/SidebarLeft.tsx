@@ -1,7 +1,6 @@
-import { leftMenuList } from "./SidebarItem/LeftMenu";
-import { SideBarItemLeft } from "./SidebarItem";
+import { SideBarItemLeft, leftMenuList } from "./SidebarItem/SidebarItem";
 
-export default function SidebarStyle() {
+export default function SidebarLeft() {
   return (
     <div style={{ position: "fixed", top: "100px", left: "0px" }}>
       {leftMenuList.map((left) => (

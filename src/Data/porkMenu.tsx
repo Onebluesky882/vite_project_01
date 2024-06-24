@@ -1,4 +1,4 @@
-export const Pork = [
+export const porkMenu = [
   {
     id: 0,
     name: "สันคอหมูสไลด์",
