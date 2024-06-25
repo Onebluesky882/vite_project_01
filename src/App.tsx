@@ -14,7 +14,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="https://arroydee.netlify.app/" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/pork" element={<PorkMenu />} />
           <Route path="/beef" element={<BeefMenu />} />
