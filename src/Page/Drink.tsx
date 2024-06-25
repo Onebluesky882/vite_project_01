@@ -1,5 +1,5 @@
-const Drinks = () => {
-  return <h1>Drinks</h1>;
+const DrinkMenu = () => {
+  return <h1 style={{ textAlign: "center" }}>drink menu</h1>;
 };
 
-export default Drinks;
+export default DrinkMenu;

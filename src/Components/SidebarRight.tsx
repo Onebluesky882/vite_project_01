@@ -1,4 +1,7 @@
-import { SideBarItemRight, rightMenuList } from "./SidebarItem/SidebarItem";
+import {
+  SideBarItemRight,
+  rightMenuList,
+} from "./Layout/SidebarItem/SidebarItem";
 
 export default function SidebarRight() {
   return (
@@ -8,7 +11,7 @@ export default function SidebarRight() {
         flexDirection: "column",
         alignItems: "end",
         position: "fixed",
-        top: "100px",
+        top: "220px",
         right: "0px",
       }}
     >

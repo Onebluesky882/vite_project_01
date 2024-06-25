@@ -1,19 +1,19 @@
 import { MenuCard } from "@/Components/menuCard/MenuCard";
 import { porkMenu } from "../Data/porkMenu";
 
-const PorkPage = () => {
+const PorkMenu = () => {
   return (
     <div className="ProductCardContainer">
-      {porkMenu.map((meat) => (
+      {porkMenu.map((pork) => (
         <MenuCard
-          key={meat.id}
-          image={meat.image}
-          name={meat.name}
-          price={meat.price}
-          id={meat.id}
+          key={pork.id}
+          image={pork.image}
+          name={pork.name}
+          price={pork.price}
+          id={pork.id}
         />
       ))}
     </div>
   );
 };
-export default PorkPage;
+export default PorkMenu;

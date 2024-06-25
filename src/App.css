@@ -5,10 +5,15 @@
 .header {
   width: 100%;
   display: flex;
-  padding: 10px;
+  padding: 30px;
   justify-content: space-between;
-  background-color: #f5eac8;
+  background-color: #f8eccf;
   margin-bottom: -5px;
+  border-bottom: 5px;
+  border-color: #edc2a8;
+
+  margin-bottom: 0px;
+  border-style: solid;
 }
 .ProductCardContainer {
   display: grid;

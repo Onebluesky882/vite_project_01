@@ -1,9 +1,9 @@
-import { useState } from "react";
+import { createContext, useState } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
 export type CounterContextType = {
   counter: number;
-  setCounter?: React.Dispatch<React.SetStateAction<number>>;
+  setNumber?: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export interface MenuCardProps {
@@ -12,31 +12,39 @@ export interface MenuCardProps {
   image: string;
   price: number;
 }
+export const CounterContext = createContext<CounterContextType>({
+  counter: 0,
+});
 
 export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
-  const [counter, setnumber] = useState(0);
+  const [counter, setNumber] = useState(0);
+  //const [menu, setMenu] = useState("");
+  const contextValue = {
+    counter,
+    setNumber,
+  };
 
   return (
-    <div key={id} className="menuCard">
-      <div>
-        <img style={{ ...imgStyle }} src={image} alt={image} width={160} />
+    <CounterContext.Provider value={contextValue}>
+      <div key={id} className="menuCard">
+        <div style={{ marginBottom: "-30px" }}>
+          <img style={{ ...imgStyle }} src={image} alt={image} width={160} />
+        </div>
+        <h3>{name}</h3>
+        <p>{`ราคา : ${price} บาท`}</p>
+        <div style={{ ...divOrder }}>
+          <CiCircleMinus
+            style={{ ...iconStyleLeft }}
+            onClick={() => counter === 0 || setNumber(counter - 1)}
+          />
+          <p> {`จำนวน : ${counter}`}</p>
+          <CiCirclePlus
+            style={{ ...iconStyleRight }}
+            onClick={() => counter === 10 || setNumber(counter + 1)}
+          />
+        </div>
       </div>
-      <h3>{name}</h3>
-      <p>{`ราคา : ${price} บาท`}</p>
-      <div style={{ ...divOrder }}>
-        <CiCirclePlus
-          style={{ ...iconStyleRight }}
-          onClick={() => counter === 10 || setnumber(counter + 1)}
-        />
-
-        <p> {`จำนวน : ${counter}`}</p>
-
-        <CiCircleMinus
-          style={{ ...iconStyleLeft }}
-          onClick={() => counter === 0 || setnumber(counter - 1)}
-        />
-      </div>
-    </div>
+    </CounterContext.Provider>
   );
 };
 
@@ -46,22 +54,22 @@ const imgStyle = {
   alignItems: "center",
 };
 
-const iconStyleRight = {
-  display: "flex",
-  justifyContent: "center",
-  alignItems: "center",
-  fontSize: "40",
-  color: "#A78C84",
-  paddingRight: "30",
-};
-
 const iconStyleLeft = {
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   fontSize: "40",
   color: "#A78C84",
-  paddingLeft: "30",
+  paddingRight: "20",
+};
+
+const iconStyleRight = {
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  fontSize: "40",
+  color: "#A78C84",
+  paddingLeft: "20",
 };
 
 const divOrder = {

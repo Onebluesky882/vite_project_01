@@ -1,8 +1,11 @@
-import { SideBarItemLeft, leftMenuList } from "./SidebarItem/SidebarItem";
+import {
+  SideBarItemLeft,
+  leftMenuList,
+} from "./Layout/SidebarItem/SidebarItem";
 
 export default function SidebarLeft() {
   return (
-    <div style={{ position: "fixed", top: "100px", left: "0px" }}>
+    <div style={{ position: "fixed", top: "220px", left: "0px" }}>
       {leftMenuList.map((left) => (
         <SideBarItemLeft
           key={left.id}

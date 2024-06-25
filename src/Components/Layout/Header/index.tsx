@@ -1,5 +1,5 @@
-import SidebarLeft from "../SidebarLeft";
-import SidebarRight from "../SidebarRight";
+import SidebarLeft from "../../SidebarLeft";
+import SidebarRight from "../../SidebarRight";
 import { HomeIcon, Logo, OrderList } from "./HeaderHeaderStyle";
 
 export default function Header() {

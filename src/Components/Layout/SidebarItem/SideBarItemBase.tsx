@@ -27,7 +27,7 @@ export const SideBarItemBase = ({
         style={{
           justifyContent: "center",
           textDecoration: "none",
-          fontSize: "15px",
+          fontSize: "18px",
           fontWeight: "400",
         }}
         href={slug}
@@ -35,7 +35,7 @@ export const SideBarItemBase = ({
         <li
           style={{
             listStyleType: "none",
-            padding: "30px",
+            padding: "40px",
             backgroundColor: "#f7e7bd",
             ...roundedStyle,
             marginTop: "10px",
@@ -45,12 +45,12 @@ export const SideBarItemBase = ({
           <img
             style={{
               position: "fixed",
-              marginTop: "30px",
+              marginTop: "-30px",
               justifyContent: "center",
               alignItems: "center",
             }}
             src={img}
-            width={40}
+            width={50}
           />
           {name}
         </li>

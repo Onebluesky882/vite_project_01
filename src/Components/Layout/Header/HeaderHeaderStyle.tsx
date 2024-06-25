@@ -1,4 +1,4 @@
-import { FaHome } from "react-icons/fa";
+import { FaClipboardList, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
 export default function HeaderStyle() {
@@ -18,8 +18,8 @@ export function HomeIcon() {
       <Link
         style={{
           textDecoration: "none",
-          fontSize: "16px",
-          color: "#5B48CE",
+          fontSize: "50px",
+          color: "#DF9E43",
         }}
         to={"/"}
       >
@@ -43,7 +43,7 @@ export function Logo() {
         justifyContent: "center",
       }}
     >
-      <img src={"/mmd_logo_1.png"} alt="logoname" style={{ height: 70 }} />
+      <img src={"/mmd_logo_1.png"} alt="logoname" style={{ height: 160 }} />
     </div>
   );
 }
@@ -65,17 +65,14 @@ export function OrderList() {
           display: "flex",
         }}
       >
-        <img
-          src={"/cart_icons.png"}
-          style={{ width: "20px", height: "20px" }}
-        />
+        <FaClipboardList style={{ fontSize: "50", color: "#DF9E43" }} />
         <span
           style={{
             position: "absolute",
-            top: "15px",
-            left: "7px",
-            fontSize: "6px",
-            color: "red",
+            top: "45px",
+            left: "15px",
+            fontSize: "20px",
+            color: "#DF9E43",
             display: "flex",
             background: "white",
             borderRadius: "10px",

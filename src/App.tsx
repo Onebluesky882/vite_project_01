@@ -1,8 +1,14 @@
 import "./App.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Layout from "./Components/Layout";
-import HomePage from "./Page/Homepage";
-import PorkPage from "./Page/PorkPage";
+import HomePage from "@/Page/Homepage";
+import PorkMenu from "./Page/PorkMenu";
+import BeefMenu from "./Page/BeefMenu";
+import SeafoodMenu from "./Page/Seafood";
+import VegetableMenu from "./Page/Vegetable";
+import NoodleMenu from "./Page/NoodleMenu";
+import MeatballMenu from "./Page/Meatball";
+import DrinkMenu from "@/Page/Drink";
 
 function App() {
   return (
@@ -10,7 +16,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/pork" element={<PorkPage />} />
+          <Route path="/pork" element={<PorkMenu />} />
+          <Route path="/beef" element={<BeefMenu />} />
+          <Route path="/seafood" element={<SeafoodMenu />} />
+          <Route path="/vegetable" element={<VegetableMenu />} />
+          <Route path="/noodle" element={<NoodleMenu />} />
+          <Route path="/meatball" element={<MeatballMenu />} />
+          <Route path="/drink" element={<DrinkMenu />} />
         </Route>
       </Routes>
     </BrowserRouter>
