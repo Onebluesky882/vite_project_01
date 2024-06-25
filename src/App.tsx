@@ -9,6 +9,7 @@ import VegetableMenu from "./Page/Vegetable";
 import NoodleMenu from "./Page/NoodleMenu";
 import MeatballMenu from "./Page/Meatball";
 import DrinkMenu from "@/Page/Drink";
+import FriedFoodMenu from "@/Page/FriedFoodmenu";
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route path="/noodle" element={<NoodleMenu />} />
           <Route path="/meatball" element={<MeatballMenu />} />
           <Route path="/drink" element={<DrinkMenu />} />
+          <Route path="/friedfood" element={<FriedFoodMenu />} />
         </Route>
       </Routes>
     </BrowserRouter>
