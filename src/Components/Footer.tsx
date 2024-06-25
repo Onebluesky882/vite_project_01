@@ -6,18 +6,18 @@ const Footer = () => {
   return (
     <div
       style={{
-        display: "flex",
-        margin: "100px",
+        width: "100%",
         justifyContent: "center",
-        textAlign: "center",
-        bottom: "0",
-        position: "sticky",
-        alignItems: "center",
+        display: "flex",
+        marginTop: "200px",
       }}
     >
-      {" "}
       <div
         style={{
+          alignItems: "center",
+          justifyContent: "center",
+          bottom: "0",
+          position: "fixed",
           display: "flex",
           border: "1",
           borderStyle: "solid",
@@ -25,32 +25,42 @@ const Footer = () => {
           backgroundColor: "#FFFFFF",
           borderTopLeftRadius: "30px",
           borderTopRightRadius: "30px",
+          textAlign: "center",
         }}
       >
-        <nav style={{ ...navStyle }}>
-          <li style={{ listStyleType: "none" }}>
-            <FaHome {...iconStyle} />
-          </li>
-          Home
-        </nav>
-        <nav style={{ ...navStyle }}>
-          <li style={{ listStyleType: "none" }}>
-            <AiFillGift {...iconStyle} />
-          </li>
-          Promotion
-        </nav>
-        <nav style={{ ...navStyle }}>
-          <li style={{ listStyleType: "none" }}>
-            <FaClipboardList {...iconStyle} />
-          </li>
-          Order
-        </nav>
-        <nav style={{ ...navStyle }}>
-          <li style={{ listStyleType: "none" }}>
-            <PiCallBellFill {...iconStyle} />
-          </li>
-          Home
-        </nav>
+        <a href="/" style={{ textDecoration: "none" }}>
+          <nav style={{ ...navStyle }}>
+            <li style={{ listStyleType: "none" }}>
+              <FaHome {...iconStyle} />
+            </li>
+            Home
+          </nav>
+        </a>
+
+        <a href="/promotion" style={{ textDecoration: "none" }}>
+          <nav style={{ ...navStyle }}>
+            <li style={{ listStyleType: "none" }}>
+              <AiFillGift {...iconStyle} />
+            </li>
+            Promotion
+          </nav>
+        </a>
+        <a href="/order" style={{ textDecoration: "none" }}>
+          <nav style={{ ...navStyle }}>
+            <li style={{ listStyleType: "none" }}>
+              <FaClipboardList {...iconStyle} />
+            </li>
+            Order
+          </nav>
+        </a>
+        <a href="/waiter" style={{ textDecoration: "none" }}>
+          <nav style={{ ...navStyle }}>
+            <li style={{ listStyleType: "none" }}>
+              <PiCallBellFill {...iconStyle} />
+            </li>
+            Waiter
+          </nav>
+        </a>
       </div>
     </div>
   );
@@ -63,6 +73,8 @@ const navStyle = {
   paddingLeft: "45px",
   paddingTop: "10px",
   paddingBottom: "10px",
+  color: "#C6723A",
+  fontSize: "20px",
 };
 
 const iconStyle = {

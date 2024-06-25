@@ -1,5 +1,5 @@
 import { MenuCard } from "@/Components/menuCard/MenuCard";
-import { porkMenu } from "../Data/porkMenu";
+import { porkMenu } from "../../Data/porkMenu";
 
 const PorkMenu = () => {
   return (

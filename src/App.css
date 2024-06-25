@@ -36,10 +36,10 @@
     grid-template-columns: repeat(3, 1fr);
   }
   .menuCard {
-    padding: -200px;
-
     grid-template-columns: repeat(3, 1fr);
     display: flex;
+    margin-left: -200px;
+    margin-right: -200px;
   }
 }
 
