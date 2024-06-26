@@ -51,7 +51,7 @@ export const meantballMenu = [
     id: 8,
     name: "โบโลน่า",
     price: 85,
-    image: "/meatball_pics/เบคอนพันไส้กรอก.png",
+    image: "/meatball_pics/โบโลน่า.png",
   },
   {
     id: 9,
