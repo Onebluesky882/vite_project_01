@@ -18,7 +18,7 @@ export function HomeIcon() {
       <Link
         style={{
           textDecoration: "none",
-          fontSize: "50px",
+          fontSize: "30px",
           color: "#DF9E43",
         }}
         to={"/"}
@@ -43,7 +43,7 @@ export function Logo() {
         justifyContent: "center",
       }}
     >
-      <img src={"/mmd_logo_1.png"} alt="logoname" style={{ height: 160 }} />
+      <img src={"/mmd_logo_1.png"} alt="logoname" style={{ height: 100 }} />
     </div>
   );
 }
@@ -65,19 +65,19 @@ export function OrderList() {
           display: "flex",
         }}
       >
-        <FaClipboardList style={{ fontSize: "50", color: "#DF9E43" }} />
+        <FaClipboardList style={{ fontSize: "30", color: "#DF9E43" }} />
         <span
           style={{
             position: "absolute",
-            top: "45px",
-            left: "15px",
-            fontSize: "20px",
+            top: "25px",
+            left: "8px",
+            fontSize: "14px",
             color: "#DF9E43",
             display: "flex",
             background: "white",
             borderRadius: "10px",
-            padding: "1px",
-            borderStyle: "solid",
+            padding: "3px",
+
             borderColor: "#F6F6F6",
             paddingRight: "2px",
             paddingLeft: "2px",

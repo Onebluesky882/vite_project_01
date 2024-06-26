@@ -1,6 +1,6 @@
 const HomePage = () => (
   <>
-    <h1 style={{ textAlign: "center", padding: "100px" }}>Homepage</h1>
+    <h1 style={{ textAlign: "center", paddingTop: "30px" }}>Homepage</h1>
   </>
 );
 export default HomePage;
