@@ -26,7 +26,7 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
 
   return (
     <CounterContext.Provider value={contextValue}>
-      <div key={id} className="menuCard">
+      <div key={id} className="menu-card">
         <div style={{ marginBottom: "-30px" }}>
           <img style={{ ...imgStyle }} src={image} alt={image} width={160} />
         </div>

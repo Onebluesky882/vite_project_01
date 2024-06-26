@@ -17,29 +17,62 @@
 }
 .ProductCardContainer {
   display: grid;
-  grid-template-columns: repeat(1, 1fr);
-  column-gap: 2px;
-  row-gap: 2px;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  text-align: center;
+  padding-left: 250px;
+  padding-right: 250px;
+  margin-top: 10px;
+}
+.menu-card {
+  margin: 10px;
+  padding: 10px;
+  display: inline;
+  border: 1.5px;
+  border-color: #c0c0c092;
+  border-radius: 10px;
+  border-style: solid;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+/*mobile responsive */
+@media screen and (max-width: 600px) {
+  .footer-mobile {
+    display: grid;
+    width: 100%;
+    background-color: bisque;
+    padding: 0px;
+    margin: 0px;
+    align-items: center;
+  }
 }
 
 @media screen and (min-width: 600px) {
   .ProductCardContainer {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .menuCard {
-    grid-template-columns: repeat(2, 1fr);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    text-align: center;
+    padding-left: 250px;
+    padding-right: 250px;
+    margin-top: 10px;
   }
 }
 
 @media screen and (min-width: 1000px) {
   .ProductCardContainer {
+    display: grid;
     grid-template-columns: repeat(3, 1fr);
-  }
-  .menuCard {
-    grid-template-columns: repeat(3, 1fr);
-    display: flex;
-    margin-left: -200px;
-    margin-right: -200px;
+    justify-content: center;
+    text-align: center;
+    padding-left: 250px;
+    padding-right: 250px;
+    margin-top: 10px;
   }
 }
 
@@ -55,16 +88,4 @@
   display: grid;
   align-items: center;
   justify-content: center;
-}
-
-.menuCard {
-  display: flex;
-  grid-template-columns: repeat(1, 1fr);
-  column-gap: 2px;
-  row-gap: 2px;
-  display: grid;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  font-size: larger;
 }

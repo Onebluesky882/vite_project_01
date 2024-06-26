@@ -10,6 +10,8 @@ const Footer = () => {
         justifyContent: "center",
         display: "flex",
         marginTop: "200px",
+        position: "sticky",
+        bottom: "0px",
       }}
     >
       <div
@@ -74,10 +76,10 @@ const navStyle = {
   paddingTop: "10px",
   paddingBottom: "10px",
   color: "#C6723A",
-  fontSize: "20px",
+  fontSize: "10px",
 };
 
 const iconStyle = {
-  size: "50",
+  size: "30",
   color: "#E1B86F",
 };
