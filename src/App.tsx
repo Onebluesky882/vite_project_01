@@ -10,9 +10,9 @@ import NoodleMenu from "@/Page/SidebarMenu/NoodleMenu";
 import MeatballMenu from "@/Page/SidebarMenu/Meatball";
 import DrinkMenu from "@/Page/SidebarMenu/Drink";
 import FriedFoodMenu from "@/Page/SidebarMenu/FriedFoodmenu";
-import Promotion from "@/Page/FooterMenu/Promotion";
-import Order from "@/Page/FooterMenu/Order";
-import Waiter from "@/Page/FooterMenu/Waiter";
+import Order from "@/Page/Footer/Order";
+import Waiter from "@/Page/Footer/Waiter";
+import Promotion from "@/Page/Footer/Promotion";
 
 function App() {
   return (
