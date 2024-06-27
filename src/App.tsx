@@ -10,9 +10,9 @@ import NoodleMenu from "@/Page/SidebarMenu/NoodleMenu";
 import MeatballMenu from "@/Page/SidebarMenu/Meatball";
 import DrinkMenu from "@/Page/SidebarMenu/Drink";
 import FriedFoodMenu from "@/Page/SidebarMenu/FriedFoodmenu";
-import Order from "@/Page/Footer/Order";
 import Waiter from "@/Page/Footer/Waiter";
 import Promotion from "@/Page/Footer/Promotion";
+import Cart from "./Page/Cart/intex";
 
 function App() {
   return (
@@ -29,8 +29,8 @@ function App() {
           <Route path="/drink" element={<DrinkMenu />} />
           <Route path="/friedfood" element={<FriedFoodMenu />} />
           <Route path="/promotion" element={<Promotion />} />
-          <Route path="/order" element={<Order />} />
           <Route path="/waiter" element={<Waiter />} />
+          <Route path="/cart" element={<Cart />} />
         </Route>
       </Routes>
     </BrowserRouter>

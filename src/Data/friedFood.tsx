@@ -1,4 +1,6 @@
-export const friedFoodJapan = [
+import { MenuItem } from "@/types/MenuItem";
+
+export const friedFoodJapan: MenuItem[] = [
   {
     id: 0,
     name: "กุ้งทอดเทมปุระ",

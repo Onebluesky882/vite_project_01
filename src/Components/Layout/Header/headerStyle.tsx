@@ -1,3 +1,5 @@
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { useContext } from "react";
 import { FaClipboardList, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
@@ -49,6 +51,11 @@ export function Logo() {
 }
 
 export function OrderList() {
+  const { cart } = useContext(GlobalContext);
+  let totalAmount = 0;
+  cart.forEach((item) => (totalAmount += item.amount));
+  console.log("cart", cart);
+
   return (
     <div
       style={{
@@ -77,13 +84,12 @@ export function OrderList() {
             background: "white",
             borderRadius: "10px",
             padding: "3px",
-
             borderColor: "#F6F6F6",
             paddingRight: "2px",
             paddingLeft: "2px",
           }}
         >
-          0
+          {totalAmount}
         </span>
       </div>
     </div>

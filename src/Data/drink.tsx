@@ -1,4 +1,6 @@
-export const drink = [
+import { MenuItem } from "@/types/MenuItem";
+
+export const drink: MenuItem[] = [
   {
     id: 0,
     name: "โค้กกระป๋อง",

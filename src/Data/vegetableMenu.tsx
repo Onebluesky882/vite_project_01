@@ -1,4 +1,6 @@
-export const vegetableMenu = [
+import { MenuItem } from "@/types/MenuItem";
+
+export const vegetableMenu: MenuItem[] = [
   {
     id: 0,
     name: "ชุดผักรวม",

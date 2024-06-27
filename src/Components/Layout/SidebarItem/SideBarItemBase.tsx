@@ -1,4 +1,5 @@
 import { SideBarItemProps } from "./SidebarItem";
+import { Link } from "react-router-dom";
 
 export const SideBarItemBase = ({
   id,
@@ -21,8 +22,9 @@ export const SideBarItemBase = ({
   }
 
   return (
-    <nav>
-      <a
+    <nav className="nav-side-bar">
+      <Link
+        to={slug}
         key={id}
         style={{
           justifyContent: "center",
@@ -30,7 +32,6 @@ export const SideBarItemBase = ({
           fontSize: "18px",
           fontWeight: "400",
         }}
-        href={slug}
       >
         <li
           style={{
@@ -54,7 +55,7 @@ export const SideBarItemBase = ({
           />
           {name}
         </li>
-      </a>
+      </Link>
     </nav>
   );
 };

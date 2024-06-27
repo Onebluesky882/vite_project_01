@@ -1,4 +1,6 @@
-export const meantballMenu = [
+import { MenuItem } from "@/types/MenuItem";
+
+export const meantballMenu: MenuItem[] = [
   {
     id: 0,
     name: "กุ้งห่อสาหร่าย",

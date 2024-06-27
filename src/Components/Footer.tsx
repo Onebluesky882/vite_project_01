@@ -1,68 +1,64 @@
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { useContext } from "react";
 import { AiFillGift } from "react-icons/ai";
 import { FaClipboardList, FaHome } from "react-icons/fa";
 import { PiCallBellFill } from "react-icons/pi";
+import { Link } from "react-router-dom";
+import { MenuCardProps } from "./menuCard/MenuCard";
 
-const Footer = () => {
+const Footer = ({ id }: MenuCardProps) => {
+  const { cart } = useContext(GlobalContext);
+
   return (
-    <div
-      style={{
-        width: "100%",
-        justifyContent: "center",
-        display: "flex",
-        marginTop: "200px",
-        position: "sticky",
-        bottom: "0px",
-      }}
-    >
-      <div
-        style={{
-          alignItems: "center",
-          justifyContent: "center",
-          bottom: "0",
-          position: "fixed",
-          display: "flex",
-          border: "1",
-          borderStyle: "solid",
-          borderColor: "#DDC879",
-          backgroundColor: "#FFFFFF",
-          borderTopLeftRadius: "30px",
-          borderTopRightRadius: "30px",
-          textAlign: "center",
-        }}
-      >
-        <a href="/" style={{ textDecoration: "none" }}>
+    <div className="div-container-nav">
+      <div className="div-section-nav">
+        <Link to="/" style={{ textDecoration: "none" }}>
           <nav style={{ ...navStyle }}>
             <li style={{ listStyleType: "none" }}>
               <FaHome {...iconStyle} />
             </li>
             Home
+            <h1> </h1>
           </nav>
-        </a>
+        </Link>
 
-        <a href="/promotion" style={{ textDecoration: "none" }}>
+        <Link to="/promotion" style={{ textDecoration: "none" }}>
           <nav style={{ ...navStyle }}>
             <li style={{ listStyleType: "none" }}>
               <AiFillGift {...iconStyle} />
             </li>
             Promotion
           </nav>
-        </a>
-        <a href="/order" style={{ textDecoration: "none" }}>
+        </Link>
+        <Link to="/cart" style={{ textDecoration: "none", display: "inline" }}>
           <nav style={{ ...navStyle }}>
+            <span className="nav-span-order">
+              <p
+                key={id}
+                style={{
+                  color: "white",
+                  borderRadius: "10px",
+                  background: "#ECC153",
+                  padding: "3px",
+                }}
+              >
+                {cart.map((item) => item.amount)}
+              </p>
+            </span>
             <li style={{ listStyleType: "none" }}>
               <FaClipboardList {...iconStyle} />
             </li>
             Order
           </nav>
-        </a>
-        <a href="/waiter" style={{ textDecoration: "none" }}>
+        </Link>
+        <Link to="/waiter" style={{ textDecoration: "none" }}>
           <nav style={{ ...navStyle }}>
             <li style={{ listStyleType: "none" }}>
               <PiCallBellFill {...iconStyle} />
             </li>
             Waiter
           </nav>
-        </a>
+        </Link>
       </div>
     </div>
   );
