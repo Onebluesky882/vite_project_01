@@ -9,6 +9,7 @@ export const CardOfCart = ({
 }: MenuCartItem) => {
   return (
     <div
+      key={id}
       style={{
         width: "100%",
 
@@ -27,7 +28,7 @@ export const CardOfCart = ({
         }}
       >
         <div>
-          <img key={id} src={image} width={40} />
+          <img src={image} width={40} />
         </div>
         <p>{`ชื่อเมนู : ${name}`}</p>
         <p>{`ราคา : ${price}`}</p>
