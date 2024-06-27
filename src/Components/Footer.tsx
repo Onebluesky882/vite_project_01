@@ -4,9 +4,8 @@ import { AiFillGift } from "react-icons/ai";
 import { FaClipboardList, FaHome } from "react-icons/fa";
 import { PiCallBellFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
-import { MenuCardProps } from "./menuCard/MenuCard";
 
-const Footer = ({ id }: MenuCardProps) => {
+const Footer = () => {
   const { cart } = useContext(GlobalContext);
 
   return (
@@ -34,7 +33,6 @@ const Footer = ({ id }: MenuCardProps) => {
           <nav style={{ ...navStyle }}>
             <span className="nav-span-order">
               <p
-                key={id}
                 style={{
                   color: "white",
                   borderRadius: "10px",
