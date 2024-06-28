@@ -3,10 +3,6 @@ import { useContext } from "react";
 import { FaClipboardList, FaHome } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function HeaderStyle() {
-  return <></>;
-}
-
 export function HomeIcon() {
   return (
     <div
@@ -52,9 +48,9 @@ export function Logo() {
 
 export function OrderList() {
   const { cart } = useContext(GlobalContext);
+
   let totalAmount = 0;
   cart.forEach((item) => (totalAmount += item.amount));
-  console.log("cart", cart);
 
   return (
     <div
@@ -72,25 +68,27 @@ export function OrderList() {
           display: "flex",
         }}
       >
-        <FaClipboardList style={{ fontSize: "30", color: "#DF9E43" }} />
-        <span
-          style={{
-            position: "absolute",
-            top: "25px",
-            left: "8px",
-            fontSize: "14px",
-            color: "#DF9E43",
-            display: "flex",
-            background: "white",
-            borderRadius: "10px",
-            padding: "3px",
-            borderColor: "#F6F6F6",
-            paddingRight: "2px",
-            paddingLeft: "2px",
-          }}
-        >
-          {totalAmount}
-        </span>
+        <Link to={"/cart"}>
+          <FaClipboardList style={{ fontSize: "30", color: "#DF9E43" }} />
+          <span
+            style={{
+              position: "absolute",
+              top: "25px",
+              left: "8px",
+              fontSize: "14px",
+              color: "#DF9E43",
+              display: "flex",
+              background: "white",
+              borderRadius: "10px",
+              padding: "3px",
+              borderColor: "#F6F6F6",
+              paddingRight: "2px",
+              paddingLeft: "2px",
+            }}
+          >
+            {totalAmount}
+          </span>
+        </Link>
       </div>
     </div>
   );

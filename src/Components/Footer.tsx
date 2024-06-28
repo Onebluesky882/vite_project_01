@@ -8,6 +8,9 @@ import { Link } from "react-router-dom";
 const Footer = () => {
   const { cart } = useContext(GlobalContext);
 
+  let totalAmount = 0;
+  cart.forEach((item) => (totalAmount += item.amount));
+
   return (
     <div className="div-container-nav">
       <div className="div-section-nav">
@@ -40,7 +43,7 @@ const Footer = () => {
                   padding: "3px",
                 }}
               >
-                {cart.map((item) => item.amount)}
+                {totalAmount}
               </p>
             </span>
             <li style={{ listStyleType: "none" }}>
