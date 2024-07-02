@@ -12,7 +12,8 @@ export type MenuCardProps = {
 export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
   const { cart, setCart } = useContext(GlobalContext);
 
-  const amount = cart.find((item) => item.name === name)?.amount ?? 0;
+  const menuItem = cart.find((item) => item.name === name);
+  const amount = menuItem?.amount ?? 0;
 
   const onAdd = () => {
     if (amount > 9) {
@@ -32,7 +33,7 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
       return;
     }
 
-    const cartItem = cart.find((item) => item.name === name);
+    const cartItem = newCart.find((item) => item.name === name);
     if (cartItem) {
       cartItem.amount++;
     }
@@ -40,16 +41,37 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
   };
 
   const onMinus = () => {
-    if (amount <= 0) {
+    if (amount < 0) {
       return;
     }
 
-    if (amount === 1) {
-      // เอา item ออกจาก array
-      // array.filter
+    // สร้าง new cart
+    const updateCart = [...cart];
+    const removeCart = updateCart.filter((item) => item.name === name);
+
+    // fillter unique name
+
+    if (updateCart) {
+      setCart(updateCart.map((item) => item));
     }
 
+    // if (amount === 0) {
+
+    // if (amount === 1) {
+
+    // เอา item ออกจาก array
+
+    // array.filter => new array
+
+    // update with new array
+
     // ลด amount ใน item
+
+    // find the cartItem
+
+    // cartItem is exist then decrease amount
+
+    // update with new cart
   };
 
   return (
