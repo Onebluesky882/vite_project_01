@@ -41,37 +41,24 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
   };
 
   const onMinus = () => {
-    if (amount < 0) {
+    if (amount === 0) {
       return;
     }
 
-    // สร้าง new cart
-    const updateCart = [...cart];
-    const removeCart = updateCart.filter((item) => item.name === name);
+    const newCart = [...cart];
+    const cartItemIndex = newCart.findIndex((item) => item.name === name);
 
-    // fillter unique name
+    if (cartItemIndex !== -1) {
+      // Decrease amount
+      newCart[cartItemIndex].amount--;
 
-    if (updateCart) {
-      setCart(updateCart.map((item) => item));
+      // Remove item if amount reaches zero
+      if (newCart[cartItemIndex].amount === 0) {
+        newCart.splice(cartItemIndex, 1);
+      }
+
+      setCart(newCart);
     }
-
-    // if (amount === 0) {
-
-    // if (amount === 1) {
-
-    // เอา item ออกจาก array
-
-    // array.filter => new array
-
-    // update with new array
-
-    // ลด amount ใน item
-
-    // find the cartItem
-
-    // cartItem is exist then decrease amount
-
-    // update with new cart
   };
 
   return (

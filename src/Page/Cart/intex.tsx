@@ -327,29 +327,12 @@ const Cart = () => {
 
   return (
     <div>
-      {/* <div
-        style={{
-          position: "initial",
-          width: "300px",
-          height: "300px",
-          background: "gray",
-          marginLeft: "auto",
-          marginRight: "auto",
-          overflowY: "scroll",
-        }}
-      >
-        <PositionExample />
-        <DefaultDisplayExample />
-        <FlexExample />
-        <GridExample />
-      </div> */}
       {cart.map((item) => (
         <CartCard
           id={item.id}
           name={item.name}
           price={item.price}
           image={item.image}
-          amount={item.amount}
         />
       ))}
     </div>
