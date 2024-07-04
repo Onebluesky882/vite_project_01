@@ -6,7 +6,7 @@ import { PiCallBellFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { cart } = useContext(GlobalContext);
+  const { cart } = useContext(GlobalContext).cartProvider;
 
   let totalAmount = 0;
   cart.forEach((item) => (totalAmount += item.amount));

@@ -47,7 +47,7 @@ export function Logo() {
 }
 
 export function OrderList() {
-  const { cart } = useContext(GlobalContext);
+  const { cart } = useContext(GlobalContext).cartProvider;
 
   let totalAmount = 0;
   cart.forEach((item) => (totalAmount += item.amount));

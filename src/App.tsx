@@ -12,7 +12,7 @@ import DrinkMenu from "@/Page/SidebarMenu/Drink";
 import FriedFoodMenu from "@/Page/SidebarMenu/FriedFoodmenu";
 import Waiter from "@/Page/Footer/Waiter";
 import Promotion from "@/Page/Footer/Promotion";
-import Cart from "./Page/Cart/intex";
+import Cart from "./Page/Cart";
 
 function App() {
   return (

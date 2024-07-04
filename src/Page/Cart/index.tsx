@@ -323,7 +323,7 @@ import { useContext } from "react";
 // };
 
 const Cart = () => {
-  const { cart } = useContext(GlobalContext);
+  const { cart } = useContext(GlobalContext).cartProvider;
 
   return (
     <div>

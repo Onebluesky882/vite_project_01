@@ -1,21 +1,19 @@
-import { MenuCartItem } from "@/types/MenuItem";
-import { createContext, useState } from "react";
+import { createContext } from "react";
+import { useCart, defaultCartProvider } from "./useCart";
 
 type GlobalContextType = {
-  cart: MenuCartItem[];
-  setCart: React.Dispatch<React.SetStateAction<MenuCartItem[]>>;
+  cartProvider: ReturnType<typeof useCart>;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
-  cart: [],
-  setCart: () => null,
+  cartProvider: defaultCartProvider,
 });
 
 export const GlobalProvider = ({ children }: React.PropsWithChildren) => {
-  const [cart, setCart] = useState<MenuCartItem[]>([]);
+  const cartProvider = useCart();
 
   return (
-    <GlobalContext.Provider value={{ cart, setCart }}>
+    <GlobalContext.Provider value={{ cartProvider }}>
       {children}
     </GlobalContext.Provider>
   );

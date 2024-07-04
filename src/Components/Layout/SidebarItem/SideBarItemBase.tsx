@@ -22,40 +22,37 @@ export const SideBarItemBase = ({
   }
 
   return (
-    <nav className="nav-side-bar">
-      <Link
-        to={slug}
-        key={id}
-        style={{
-          justifyContent: "center",
-          textDecoration: "none",
-          fontSize: "18px",
-          fontWeight: "400",
-        }}
-      >
+    <div>
+      <Link to={slug} key={id}>
         <li
           style={{
             listStyleType: "none",
-            padding: "40px",
+            paddingTop: "60px",
+            paddingBottom: "60px",
+            paddingRight: "40px",
+            paddingLeft: "40px",
             backgroundColor: "#f7e7bd",
             ...roundedStyle,
             marginTop: "10px",
           }}
           key={id}
         >
-          <img
-            style={{
-              position: "fixed",
-              marginTop: "-30px",
-              justifyContent: "center",
-              alignItems: "center",
-            }}
-            src={img}
-            width={50}
-          />
-          {name}
+          <div style={{ position: "relative", display: "flex" }}>
+            <img
+              style={{
+                position: "absolute",
+                left: "0px",
+                top: "-10px",
+              }}
+              src={img}
+              width={80}
+            />
+          </div>
+          <div>
+            <nav>{name}</nav>
+          </div>
         </li>
       </Link>
-    </nav>
+    </div>
   );
 };

@@ -1,15 +1,19 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext } from "react";
-
 const HomePage = () => {
-  const { cart } = useContext(GlobalContext);
   return (
-    <>
-      <h1 style={{ textAlign: "center", paddingTop: "30px" }}>Homepage</h1>
-      {cart.map((carts) => (
-        <p>{carts.amount}</p>
-      ))}
-    </>
+    <div
+      style={{
+        alignItems: "center",
+        justifyContent: "center",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
+      <div>
+        <h1>homepage</h1>
+        <h2>เมนูขายดี</h2>
+        <h2></h2>
+      </div>
+    </div>
   );
 };
 export default HomePage;

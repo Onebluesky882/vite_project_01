@@ -11,7 +11,7 @@ export default function SidebarRight() {
         flexDirection: "column",
         alignItems: "end",
         position: "fixed",
-        top: "220px",
+        top: "180px",
         right: "0px",
       }}
     >

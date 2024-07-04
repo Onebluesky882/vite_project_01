@@ -38,9 +38,8 @@ import { createContext, useState } from "react";
 
 // ส่วนที่ 2 useContext
 
-
 const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
-  const { cart, setCart } = useContext(GlobalContext);
+  const { cart, setCart } = useContext(GlobalContext).cartProvider;
 
   return;
 };

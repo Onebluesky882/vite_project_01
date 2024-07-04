@@ -5,7 +5,7 @@ import {
 
 export default function SidebarLeft() {
   return (
-    <div style={{ position: "fixed", top: "220px", left: "0px" }}>
+    <div style={{ position: "fixed", top: "180px", left: "0px" }}>
       {leftMenuList.map((left) => (
         <SideBarItemLeft
           key={left.id}
