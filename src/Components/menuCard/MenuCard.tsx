@@ -29,7 +29,7 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
           style={{ ...iconStyleLeft }}
           onClick={() => onMinus({ name })}
         />
-        <p> {`จำนวน : ${amount}`}</p>
+        <p> {`จำนวนสินค้า : ${amount}`}</p>
         <CiCirclePlus
           style={{ ...iconStyleRight }}
           onClick={() => onAdd({ id, name, image, price })}
