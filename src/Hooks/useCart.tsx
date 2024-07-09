@@ -26,8 +26,6 @@ export const useCart = () => {
     }
 
     const cartItem = newCart.find((item) => item.name === name);
-    // const cartItemIndex = newCart.findIndex((item) => item.name === name);
-    // const cartItem = newCart[cartItemIndex]
     if (cartItem) {
       cartItem.amount++;
     }
