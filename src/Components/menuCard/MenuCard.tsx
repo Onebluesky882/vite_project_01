@@ -1,4 +1,3 @@
-import { Menu } from "@/Data/menu";
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";

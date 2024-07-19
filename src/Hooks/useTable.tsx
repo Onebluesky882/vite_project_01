@@ -1,8 +1,13 @@
-import { TableOrder } from "@/types/TableOrder";
+import { Table } from "@/types/TableOrder";
 import { useState } from "react";
 
 export const useTable = () => {
-  const [table, useTable] = useState<TableOrder[]>([]);
+  const [table, useTable] = useState<Table[]>([]);
 
-  const addOrderTable = () => {};
+  /*   const comfirmOrder = ({ cart, no, setTable, status, tebleId }: Table) => {
+    const newTable = [...]
+ };
+ */
+
+  const cancelOrder = () => {};
 };
