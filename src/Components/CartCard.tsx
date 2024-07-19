@@ -3,7 +3,13 @@ import { useContext } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { MenuCardProps } from "./menuCard/MenuCard";
 
-export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
+export const CartCard = ({
+  id,
+  image,
+  name,
+  price,
+  category,
+}: MenuCardProps) => {
   const { cart, onAdd, onMinus } = useContext(GlobalContext).cartProvider;
 
   const menuItem = cart.find((item) => item.name === name);
@@ -67,7 +73,6 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
               price * amount
             }`}</p>
           </div>
-          {/* <p>จำนวน</p> */}
 
           <div
             style={{
@@ -86,7 +91,7 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
             <p style={{ fontSize: "30" }}>{amount}</p>
             <CiCirclePlus
               style={{ fontSize: "30" }}
-              onClick={() => onAdd({ id, name, image, price })}
+              onClick={() => onAdd({ id, name, image, price, category })}
             />
           </div>
         </div>

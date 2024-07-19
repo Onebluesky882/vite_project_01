@@ -11,6 +11,8 @@ export const GlobalContext = createContext<GlobalContextType>({
 
 export const GlobalProvider = ({ children }: React.PropsWithChildren) => {
   const cartProvider = useCart();
+  // const orderProvider = useOrder();
+  // type OrderProvider = { orders, updateOrders }
 
   return (
     <GlobalContext.Provider value={{ cartProvider }}>

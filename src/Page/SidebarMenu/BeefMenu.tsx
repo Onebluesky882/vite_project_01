@@ -1,16 +1,18 @@
 import { MenuCard } from "@/Components/menuCard/MenuCard";
-import { beefMenu } from "@/Data/beefMenu";
+import { Menu } from "@/Data/menu";
 
+const Beef = Menu.filter((item) => item.category === "beef");
 const BeefMenu = () => {
   return (
     <div className="ProductCardContainer">
-      {beefMenu.map((beef) => (
+      {Beef.map((beef) => (
         <MenuCard
           key={beef.id}
           image={beef.image}
           name={beef.name}
           price={beef.price}
-          id={beef.id}
+          category={beef.category}
+          id={0}
         />
       ))}
     </div>

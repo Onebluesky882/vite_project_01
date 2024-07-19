@@ -4,7 +4,7 @@ import { useState } from "react";
 export const useCart = () => {
   const [cart, setCart] = useState<MenuCartItem[]>([]);
 
-  const onAdd = ({ id, name, image, price }: MenuItem) => {
+  const onAdd = ({ id, name, image, price, category }: MenuItem) => {
     const menuItem = cart.find((item) => item.name === name);
     const amount = menuItem?.amount ?? 0;
 
@@ -19,6 +19,7 @@ export const useCart = () => {
         name,
         image,
         price,
+        category,
         amount: 1,
       });
       setCart(newCart);
