@@ -1,47 +1,43 @@
-import { MenuCartItem, MenuItem } from "@/types/MenuItem";
+import { CartOrder } from "@/types/Order";
 import { useState } from "react";
 
 export const useCart = () => {
-  const [cart, setCart] = useState<MenuCartItem[]>([]);
+  const [orders, setOrders] = useState<CartOrder[]>([]);
 
-  const onAdd = ({ id, name, image, price, category }: MenuItem) => {
-    const menuItem = cart.find((item) => item.name === name);
+  const onAdd = ({ menuId }: Pick<CartOrder, "menuId">) => {
+    const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;
 
     if (amount > 9) {
       return;
     }
 
-    const newCart = [...cart];
+    const newCart = [...orders];
     if (amount === 0) {
       newCart.push({
-        id,
-        name,
-        image,
-        price,
-        category,
+        menuId,
         amount: 1,
       });
-      setCart(newCart);
+      setOrders(newCart);
       return;
     }
 
-    const cartItem = newCart.find((item) => item.name === name);
+    const cartItem = newCart.find((item) => item.menuId === menuId);
     if (cartItem) {
       cartItem.amount++;
     }
-    setCart(newCart);
+    setOrders(newCart);
   };
 
-  const onMinus = ({ name }: Pick<MenuItem, "name">) => {
-    const menuItem = cart.find((item) => item.name === name);
+  const onMinus = ({ menuId }: Pick<CartOrder, "menuId">) => {
+    const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;
     if (amount === 0) {
       return;
     }
 
-    const newCart = [...cart];
-    const cartItemIndex = newCart.findIndex((item) => item.name === name);
+    const newCart = [...orders];
+    const cartItemIndex = newCart.findIndex((item) => item.menuId === menuId);
     const cartItemExist = cartItemIndex !== -1;
 
     if (cartItemExist) {
@@ -53,16 +49,27 @@ export const useCart = () => {
         newCart.splice(cartItemIndex, 1);
       }
 
-      setCart(newCart);
+      setOrders(newCart);
     }
   };
 
-  return { cart, setCart, onAdd, onMinus };
+  const submitCart = () => {
+    const submitOrders = orders;
+
+    // clear orders in cart
+    setOrders([]);
+
+    // return orders
+    return submitOrders;
+  };
+
+  return { orders, setOrders, onAdd, onMinus, submitCart };
 };
 
 export const defaultCartProvider = {
-  cart: [],
-  setCart: () => null,
+  orders: [],
+  setOrders: () => null,
   onAdd: () => null,
   onMinus: () => null,
+  submitCart: () => [],
 };

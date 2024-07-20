@@ -1,9 +1,12 @@
-import { MenuCartItem } from "./MenuItem";
-
 export type Table = {
-  cart: MenuCartItem[];
-  tebleId: number;
-  no: number;
-  status: string;
-  setTable: string;
+  id: number; // table no
+  status: "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
+  seat: number;
 };
+
+// enum TableStatusEnum {
+//   AVALIABLE,
+//   OCCUPIED,
+//   BOOKED,
+//   CLEANING
+// }

@@ -1,25 +1,23 @@
 import { ButtonCartOrder } from "@/Components/ButtonCartOrder";
-import { CartCard } from "@/Components/CartCard";
+import { CartOrderCard } from "@/Components/CartOrderCard";
+import { TableOrderCard } from "@/Components/TableOrderCard";
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
 
 const Cart = () => {
-  const { cart } = useContext(GlobalContext).cartProvider;
+  const { orders } = useContext(GlobalContext).cartProvider;
 
-  //const {table} = useContext()
+  const { orders: tableOrders } = useContext(GlobalContext).tableProvider;
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {cart.map((item) => (
-        <CartCard
-          key={item.name}
-          id={item.id}
-          name={item.name}
-          price={item.price}
-          image={item.image}
-          category={item.category}
-        />
+      {orders.map((order) => (
+        <CartOrderCard key={order.menuId} order={order} />
       ))}
       <ButtonCartOrder />
+      ที่สังไป
+      {tableOrders.map((order) => (
+        <TableOrderCard key={order.menuId} order={order} />
+      ))}
     </div>
   );
 };

@@ -1,4 +1,8 @@
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { useContext } from "react";
+
 export const ButtonCartOrder = () => {
+  const { submitCart } = useContext(GlobalContext);
   return (
     <div
       style={{
@@ -37,6 +41,7 @@ export const ButtonCartOrder = () => {
           color: "white",
           borderStyle: "none",
         }}
+        onClick={submitCart}
       >
         ยืนยัน
       </button>
