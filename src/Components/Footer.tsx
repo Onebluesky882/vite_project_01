@@ -1,15 +1,10 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext } from "react";
 import { AiFillGift } from "react-icons/ai";
 import { FaClipboardList, FaHome } from "react-icons/fa";
 import { PiCallBellFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
-  const { cart } = useContext(GlobalContext).cartProvider;
-
   let totalAmount = 0;
-  cart.forEach((item) => (totalAmount += item.amount));
 
   return (
     <div className="div-container-nav">

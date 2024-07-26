@@ -1,14 +1,7 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { MenuCardProps } from "./menuCard/MenuCard";
 
 export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
-  const { cart, onAdd, onMinus } = useContext(GlobalContext).cartProvider;
-
-  const menuItem = cart.find((item) => item.name === name);
-  const amount = menuItem?.amount ?? 0;
-
   return (
     <div
       style={{
@@ -63,9 +56,7 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
             }}
           >
             <p key={id}>{name}</p>
-            <p style={{ color: "red", fontWeight: "bold" }}>{`฿${
-              price * amount
-            }`}</p>
+            <p style={{ color: "red", fontWeight: "bold" }}>{}</p>
           </div>
           {/* <p>จำนวน</p> */}
 
@@ -79,15 +70,9 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
               gap: "8px",
             }}
           >
-            <CiCircleMinus
-              style={{ fontSize: "30" }}
-              onClick={() => onMinus({ name })}
-            />
-            <p style={{ fontSize: "30" }}>{amount}</p>
-            <CiCirclePlus
-              style={{ fontSize: "30" }}
-              onClick={() => onAdd({ id, name, image, price })}
-            />
+            <CiCircleMinus style={{ fontSize: "30" }} onClick={() => {}} />
+            <p style={{ fontSize: "30" }}>{}</p>
+            <CiCirclePlus style={{ fontSize: "30" }} onClick={() => {}} />
           </div>
         </div>
       </div>
