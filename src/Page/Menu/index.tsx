@@ -4,8 +4,8 @@ import { MenuCard } from "@/Components/menuCard/MenuCard";
 ("@/Data/menu");
 
 const Menu = () => {
-  let { type } = useParams();
-  let fitterMenu = MenuData.filter((item) => item.category === type);
+  const { type } = useParams();
+  const fitterMenu = MenuData.filter((item) => item.category === type);
   return (
     <div className="ProductCardContainer">
       {fitterMenu.map((menu) => (
