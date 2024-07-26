@@ -16,7 +16,7 @@ const Cart = () => {
       <ButtonCartOrder />
       ที่สังไป
       {tableOrders.map((order) => (
-        <TableOrderCard key={order.menuId} order={order} />
+        <TableOrderCard key={order.id} order={order} />
       ))}
     </div>
   );

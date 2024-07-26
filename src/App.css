@@ -4,10 +4,10 @@
   user-select: none;
 }
 .header {
-  width: 100%;
   display: flex;
-  padding: 10px;
+  padding: 10px 84px;
   justify-content: space-between;
+  align-items: center;
   background-color: #f8eccf;
   margin-bottom: -5px;
   border-bottom: 5px;

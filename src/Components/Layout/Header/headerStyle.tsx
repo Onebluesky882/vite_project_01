@@ -5,14 +5,7 @@ import { Link } from "react-router-dom";
 
 export function HomeIcon() {
   return (
-    <div
-      style={{
-        width: "30%",
-        justifyContent: "center",
-        alignItems: "center",
-        display: "flex",
-      }}
-    >
+    <div>
       <Link
         style={{
           textDecoration: "none",
@@ -34,13 +27,7 @@ export function HomeIcon() {
 
 export function Logo() {
   return (
-    <div
-      style={{
-        width: "30%",
-        display: "flex",
-        justifyContent: "center",
-      }}
-    >
+    <div>
       <img src={"/mmd_logo_1.png"} alt="logoname" style={{ height: 100 }} />
     </div>
   );
@@ -53,14 +40,7 @@ export function OrderList() {
   orders.forEach((item) => (totalAmount += item.amount));
 
   return (
-    <div
-      style={{
-        display: "flex",
-        width: "30%",
-        justifyContent: "center",
-        alignItems: "center",
-      }}
-    >
+    <div>
       <div
         style={{
           position: "relative",
