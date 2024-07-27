@@ -15,6 +15,7 @@ const Menu = () => {
           name={menu.name}
           price={menu.price}
           key={menu.id}
+          category={""}
         />
       ))}
     </div>
