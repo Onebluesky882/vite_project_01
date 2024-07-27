@@ -12,6 +12,7 @@ const defaultTable = {
   status: "AVAILABLE" as const,
   seat: 4,
 };
+
 export const useTable = () => {
   const [table, setTable] = useState<Table>(defaultTable);
   const [orders, setOrders] = useState<Order[]>([]);
@@ -21,18 +22,21 @@ export const useTable = () => {
  };
  */
 
+  // const cancelOrder = () => {};
+
   async function loadOrders() {
     const { data } = await supabase
       .from("orders")
       .select()
       .eq("table_id", table.id);
-
+    // console.log("data", data);
     if (data) {
       const camelKeyData = data.map((item) => transformKeysToCamelCase(item));
       // console.log("camelKeyData", camelKeyData);
       setOrders(camelKeyData);
     }
   }
+  // load order from be
   useEffect(() => {
     loadOrders();
   }, []);

@@ -1,17 +1,14 @@
-import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { CartOrder } from "@/types/CartOrder";
 import { getMenuItem } from "@/Data/menu";
-import { useContext } from "react";
-import { GlobalContext } from "@/Hooks/GlobalContext";
+import { Order } from "@/types/CartOrder";
 
-type CartOrderCardProps = {
-  order: CartOrder;
+type TableOrderCardProps = {
+  order: Order;
 };
 
-export const CartOrderCard = ({ order }: CartOrderCardProps) => {
-  const { onAdd, onMinus } = useContext(GlobalContext).cartProvider;
+export const TableOrderCard = ({ order }: TableOrderCardProps) => {
   const menuItem = getMenuItem(order.menuId);
   const amount = order.amount;
+
   return (
     <div
       style={{
@@ -61,9 +58,9 @@ export const CartOrderCard = ({ order }: CartOrderCardProps) => {
             }}
           >
             <p>{menuItem.name}</p>
-            <p style={{ color: "red", fontWeight: "bold" }}>
-              {`${menuItem.price * amount}`}
-            </p>
+            <p style={{ color: "red", fontWeight: "bold" }}>{`฿${
+              menuItem.price * amount
+            }`}</p>
           </div>
 
           <div
@@ -76,15 +73,7 @@ export const CartOrderCard = ({ order }: CartOrderCardProps) => {
               gap: "8px",
             }}
           >
-            <CiCircleMinus
-              style={{ fontSize: "30" }}
-              onClick={() => onMinus({ menuId: order.menuId })}
-            />
-            <p style={{ fontSize: "30" }}>{}</p>
-            <CiCirclePlus
-              style={{ fontSize: "30" }}
-              onClick={() => onAdd({ menuId: order.menuId })}
-            />
+            {order.status} {order.amount}
           </div>
         </div>
       </div>

@@ -1,7 +1,7 @@
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
 
-export const ButtonCarOrder = () => {
+export const ButtonCartOrder = () => {
   const { submitCart } = useContext(GlobalContext);
   return (
     <div

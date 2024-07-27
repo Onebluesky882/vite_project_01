@@ -15,7 +15,7 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
         <img style={{ ...imgStyle }} src={image} alt={image} width={160} />
       </div>
       <div style={{ position: "relative" }}>
-        <h3>{name}</h3>
+        <h3>{name}wfwf</h3>
       </div>
       <p>{`ราคา : ${price} บาท`}</p>
       <div style={{ ...divOrder }}>

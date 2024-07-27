@@ -16,6 +16,7 @@ export const GlobalProvider = ({ children }: React.PropsWithChildren) => {
   const tableProvider = useTable();
   const submitCart = () => {
     const submitOrders = cartProvider.submitCart();
+    tableProvider.submitCart(submitOrders);
   };
   return (
     <GlobalContext.Provider value={{ cartProvider, tableProvider, submitCart }}>
