@@ -1,11 +1,17 @@
+import { useContext } from "react";
 import SidebarLeft from "../../SidebarLeft";
 import SidebarRight from "../../SidebarRight";
 import { HomeIcon, Logo, OrderList } from "./headerStyle";
+import { GlobalContext } from "@/Hooks/GlobalContext";
 
 export default function Header() {
+  const { table } = useContext(GlobalContext).tableProvider;
   return (
     <header className="header">
-      <HomeIcon />
+      <div>
+        <HomeIcon />
+        {table.id}
+      </div>
       <Logo />
       <OrderList />
       <SidebarLeft />

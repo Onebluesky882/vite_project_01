@@ -1,13 +1,14 @@
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { MenuItem } from "@/types/MenuItem";
+import { useContext } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 
-export type MenuCardProps = {
-  id: string;
-  name: string;
-  image: string;
-  price: number;
-};
+export type MenuCardProps = MenuItem;
 
 export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
+  const { orders, onAdd, onMinus } = useContext(GlobalContext).cartProvider;
+  const menuItem = orders.find((item) => item.menuId === id);
+  const amount = menuItem?.amount ?? 0;
   return (
     <div key={id} className="menu-card">
       <div style={{ position: "relative" }}>
@@ -18,9 +19,15 @@ export const MenuCard = ({ id, name, image, price }: MenuCardProps) => {
       </div>
       <p>{`ราคา : ${price} บาท`}</p>
       <div style={{ ...divOrder }}>
-        <CiCircleMinus style={{ ...iconStyleLeft }} onClick={() => {}} />
-        <p> {`จำนวนสินค้า :`}</p>
-        <CiCirclePlus style={{ ...iconStyleRight }} onClick={() => {}} />
+        <CiCircleMinus
+          style={{ ...iconStyleLeft }}
+          onClick={() => onMinus({ menuId: id })}
+        />
+        <p> {`จำนวนสินค้า : ${amount}`}</p>
+        <CiCirclePlus
+          style={{ ...iconStyleRight }}
+          onClick={() => onAdd({ menuId: id })}
+        />
       </div>
     </div>
   );

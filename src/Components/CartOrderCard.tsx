@@ -1,7 +1,17 @@
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { MenuCardProps } from "./menuCard/MenuCard";
+import { CartOrder } from "@/types/CartOrder";
+import { getMenuItem } from "@/Data/menu";
+import { useContext } from "react";
+import { GlobalContext } from "@/Hooks/GlobalContext";
 
-export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
+type CartOrderCardProps = {
+  order: CartOrder;
+};
+
+export const CartOrderCard = ({ order }: CartOrderCardProps) => {
+  const { onAdd, onMinus } = useContext(GlobalContext).cartProvider;
+  const menuItem = getMenuItem(order.menuId);
+  const amount = order.amount;
   return (
     <div
       style={{
@@ -11,7 +21,6 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
         alignItems: "start",
         position: "relative",
       }}
-      key={id}
     >
       <div
         style={{
@@ -20,7 +29,6 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
           backgroundAttachment: "fixed",
           backgroundColor: "#fff9e6",
         }}
-        key={id}
       >
         <div
           className="div-cart-list"
@@ -29,23 +37,20 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
             height: "120%",
             display: "flex",
           }}
-          key={id}
         >
           <div>
             <img
-              src={image}
+              src={menuItem.image}
               width={140}
               height={140}
               style={{
                 objectFit: "cover",
                 background: "white",
               }}
-              key={id}
             />
           </div>
 
           <div
-            key={id}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -55,10 +60,11 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
               paddingLeft: "16px",
             }}
           >
-            <p key={id}>{name}</p>
-            <p style={{ color: "red", fontWeight: "bold" }}>{}</p>
+            <p>{menuItem.name}</p>
+            <p style={{ color: "red", fontWeight: "bold" }}>{`{${
+              menuItem.price * amount
+            }`}</p>
           </div>
-          {/* <p>จำนวน</p> */}
 
           <div
             style={{
@@ -70,9 +76,15 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
               gap: "8px",
             }}
           >
-            <CiCircleMinus style={{ fontSize: "30" }} onClick={() => {}} />
+            <CiCircleMinus
+              style={{ fontSize: "30" }}
+              onClick={() => onMinus({ menuId: order.menuId })}
+            />
             <p style={{ fontSize: "30" }}>{}</p>
-            <CiCirclePlus style={{ fontSize: "30" }} onClick={() => {}} />
+            <CiCirclePlus
+              style={{ fontSize: "30" }}
+              onClick={() => onAdd({ menuId: order.menuId })}
+            />
           </div>
         </div>
       </div>
