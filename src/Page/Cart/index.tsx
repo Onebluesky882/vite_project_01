@@ -10,6 +10,31 @@ const Cart = () => {
   const { orders: tableOrders } = useContext(GlobalContext).tableProvider;
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
+      {/* <div
+        style={{
+          margin: "0 auto",
+          borderRadius: "16px",
+          background: "blue",
+          overflow: "hidden",
+        }}
+      >
+        <div
+          style={{
+            width: "200px",
+            height: "200px",
+            background: "red",
+            borderRadius: "28px",
+          }}
+        >
+          <div
+            style={{
+              width: "200px",
+              height: "200px",
+              background: "green",
+            }}
+          ></div>
+        </div>
+      </div> */}
       {orders.map((order) => (
         <CartOrderCard key={order.menuId} order={order} />
       ))}
