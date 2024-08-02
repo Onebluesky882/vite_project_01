@@ -1,69 +1,68 @@
-import { MenuCartItem, MenuItem } from "@/types/MenuItem";
 import { useState } from "react";
 
-export const useCart = () => {
-  const [cart, setCart] = useState<MenuCartItem[]>([]);
+// type
+export type orderItemType = {
+  menuId: string;
+  amount: number;
+};
 
-  const onAdd = ({ id, name, image, price }: MenuItem) => {
-    const menuItem = cart.find((item) => item.name === name);
+export const useCart = () => {
+  const [orders, setOrders] = useState<orderItemType[]>([]);
+
+  // feature funtion
+  const onAdd = ({ menuId }: Pick<orderItemType, "menuId">) => {
+    const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;
 
+    // condition safety over click
     if (amount > 9) {
       return;
     }
 
-    const newCart = [...cart];
+    const newCart = [...orders];
     if (amount === 0) {
       newCart.push({
-        id,
-        name,
-        image,
-        price,
+        menuId,
         amount: 1,
       });
-      setCart(newCart);
+      setOrders(newCart);
       return;
     }
 
-    const cartItem = newCart.find((item) => item.name === name);
-    // const cartItemIndex = newCart.findIndex((item) => item.name === name);
-    // const cartItem = newCart[cartItemIndex]
+    const cartItem = newCart.find((item) => item.menuId === menuId);
     if (cartItem) {
       cartItem.amount++;
     }
-    setCart(newCart);
+
+    setOrders(newCart);
   };
 
-  const onMinus = ({ name }: Pick<MenuItem, "name">) => {
-    const menuItem = cart.find((item) => item.name === name);
-    const amount = menuItem?.amount ?? 0;
-    if (amount === 0) {
+  const onMinus = ({ menuId }: Pick<orderItemType, "menuId">) => {
+    const cart = [...orders];
+    const cartItem = cart.find((item) => item.menuId === menuId);
+
+    if (!cartItem) {
       return;
     }
 
-    const newCart = [...cart];
-    const cartItemIndex = newCart.findIndex((item) => item.name === name);
-    const cartItemExist = cartItemIndex !== -1;
-
-    if (cartItemExist) {
-      // Decrease amount
-      newCart[cartItemIndex].amount--;
-
-      // Remove item if amount reaches zero
-      if (newCart[cartItemIndex].amount === 0) {
-        newCart.splice(cartItemIndex, 1);
+    if (cartItem.amount > 1) {
+      cartItem.amount--;
+    } else {
+      const index = cart.findIndex((item) => item.menuId === menuId);
+      if (index > -1) {
+        cart.splice(index, 1);
       }
-
-      setCart(newCart);
     }
+
+    setOrders(cart);
   };
 
-  return { cart, setCart, onAdd, onMinus };
+  return { orders, setOrders, onAdd, onMinus };
 };
 
 export const defaultCartProvider = {
-  cart: [],
-  setCart: () => null,
+  orders: [],
+  setOrders: () => null,
   onAdd: () => null,
   onMinus: () => null,
 };

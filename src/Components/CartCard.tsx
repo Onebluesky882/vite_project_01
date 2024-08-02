@@ -4,9 +4,9 @@ import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { MenuCardProps } from "./menuCard/MenuCard";
 
 export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
-  const { cart, onAdd, onMinus } = useContext(GlobalContext).cartProvider;
+  const { orders, onAdd, onMinus } = useContext(GlobalContext).cartProvider;
 
-  const menuItem = cart.find((item) => item.name === name);
+  const menuItem = orders.find((item) => item.menuId === id);
   const amount = menuItem?.amount ?? 0;
 
   return (
@@ -81,12 +81,12 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
           >
             <CiCircleMinus
               style={{ fontSize: "30" }}
-              onClick={() => onMinus({ name })}
+              onClick={() => onMinus({ menuId: id })}
             />
             <p style={{ fontSize: "30" }}>{amount}</p>
             <CiCirclePlus
               style={{ fontSize: "30" }}
-              onClick={() => onAdd({ id, name, image, price })}
+              onClick={() => onAdd({ menuId: id })}
             />
           </div>
         </div>

@@ -47,10 +47,10 @@ export function Logo() {
 }
 
 export function OrderList() {
-  const { cart } = useContext(GlobalContext).cartProvider;
+  const { orders } = useContext(GlobalContext).cartProvider;
 
   let totalAmount = 0;
-  cart.forEach((item) => (totalAmount += item.amount));
+  orders.forEach((item) => (totalAmount += item.amount));
 
   return (
     <div
