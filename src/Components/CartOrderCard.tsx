@@ -1,13 +1,20 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
 import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
-import { MenuCardProps } from "./menuCard/MenuCard";
+import { CartOrder } from "@/types/Order";
+import { getMenuItem } from "@/Data/Menu";
+import { GlobalContext } from "@/Hooks/GlobalContext";
 
-export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
-  const { orders, onAdd, onMinus } = useContext(GlobalContext).cartProvider;
+type CartOrderCardProps = {
+  order: CartOrder;
+};
 
-  const menuItem = orders.find((item) => item.menuId === id);
-  const amount = menuItem?.amount ?? 0;
+export const CartOrderCard = ({ order }: CartOrderCardProps) => {
+  // hook useContext
+  const { onAdd, onMinus } = useContext(GlobalContext).cartProvider;
+
+  // data fillter
+  const menuItem = getMenuItem(order.menuId);
+  const amount = order.amount;
 
   return (
     <div
@@ -37,7 +44,7 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
         >
           <div>
             <img
-              src={image}
+              src={menuItem.image}
               width={140}
               height={140}
               style={{
@@ -57,9 +64,9 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
               paddingLeft: "16px",
             }}
           >
-            <p>{name}</p>
+            <p>{menuItem.name}</p>
             <p style={{ color: "red", fontWeight: "bold" }}>{`฿${
-              price * amount
+              menuItem.price * amount
             }`}</p>
           </div>
           {/* <p>จำนวน</p> */}
@@ -76,12 +83,12 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
           >
             <CiCircleMinus
               style={{ fontSize: "30" }}
-              onClick={() => onMinus({ menuId: id })}
+              onClick={() => onMinus({ menuId: order.menuId })}
             />
             <p style={{ fontSize: "30" }}>{amount}</p>
             <CiCirclePlus
               style={{ fontSize: "30" }}
-              onClick={() => onAdd({ menuId: id })}
+              onClick={() => onAdd({ menuId: order.menuId })}
             />
           </div>
         </div>

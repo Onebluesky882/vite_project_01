@@ -1,46 +1,39 @@
+import { CartOrder } from "@/types/Order";
 import { useState } from "react";
 
-// type
-export type OrderItemType = {
-  menuId: string;
-  amount: number;
-};
-
 export const useCart = () => {
-  const [orders, setOrders] = useState<OrderItemType[]>([]);
+  //hook
+  const [orders, setOrders] = useState<CartOrder[]>([]);
 
-  // feature funtion
-  const onAdd = ({ menuId }: Pick<OrderItemType, "menuId">) => {
+  // onAdd function
+  const onAdd = ({ menuId }: Pick<CartOrder, "menuId">) => {
     const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;
 
-    // condition safety over click
     if (amount > 9) {
       return;
     }
 
-    const newCart = [...orders];
+    const newOrder = [...orders];
     if (amount === 0) {
-      newCart.push({
+      newOrder.push({
         menuId,
         amount: 1,
       });
-      setOrders(newCart);
+      setOrders(newOrder);
       return;
     }
 
-    const cartItem = newCart.find((item) => item.menuId === menuId);
+    const cartItem = newOrder.find((item) => item.menuId === menuId);
     if (cartItem) {
       cartItem.amount++;
     }
-
-    setOrders(newCart);
+    setOrders(newOrder);
   };
 
-  const onMinus = ({ menuId }: Pick<OrderItemType, "menuId">) => {
+  const onMinus = ({ menuId }: Pick<CartOrder, "menuId">) => {
     const cart = [...orders];
     const cartItem = cart.find((item) => item.menuId === menuId);
-
     if (!cartItem) {
       return;
     }
@@ -53,7 +46,6 @@ export const useCart = () => {
         cart.splice(index, 1);
       }
     }
-
     setOrders(cart);
   };
 

@@ -7,7 +7,6 @@ import { Link } from "react-router-dom";
 
 const Footer = () => {
   const { orders } = useContext(GlobalContext).cartProvider;
-
   let totalAmount = 0;
   orders.forEach((item) => (totalAmount += item.amount));
 
