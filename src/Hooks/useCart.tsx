@@ -1,16 +1,16 @@
 import { useState } from "react";
 
 // type
-export type orderItemType = {
+export type OrderItemType = {
   menuId: string;
   amount: number;
 };
 
 export const useCart = () => {
-  const [orders, setOrders] = useState<orderItemType[]>([]);
+  const [orders, setOrders] = useState<OrderItemType[]>([]);
 
   // feature funtion
-  const onAdd = ({ menuId }: Pick<orderItemType, "menuId">) => {
+  const onAdd = ({ menuId }: Pick<OrderItemType, "menuId">) => {
     const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;
 
@@ -37,7 +37,7 @@ export const useCart = () => {
     setOrders(newCart);
   };
 
-  const onMinus = ({ menuId }: Pick<orderItemType, "menuId">) => {
+  const onMinus = ({ menuId }: Pick<OrderItemType, "menuId">) => {
     const cart = [...orders];
     const cartItem = cart.find((item) => item.menuId === menuId);
 
