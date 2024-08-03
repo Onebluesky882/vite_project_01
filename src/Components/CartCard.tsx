@@ -18,7 +18,6 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
         alignItems: "start",
         position: "relative",
       }}
-      key={id}
     >
       <div
         style={{
@@ -27,7 +26,6 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
           backgroundAttachment: "fixed",
           backgroundColor: "#fff9e6",
         }}
-        key={id}
       >
         <div
           className="div-cart-list"
@@ -36,7 +34,6 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
             height: "120%",
             display: "flex",
           }}
-          key={id}
         >
           <div>
             <img
@@ -47,12 +44,10 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
                 objectFit: "cover",
                 background: "white",
               }}
-              key={id}
             />
           </div>
 
           <div
-            key={id}
             style={{
               display: "flex",
               flexDirection: "column",
@@ -62,7 +57,7 @@ export const CartCard = ({ id, image, name, price }: MenuCardProps) => {
               paddingLeft: "16px",
             }}
           >
-            <p key={id}>{name}</p>
+            <p>{name}</p>
             <p style={{ color: "red", fontWeight: "bold" }}>{`฿${
               price * amount
             }`}</p>

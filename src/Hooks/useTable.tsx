@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import supabase from "@/utils/supabase";
 import { transformKeysToCamelCase } from "@/utils/string";
+import { Table } from "@/types/Table";
 
 export type Orders = {
   id: string;
@@ -9,12 +10,6 @@ export type Orders = {
   status: "ORDERED" | "COOKING" | "DONE";
   amount: number;
   doneAt?: string;
-};
-
-export type Table = {
-  id: number; // table no
-  status: "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
-  seat: number;
 };
 
 export type CartOrder = {
@@ -29,15 +24,12 @@ export const defaultTable = {
 };
 
 export const useTable = () => {
-  const [table, setTable] = useState<Table>(defaultTable);
+  const [table, setTable] = useState<Table[]>([]);
   const [orders, setOrders] = useState<Orders[]>([]);
 
   // load data from BE => transform data into FE Format => update UI with the new data
   const loadOrders = async () => {
-    const { data } = await supabase
-      .from("orders")
-      .select()
-      .eq("table_id", table.id);
+    const { data } = await supabase.from("orders").select().eq("table_id");
 
     if (data) {
       console.log("data", data);
