@@ -2,10 +2,8 @@ import { CartOrder } from "@/types/Order";
 import { useState } from "react";
 
 export const useCart = () => {
-  //hook
   const [orders, setOrders] = useState<CartOrder[]>([]);
 
-  // onAdd function
   const onAdd = ({ menuId }: Pick<CartOrder, "menuId">) => {
     const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;
@@ -32,21 +30,22 @@ export const useCart = () => {
   };
 
   const onMinus = ({ menuId }: Pick<CartOrder, "menuId">) => {
-    const cart = [...orders];
-    const cartItem = cart.find((item) => item.menuId === menuId);
-    if (!cartItem) {
+    const order = [...orders];
+    const removeOrder = order.find((item) => item.menuId === menuId);
+
+    if (!removeOrder) {
       return;
     }
 
-    if (cartItem.amount > 1) {
-      cartItem.amount--;
+    if (removeOrder.amount > 1) {
+      removeOrder.amount--;
     } else {
-      const index = cart.findIndex((item) => item.menuId === menuId);
+      const index = order.findIndex((item) => item.menuId === menuId);
       if (index > -1) {
-        cart.splice(index, 1);
+        order.splice(index, 1);
       }
     }
-    setOrders(cart);
+    setOrders(order);
   };
 
   return { orders, setOrders, onAdd, onMinus };

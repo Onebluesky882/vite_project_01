@@ -3,5 +3,3 @@ export type Table = {
   status: "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
   seat: number;
 };
-
-export const getTable = (id: string) => {};
