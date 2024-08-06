@@ -6,6 +6,7 @@ import Waiter from "@/Page/Footer/Waiter";
 import Promotion from "@/Page/Footer/Promotion";
 import Cart from "./Page/Cart";
 import Menu from "@/Page/Menu";
+import TableSystem from "./Page/Table";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/table" element={<TableSystem />} />
         </Route>
       </Routes>
     </BrowserRouter>

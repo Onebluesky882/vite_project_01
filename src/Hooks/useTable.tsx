@@ -1,7 +1,7 @@
 import { Table } from "@/types/TableOrder";
 import supabase from "@/utils/supabase";
 import { useEffect, useState } from "react";
-import { transformKeysToSnakeCase, camelToSnake } from "../utils/string";
+import { transformKeysToSnakeCase } from "../utils/string";
 const defaultTable = {
   id: 1,
   status: "AVAILABLE" as const,
@@ -23,22 +23,34 @@ export type Order = {
 };
 
 export const useTable = () => {
-  const [table, setTable] = useState<Table>(defaultTable);
+  const [table, setTable] = useState<Table[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
 
-  const loadOrder = async () => {
+  const loadOrder = async (tableId: number) => {
     const { data } = await supabase
       .from("orders")
       .select()
-      .eq("table_id", table.id);
+      .eq("table_id", tableId);
     if (data) {
       const loadData = data.map((item) => item);
       setOrders(loadData);
     }
   };
+  const loadTable = async (tableId: number) => {
+    const { data } = await supabase
+      .from("tables") // Replace with your table name in Supabase
+      .select()
+      .eq("id", tableId)
+      .single(); // Assuming you are fetching a single table
+
+    if (data) {
+      setTable(data);
+      await loadOrder(tableId);
+    }
+  };
 
   useEffect(() => {
-    loadOrder();
+    loadTable();
   }, []);
 
   //submit item to BE
@@ -50,6 +62,7 @@ export const useTable = () => {
   // 2. get cart order from ui => *** push this to BE
 
   const submitCart = async (submitOrder: CartOrder[]) => {
+    if (!table?.id) return;
     // function  // get & prepare data from cart order in UI
     const prepareOrders: Order[] = submitOrder.map((order) => ({
       ...order,
@@ -70,7 +83,7 @@ export const useTable = () => {
     await supabase.from("orders").insert(snakeCasePrepareOrders).select();
 
     // update UI
-    await loadOrder();
+    await loadOrder(table.id);
 
     setOrders([...orders, ...prepareOrders]);
   };
@@ -100,14 +113,41 @@ export const useTable = () => {
     await supabase.from("tables").select().eq("id", tableId);
   };
 
-  return { table, setTable, orders, setOrders, submitCart, confirmOrder };
+  const removeOrder = async (orderId: string) => {
+    try {
+      const { error } = await supabase
+        .from("orders")
+        .delete()
+        .eq("id", orderId);
+      if (error) {
+        console.error("Error removing order:", error);
+        return;
+      }
+      setOrders((prevOrder) =>
+        prevOrder.filter((order) => order.id !== orderId)
+      );
+    } catch (error) {
+      console.error("Error removing order:", error);
+    }
+  };
+
+  return {
+    table,
+    setTable,
+    orders,
+    setOrders,
+    submitCart,
+    confirmOrder,
+    removeOrder,
+  };
 };
 
 export const defaultTableProvider = {
-  table: defaultTable,
+  table: [],
   setTable: () => null,
   orders: [],
   setOrders: () => null,
   submitCart: () => Promise.resolve(),
   confirmOrder: () => Promise.resolve(),
+  removeOrder: () => Promise.resolve(),
 };
