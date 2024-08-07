@@ -8,48 +8,60 @@ export const SideBarItemBase = ({
   img,
   position,
 }: SideBarItemProps & { position: "left" | "right" }) => {
-  let roundedStyle;
-  if (position === "left") {
-    roundedStyle = {
-      borderTopRightRadius: "50px",
-      borderBottomRightRadius: "50px",
-    };
-  } else {
-    roundedStyle = {
-      borderTopLeftRadius: "50px",
-      borderBottomLeftRadius: "50px",
-    };
-  }
+  const roundedStyles = {
+    left: { borderTopRightRadius: "50px", borderBottomRightRadius: "50px" },
+    right: { borderTopLeftRadius: "50px", borderBottomLeftRadius: "50px" },
+  };
+
+  const imgStyles: { [key: string]: React.CSSProperties } = {
+    left: {
+      position: "absolute",
+      left: "-30px",
+      top: "-32px",
+      width: "50px",
+    },
+    right: {
+      position: "absolute",
+      left: "-10px",
+      top: "-42px",
+      width: "50px",
+    },
+  };
+  const textStyles: { [key: string]: React.CSSProperties } = {
+    left: {
+      position: "absolute",
+      left: "-30px",
+      marginTop: "5px",
+    },
+    right: {
+      position: "absolute",
+      right: "-35px",
+      marginTop: "8px",
+    },
+  };
+  const commonStyles = {
+    listStyleType: "none",
+    paddingTop: "60px",
+    paddingBottom: "60px",
+    paddingRight: "40px",
+    paddingLeft: "40px",
+    backgroundColor: "#f7e7bd",
+    marginTop: "10px",
+  };
 
   return (
-    <div>
-      <Link to={slug} key={id}>
+    <div style={{ display: "flex" }}>
+      <Link to={slug} key={id} style={{ textDecoration: "none" }}>
         <li
           style={{
-            listStyleType: "none",
-            paddingTop: "60px",
-            paddingBottom: "60px",
-            paddingRight: "40px",
-            paddingLeft: "40px",
-            backgroundColor: "#f7e7bd",
-            ...roundedStyle,
-            marginTop: "10px",
+            ...commonStyles,
+            ...roundedStyles[position],
           }}
           key={id}
         >
           <div style={{ position: "relative", display: "flex" }}>
-            <img
-              style={{
-                position: "absolute",
-                left: "0px",
-                top: "-10px",
-              }}
-              src={img}
-              width={80}
-            />
-          </div>
-          <div>
-            <nav>{name}</nav>
+            <img style={imgStyles[position]} src={img} />
+            <p style={textStyles[position]}>{name}</p>
           </div>
         </li>
       </Link>

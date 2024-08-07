@@ -1,59 +1,83 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { Table } from "@/types/TableOrder";
-import { useContext } from "react";
+import { getMenuItem } from "@/Data/Menu";
+import { Order } from "@/types/Order";
 
-export type TableProps = {
-  tables: Table[];
+export type TableOrderCardProps = {
+  order: Order;
 };
 
-type TableNoProps = {
-  tableNo: Table;
-};
+const TableOrderCard = ({ order }: TableOrderCardProps) => {
+  const menuItem = getMenuItem(order.menuId);
+  const amount = order.amount;
 
-type TableStatusProps = {
-  tableStatus: Table;
-};
-
-const TableOrderCard = ({ tables }: TableProps) => {
-  // hook
-  const { table } = useContext(GlobalContext).tableProvider;
-
-  // find the table by id match with hook table id
-  const selectedTable = tables.find((no) => no.id === table?.id);
-
-  const tableStatus = selectedTable;
-
-  return (
-    <TableContainer>
-      {selectedTable ? (
-        <TableNo tableNo={selectedTable} />
-      ) : (
-        tableStatus && <TableStatus tableStatus={tableStatus} />
-      )}
-    </TableContainer>
-  );
-};
-
-const TableContainer = ({ children }: React.PropsWithChildren) => {
   return (
     <div
       style={{
-        margin: "auto",
-        background: "blue",
+        width: "100%",
         display: "flex",
         justifyContent: "center",
+        alignItems: "start",
+        position: "relative",
       }}
     >
-      {children}
+      <div
+        style={{
+          width: "400px",
+          height: "120%",
+          backgroundAttachment: "fixed",
+          backgroundColor: "#fff9e6",
+        }}
+      >
+        <div
+          style={{
+            width: "400px",
+            height: "120%",
+            display: "flex",
+          }}
+        >
+          <div style={{ display: "flex", marginTop: "10px" }}>
+            <img
+              src={menuItem.image}
+              width={140}
+              height={140}
+              style={{
+                objectFit: "cover",
+                background: "white",
+              }}
+            />
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "space-between",
+                paddingTop: "8px",
+                paddingBottom: "8px",
+                paddingLeft: "30px",
+              }}
+            >
+              <p>{`status : ${order.status}`}</p>
+              <p>{menuItem.name}</p>
+              <p style={{ color: "red", fontWeight: "bold" }}>
+                {`฿${menuItem.price * amount}`}
+              </p>
+
+              <div
+                style={{
+                  position: "absolute",
+                  bottom: "8px",
+                  right: "16px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "8px",
+                }}
+              >
+                {order.status} {order.amount}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
-};
-const TableNo = ({ tableNo }: TableNoProps) => {
-  return <p> {tableNo.id} </p>;
-};
-
-const TableStatus = ({ tableStatus }: TableStatusProps) => {
-  return <h1>{tableStatus.status}</h1>;
 };
 
 export default TableOrderCard;

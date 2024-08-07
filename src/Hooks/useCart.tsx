@@ -48,7 +48,17 @@ export const useCart = () => {
     setOrders(order);
   };
 
-  return { orders, setOrders, onAdd, onMinus };
+  const submitCart = () => {
+    const submitOrders = orders;
+    setOrders([]);
+    return submitOrders;
+  };
+
+  const removeCart = () => {
+    setOrders([]);
+    return;
+  };
+  return { orders, setOrders, onAdd, onMinus, submitCart, removeCart };
 };
 
 export const defaultCartProvider = {
@@ -56,4 +66,6 @@ export const defaultCartProvider = {
   setOrders: () => null,
   onAdd: () => null,
   onMinus: () => null,
+  submitCart: () => [],
+  removeCart: () => [],
 };

@@ -23,7 +23,8 @@ export type Order = {
 };
 
 export const useTable = () => {
-  const [table, setTable] = useState<Table[]>([]);
+  // const [table, setTable] = useState<Table[]>([]);
+  const [table, setTable] = useState<Table>(defaultTable);
   const [orders, setOrders] = useState<Order[]>([]);
 
   const loadOrder = async (tableId: number) => {
@@ -50,7 +51,7 @@ export const useTable = () => {
   };
 
   useEffect(() => {
-    loadTable();
+    loadTable(1);
   }, []);
 
   //submit item to BE
@@ -143,7 +144,7 @@ export const useTable = () => {
 };
 
 export const defaultTableProvider = {
-  table: [],
+  table: defaultTable,
   setTable: () => null,
   orders: [],
   setOrders: () => null,
