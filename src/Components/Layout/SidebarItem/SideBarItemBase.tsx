@@ -22,7 +22,7 @@ export const SideBarItemBase = ({
     },
     right: {
       position: "absolute",
-      left: "-10px",
+      right: "-35px",
       top: "-42px",
       width: "50px",
     },
@@ -35,18 +35,29 @@ export const SideBarItemBase = ({
     },
     right: {
       position: "absolute",
-      right: "-35px",
+      right: "-30px",
       marginTop: "8px",
     },
   };
-  const commonStyles = {
-    listStyleType: "none",
-    paddingTop: "60px",
-    paddingBottom: "60px",
-    paddingRight: "40px",
-    paddingLeft: "40px",
-    backgroundColor: "#f7e7bd",
-    marginTop: "10px",
+  const commonStyles: { [key: string]: React.CSSProperties } = {
+    right: {
+      listStyleType: "none",
+      paddingTop: "60px",
+      paddingBottom: "60px",
+      paddingRight: "70px",
+      paddingLeft: "40px",
+      backgroundColor: "#f7e7bd",
+      marginTop: "10px",
+    },
+    left: {
+      listStyleType: "none",
+      paddingTop: "60px",
+      paddingBottom: "60px",
+      paddingRight: "40px",
+      paddingLeft: "40px",
+      backgroundColor: "#f7e7bd",
+      marginTop: "10px",
+    },
   };
 
   return (
@@ -54,7 +65,7 @@ export const SideBarItemBase = ({
       <Link to={slug} key={id} style={{ textDecoration: "none" }}>
         <li
           style={{
-            ...commonStyles,
+            ...commonStyles[position],
             ...roundedStyles[position],
           }}
           key={id}

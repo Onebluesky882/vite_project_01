@@ -313,7 +313,7 @@ export const Menu: MenuItem[] = [
     id: "29f82c6d-4371-4b05-848f-568a63ed78f6",
     name: "สามชั้นสไลด์",
     price: 139,
-    image: "pork_pics/streaky_pork.png",
+    image: "/pork_pics/streaky_pork.png",
     category: "pork",
   },
   {
