@@ -1,6 +1,4 @@
 import React from "react";
-import styled, { css } from "styled-components";
-import { Table } from "../types/TableOrder";
 import { Link } from "react-router-dom";
 type TableType = {
   no: "A1" | "A2" | "A3" | "A4" | "A5" | "B1" | "B2" | "B3" | "B4";
@@ -18,8 +16,12 @@ const Table = ({
     display: "flex",
     position: "relative",
     flexDirection: "column",
-    margin: "20px",
+    margin: "30px",
     padding: "20px",
+    alignItems: "center",
+    justifyContent: "center",
+    width: "6rem",
+    borderRadius: "9999px",
     ...getStatusStyles(status),
   };
 
