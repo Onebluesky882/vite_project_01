@@ -6,7 +6,9 @@ import Waiter from "@/Page/Footer/Waiter";
 import Promotion from "@/Page/Footer/Promotion";
 import Cart from "./Page/Cart";
 import Menu from "@/Page/Menu";
+import Table from "@/Page/Table";
 import NotFound from "./Components/Layout/notFound";
+import Tables from "@/Page/Table";
 
 function App() {
   return (
@@ -15,6 +17,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/menu/:type" element={<Menu />} />
+          <Route path="/table" element={<Tables />} />
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/cart" element={<Cart />} />

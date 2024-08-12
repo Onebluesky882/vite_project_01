@@ -7,6 +7,7 @@ import { useContext } from "react";
 const Cart = () => {
   const { orders } = useContext(GlobalContext).cartProvider;
   const { orders: tabeleOrders } = useContext(GlobalContext).tableProvider;
+  // console.log('tabeleOrders', tabeleOrders)
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {orders.map((order) => (

@@ -25,6 +25,7 @@ const TableOrderCard = ({ order }: TableOrderCardProps) => {
           height: "120%",
           backgroundAttachment: "fixed",
           backgroundColor: "#fff9e6",
+          position: "relative",
         }}
       >
         <div
