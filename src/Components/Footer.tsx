@@ -1,36 +1,30 @@
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
-import { AiFillGift } from "react-icons/ai";
-import { FaClipboardList, FaHome } from "react-icons/fa";
+import { FaClipboardList } from "react-icons/fa";
 import { PiCallBellFill } from "react-icons/pi";
 import { Link } from "react-router-dom";
+import { MdTableBar } from "react-icons/md";
 
 const Footer = () => {
   const { orders } = useContext(GlobalContext).cartProvider;
-  let totalAmount = 0;
-  orders.forEach((item) => (totalAmount += item.amount));
+  // let totalAmount = 0;
+  // orders.forEach((item) => (totalAmount += item.amount));
+
+  let totol = orders.reduce((amount, item) => amount + item.amount, 0);
 
   return (
     <div className="div-container-nav">
       <div className="div-section-nav">
-        <Link to="/" style={{ textDecoration: "none" }}>
+        <Link to="/table" style={{ textDecoration: "none" }}>
           <nav style={{ ...navStyle }}>
             <li style={{ listStyleType: "none" }}>
-              <FaHome {...iconStyle} />
+              <MdTableBar {...iconStyle} />
             </li>
-            Home
+            Table
             <h1> </h1>
           </nav>
         </Link>
 
-        <Link to="/promotion" style={{ textDecoration: "none" }}>
-          <nav style={{ ...navStyle }}>
-            <li style={{ listStyleType: "none" }}>
-              <AiFillGift {...iconStyle} />
-            </li>
-            Promotion
-          </nav>
-        </Link>
         <Link to="/cart" style={{ textDecoration: "none", display: "inline" }}>
           <nav style={{ ...navStyle }}>
             <span className="nav-span-order">
@@ -42,7 +36,7 @@ const Footer = () => {
                   padding: "3px",
                 }}
               >
-                {totalAmount}
+                {totol}
               </p>
             </span>
             <li style={{ listStyleType: "none" }}>

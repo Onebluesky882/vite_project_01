@@ -1,10 +1,10 @@
 import { MenuCard } from "@/Components/menuCard/MenuCard";
-import { Menu as MenuData } from "@/Data/Menu";
+import { Menu as menuCategory } from "@/Data/Menu";
 import { useParams } from "react-router-dom";
 
 const Menu = () => {
   const { type } = useParams();
-  const MenuPage = MenuData.filter((item) => item.category === type);
+  const MenuPage = menuCategory.filter((item) => item.category === type);
   return (
     <div className="ProductCardContainer">
       {MenuPage.map((menu) => (

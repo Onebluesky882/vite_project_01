@@ -1,27 +1,61 @@
-import NineTables, { TableProps } from "@/Components/tempTable";
-
-const tables: TableProps[] = [
-  {
-    id: "A1",
-    status: "Available",
-  },
-  {
-    id: "A2",
-    status: "reserved",
-  },
-  {
-    id: "A3",
-    status: "Available",
-  },
-];
+import tableLeftBar, { tableRightBar } from "@/Components/TableSide/TableData";
+import TableLeftBar from "@/Components/TableSide/TableLeftBar";
+import { CgEnter } from "react-icons/cg";
 
 const Tables = () => {
   return (
-    <div style={{ display: "flex", justifyContent: "center" }}>
-      <div style={{ position: "absolute" }}>
-        {tables.map((table) => (
-          <NineTables key={table.id} status={table.status} />
-        ))}
+    <div
+      style={{
+        display: "flex",
+        margin: " auto",
+        justifyContent: "center",
+      }}
+    >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-around",
+
+          padding: "50px",
+
+          margin: "20px",
+          borderRadius: "20px",
+          background: "#F6ECD2",
+          // Set the background to red here
+        }}
+      >
+        <h2
+          style={{
+            textAlign: "center",
+          }}
+        >
+          Table
+        </h2>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          {tableRightBar.map((table) => (
+            <TableLeftBar
+              key={table.no}
+              no={table.no}
+              status={table.status}
+              slug={table.slug}
+            />
+          ))}
+        </div>
+        <div style={{}}>
+          {tableLeftBar.map((table) => (
+            <TableLeftBar
+              key={table.no}
+              no={table.no}
+              status={table.status}
+              slug={table.slug}
+            />
+          ))}
+        </div>
       </div>
     </div>
   );

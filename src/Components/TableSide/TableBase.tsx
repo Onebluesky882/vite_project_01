@@ -1,14 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
-type TableType = {
-  no: "A1" | "A2" | "A3" | "A4" | "A5" | "B1" | "B2" | "B3" | "B4";
-  status: "Available" | "Reserved" | "Occupied";
-  slug: string;
-};
+import { TableType } from "./TableData";
 
-const Table = ({
+const TableCard = ({
   no,
-  side,
   slug,
   status,
 }: TableType & { side: "left" | "right" }) => {
@@ -28,7 +23,14 @@ const Table = ({
   return (
     <div style={{}}>
       <div style={{ ...TableLayout }}>
-        <Link style={{ textDecoration: "none" }} to={slug}>
+        <Link
+          style={{
+            textDecoration: "none",
+            color: "white",
+            textAlign: "center",
+          }}
+          to={slug}
+        >
           <h3>{no}</h3>
           <p>{status}</p>
         </Link>
@@ -43,12 +45,12 @@ const getStatusStyles = (status: string): React.CSSProperties => {
     case "Available":
       return { backgroundColor: "green" };
     case "Reserved":
-      return { backgroundColor: "green" };
+      return { backgroundColor: "#B08C5D" };
     case "Occupied":
-      return { backgroundColor: "green" };
+      return { backgroundColor: "#D7444A" };
     default:
-      return { backgroundColor: "green" };
+      return { backgroundColor: "#BC6A6C" };
   }
 };
 
-export default Table;
+export default TableCard;

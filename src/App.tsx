@@ -6,7 +6,6 @@ import Waiter from "@/Page/Footer/Waiter";
 import Promotion from "@/Page/Footer/Promotion";
 import Cart from "./Page/Cart";
 import Menu from "@/Page/Menu";
-import Table from "@/Page/Table";
 import NotFound from "./Components/Layout/notFound";
 import Tables from "@/Page/Table";
 
