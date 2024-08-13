@@ -7,10 +7,9 @@ import { MdTableBar } from "react-icons/md";
 
 const Footer = () => {
   const { orders } = useContext(GlobalContext).cartProvider;
-  // let totalAmount = 0;
-  // orders.forEach((item) => (totalAmount += item.amount));
 
-  let totol = orders.reduce((amount, item) => amount + item.amount, 0);
+  let totalAmount = 0;
+  orders.forEach((element) => (totalAmount += element.amount));
 
   return (
     <div className="div-container-nav">
@@ -36,7 +35,7 @@ const Footer = () => {
                   padding: "3px",
                 }}
               >
-                {totol}
+                {totalAmount}
               </p>
             </span>
             <li style={{ listStyleType: "none" }}>

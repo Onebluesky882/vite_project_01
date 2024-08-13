@@ -1,9 +1,10 @@
 export type TableType = {
   no: string;
-  status: "Available" | "Reserved" | "Occupied";
+  status: TableStatus;
   slug: string;
 };
 
+export type TableStatus = "Available" | "Reserved" | "Occupied";
 export const tableLeftBar = [
   {
     no: "A1",

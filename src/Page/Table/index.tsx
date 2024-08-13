@@ -1,6 +1,8 @@
-import tableLeftBar, { tableRightBar } from "@/Components/TableSide/TableData";
+import tableLeftBar, {
+  tableRightBar,
+  TableType,
+} from "@/Components/TableSide/TableData";
 import TableLeftBar from "@/Components/TableSide/TableLeftBar";
-import { CgEnter } from "react-icons/cg";
 
 const Tables = () => {
   return (
