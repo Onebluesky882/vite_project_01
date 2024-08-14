@@ -10,8 +10,6 @@ const HomePage = () => {
     >
       <div>
         <h1>homepage</h1>
-        <h2>เมนูขายดี</h2>
-        <h2></h2>
       </div>
     </div>
   );

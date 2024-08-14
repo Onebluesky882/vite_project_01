@@ -38,16 +38,18 @@ const TableCard = ({
     </div>
   );
 };
-
+//"AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
 // bg condition change bg color status
 const getStatusStyles = (status: string): React.CSSProperties => {
   switch (status) {
-    case "Available":
+    case "AVAILABLE":
       return { backgroundColor: "green" };
-    case "Reserved":
+    case "BOOKED":
       return { backgroundColor: "#B08C5D" };
-    case "Occupied":
+    case "OCCUPIED":
       return { backgroundColor: "#D7444A" };
+    case "CLEANING":
+      return { backgroundColor: "#A4A8B6" };
     default:
       return { backgroundColor: "#BC6A6C" };
   }

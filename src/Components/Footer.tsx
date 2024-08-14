@@ -14,12 +14,12 @@ const Footer = () => {
   return (
     <div className="div-container-nav">
       <div className="div-section-nav">
-        <Link to="/table" style={{ textDecoration: "none" }}>
+        <Link to="/tables" style={{ textDecoration: "none" }}>
           <nav style={{ ...navStyle }}>
             <li style={{ listStyleType: "none" }}>
               <MdTableBar {...iconStyle} />
             </li>
-            Table
+            Tables
             <h1> </h1>
           </nav>
         </Link>

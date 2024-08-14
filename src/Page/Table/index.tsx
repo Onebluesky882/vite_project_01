@@ -1,10 +1,9 @@
-import tableLeftBar, {
-  tableRightBar,
-  TableType,
-} from "@/Components/TableSide/TableData";
-import TableLeftBar from "@/Components/TableSide/TableLeftBar";
+import tableDetail from "@/Components/Table/TableData";
+import TableLeftBar from "@/Components/Table/TableLeftBar";
 
 const Tables = () => {
+  const leftSide = tableDetail.filter((item) => item.potition === "right");
+  const rightSide = tableDetail.filter((item) => item.potition === "left");
   return (
     <div
       style={{
@@ -39,21 +38,25 @@ const Tables = () => {
             flexDirection: "column",
           }}
         >
-          {tableRightBar.map((table) => (
+          {leftSide.map((table) => (
             <TableLeftBar
               key={table.no}
               no={table.no}
-              status={table.status}
+              status={
+                table.status as "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING"
+              }
               slug={table.slug}
             />
           ))}
         </div>
         <div style={{}}>
-          {tableLeftBar.map((table) => (
+          {rightSide.map((table) => (
             <TableLeftBar
               key={table.no}
               no={table.no}
-              status={table.status}
+              status={
+                table.status as "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING"
+              }
               slug={table.slug}
             />
           ))}

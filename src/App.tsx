@@ -8,6 +8,7 @@ import Cart from "./Page/Cart";
 import Menu from "@/Page/Menu";
 import NotFound from "./Components/Layout/notFound";
 import Tables from "@/Page/Table";
+import TableDetailPage from "./Page/Table/TableNoDetail";
 
 function App() {
   return (
@@ -16,10 +17,11 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/menu/:type" element={<Menu />} />
-          <Route path="/table" element={<Tables />} />
+          <Route path="/tables" element={<Tables />} />
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/tables/:tableId" element={<TableDetailPage />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
