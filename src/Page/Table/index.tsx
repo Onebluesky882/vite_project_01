@@ -1,68 +1,38 @@
-import tableDetail from "@/Components/Table/TableData";
-import TableLeftBar from "@/Components/Table/TableLeftBar";
+import {
+  TableCard,
+  TableLeftSide,
+  TableRightSide,
+} from "@/Components/Table/TableCard";
+import tableDetail from "@/Data/TableData";
+import TableShape from "@/Components/Table/TableShape";
 
 const Tables = () => {
   const leftSide = tableDetail.filter((item) => item.potition === "right");
   const rightSide = tableDetail.filter((item) => item.potition === "left");
+
   return (
-    <div
-      style={{
-        display: "flex",
-        margin: " auto",
-        justifyContent: "center",
-      }}
-    >
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "space-around",
-
-          padding: "50px",
-
-          margin: "20px",
-          borderRadius: "20px",
-          background: "#F6ECD2",
-          // Set the background to red here
-        }}
-      >
-        <h2
-          style={{
-            textAlign: "center",
-          }}
-        >
-          Table
-        </h2>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-          }}
-        >
-          {leftSide.map((table) => (
-            <TableLeftBar
-              key={table.no}
-              no={table.no}
-              status={
-                table.status as "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING"
-              }
-              slug={table.slug}
-            />
-          ))}
-        </div>
-        <div style={{}}>
-          {rightSide.map((table) => (
-            <TableLeftBar
-              key={table.no}
-              no={table.no}
-              status={
-                table.status as "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING"
-              }
-              slug={table.slug}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
+    <TableCard>
+      <TableLeftSide>
+        {leftSide.map((table) => (
+          <TableShape
+            key={table.id}
+            no={table.no}
+            status={table.status}
+            slug={table.slug}
+          />
+        ))}
+      </TableLeftSide>
+      <TableRightSide>
+        {rightSide.map((table) => (
+          <TableShape
+            key={table.id}
+            no={table.no}
+            status={table.status}
+            slug={table.slug}
+          />
+        ))}
+      </TableRightSide>
+    </TableCard>
   );
 };
 

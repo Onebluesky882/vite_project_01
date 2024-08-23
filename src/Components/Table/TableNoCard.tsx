@@ -1,6 +1,10 @@
-import React from "react";
-import { TableType } from "./TableData";
+import { Table } from "@/types/TableOrder";
 
-const TableNoCard = ({}: TableType) => {
-  return;
+export const TableNoCard = ({ no, status }: Table) => {
+  return (
+    <>
+      <h1>{no}</h1>
+      <p>{status}</p>
+    </>
+  );
 };

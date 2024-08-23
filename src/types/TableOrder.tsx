@@ -1,17 +1,13 @@
+import { Order } from "./Order";
+
 export type Table = {
-  id: number; // table no
+  no: string; // table no
   status: "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
-  seat: number;
+  seat?: number;
 };
 
-type TableNoDetails = {
-  id: string;
-  table: string;
-  status: "AVAILABLE" | "CLEANING" | "BOOKED";
-  capacity: number;
-  currentOrder?: {
-    id: number;
-    items: string[];
-    total: number;
-  };
+export type TableOrders = {
+  order: Order[];
+  transectionID: string;
+  paymentStatus: "COMPLETE" | "CHECK";
 };

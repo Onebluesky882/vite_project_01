@@ -1,10 +1,6 @@
-export type TableType = {
-  no: string;
-  status: "AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
-  slug: string;
-};
+import { Table } from "@/types/TableOrder";
 
-export const tableDetail = [
+export const table = [
   {
     no: "A1",
     status: "AVAILABLE",
@@ -70,4 +66,8 @@ export const tableDetail = [
   },
 ];
 
-export default tableDetail;
+export const getTableId = (id: string) => {
+  return table.find((item) => item.id === id) ?? ({} as Table);
+};
+
+export default table;

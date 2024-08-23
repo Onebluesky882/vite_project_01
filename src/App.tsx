@@ -8,7 +8,8 @@ import Cart from "./Page/Cart";
 import Menu from "@/Page/Menu";
 import NotFound from "./Components/Layout/notFound";
 import Tables from "@/Page/Table";
-import TableDetailPage from "./Page/Table/TableNoDetail";
+import TableDetailPage from "./Page/Table/TableNo";
+import TableNo from "./Page/Table/TableNo";
 
 function App() {
   return (
@@ -21,7 +22,7 @@ function App() {
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/tables/:tableId" element={<TableDetailPage />} />
+          <Route path="/tables/:tableId" element={<TableNo />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

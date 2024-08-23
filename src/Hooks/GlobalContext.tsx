@@ -1,29 +1,36 @@
 import { createContext } from "react";
 import { defaultCartProvider, useCart } from "@/Hooks/useCart";
+import { defaultTableProvider, useTable } from "./useTable";
 
 type GlobalContextType = {
   cartProvider: ReturnType<typeof useCart>;
+  tableProvider: ReturnType<typeof useTable>;
   submitCart: () => void;
   clearCart: () => void;
 };
 
 export const GlobalContext = createContext<GlobalContextType>({
   cartProvider: defaultCartProvider,
-
+  tableProvider: defaultTableProvider,
   submitCart: () => null,
   clearCart: () => null,
 });
+
 export const GlobalProvider = ({ children }: React.PropsWithChildren) => {
   const cartProvider = useCart();
+  const tableProvider = useTable();
+  const clearCart = () => null;
+  const submitCart = () => null;
 
-  const submitCart = () => {
-    const submitOrders = cartProvider.submitCart();
-  };
-  const clearCart = () => {
-    cartProvider.removeCart();
-  };
   return (
-    <GlobalContext.Provider value={{ cartProvider, submitCart, clearCart }}>
+    <GlobalContext.Provider
+      value={{
+        cartProvider,
+        tableProvider,
+        submitCart,
+        clearCart,
+      }}
+    >
       {children}
     </GlobalContext.Provider>
   );

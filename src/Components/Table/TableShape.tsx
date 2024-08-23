@@ -1,17 +1,19 @@
-import React from "react";
+import { Table } from "@/types/TableOrder";
 import { Link } from "react-router-dom";
-import { TableType } from "./TableData";
 
-const TableCard = ({
-  no,
-  slug,
-  status,
-}: TableType & { side: "left" | "right" }) => {
+type TableShapeProps = {
+  no: string;
+  status: string;
+  seat?: number;
+  slug: string;
+};
+
+const TableShape = ({ no, status, seat, slug }: TableShapeProps) => {
   const TableLayout: React.CSSProperties = {
     display: "flex",
     position: "relative",
     flexDirection: "column",
-    margin: "30px",
+    margin: "20px",
     padding: "20px",
     alignItems: "center",
     justifyContent: "center",
@@ -33,6 +35,7 @@ const TableCard = ({
         >
           <h3>{no}</h3>
           <p>{status}</p>
+          <p>{seat}</p>
         </Link>
       </div>
     </div>
@@ -55,4 +58,4 @@ const getStatusStyles = (status: string): React.CSSProperties => {
   }
 };
 
-export default TableCard;
+export default TableShape;
