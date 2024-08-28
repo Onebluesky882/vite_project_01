@@ -1,48 +1,44 @@
+import { getTableId } from "@/Data/TableData";
+import { GlobalContext } from "@/Hooks/GlobalContext";
 import { Table } from "@/types/TableOrder";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
 
+const { table, isLoading, loadTable, setTable } =
+  useContext(GlobalContext).tableProvider;
+
 type TableShapeProps = {
-  no: string;
-  status: string;
-  seat?: number;
+  no: Table[];
   slug: string;
 };
 
-const TableShape = ({ no, status, seat, slug }: TableShapeProps) => {
-  const TableLayout: React.CSSProperties = {
-    display: "flex",
-    position: "relative",
-    flexDirection: "column",
-    margin: "20px",
-    padding: "20px",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "6rem",
-    borderRadius: "9999px",
-    ...getStatusStyles(status),
-  };
+const TableShape = ({ slug, no }: TableShapeProps) => {
+  const findTable = no.find((tables) => tables.no === table?.no);
+  const getTableNo = findTable
+    ? getTableId(findTable.no.toString())
+    : undefined;
 
+  if (!findTable) {
+    return <div>No table data available.</div>;
+  }
   return (
-    <div style={{}}>
-      <div style={{ ...TableLayout }}>
-        <Link
-          style={{
-            textDecoration: "none",
-            color: "white",
-            textAlign: "center",
-          }}
-          to={slug}
-        >
-          <h3>{no}</h3>
-          <p>{status}</p>
-          <p>{seat}</p>
-        </Link>
-      </div>
+    <div style={TableLayout}>
+      <Link
+        style={{
+          textDecoration: "none",
+          color: "white",
+          textAlign: "center",
+        }}
+        to={slug}
+      >
+        <h3>{getTableNo?.no}</h3>
+        <p>{findTable.status}</p>
+        <p>{findTable.seat}</p>
+      </Link>
     </div>
   );
 };
-//"AVAILABLE" | "OCCUPIED" | "BOOKED" | "CLEANING";
-// bg condition change bg color status
+
 const getStatusStyles = (status: string): React.CSSProperties => {
   switch (status) {
     case "AVAILABLE":
@@ -56,6 +52,18 @@ const getStatusStyles = (status: string): React.CSSProperties => {
     default:
       return { backgroundColor: "#BC6A6C" };
   }
+};
+const TableLayout: React.CSSProperties = {
+  display: "flex",
+  position: "relative",
+  flexDirection: "column",
+  margin: "20px",
+  padding: "20px",
+  alignItems: "center",
+  justifyContent: "center",
+  width: "6rem",
+  borderRadius: "9999px",
+  ...getStatusStyles(findTable.status), // Apply styles based on status
 };
 
 export default TableShape;

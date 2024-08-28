@@ -8,7 +8,6 @@ import Cart from "./Page/Cart";
 import Menu from "@/Page/Menu";
 import NotFound from "./Components/Layout/notFound";
 import Tables from "@/Page/Table";
-import TableDetailPage from "./Page/Table/TableNo";
 import TableNo from "./Page/Table/TableNo";
 
 function App() {

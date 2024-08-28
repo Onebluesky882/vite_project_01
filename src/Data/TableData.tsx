@@ -10,7 +10,7 @@ export const table = [
   },
   {
     no: "A2",
-    status: "CLEANING",
+    status: "AVAILABLE",
     slug: "a2",
     potition: "left",
     id: "55f09959-8670-4915-9edb-ddfa1f8f581c",
@@ -24,14 +24,14 @@ export const table = [
   },
   {
     no: "A4",
-    status: "BOOKED",
+    status: "AVAILABLE",
     slug: "a4",
     potition: "left",
     id: "77bb6e32-5fef-40e0-bd88-d9e11cff276e",
   },
   {
     no: "A5",
-    status: "BOOKED",
+    status: "AVAILABLE",
     slug: "a5",
     potition: "left",
     id: "6ea517a4-2b02-4b83-90e9-6ae351eee758",
@@ -59,7 +59,7 @@ export const table = [
   },
   {
     no: "B4",
-    status: "OCCUPIED",
+    status: "AVAILABLE",
     slug: "b4",
     potition: "right",
     id: "3c88ee97-7293-455d-8327-00052aafce71",

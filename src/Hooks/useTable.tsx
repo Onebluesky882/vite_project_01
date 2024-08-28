@@ -1,68 +1,44 @@
 import { Table } from "@/types/TableOrder";
-import {
-  transformKeysToCamelCase,
-  transformKeysToSnakeCase,
-} from "@/utils/string";
 import supabase from "@/utils/supabase";
+import { log } from "console";
 import { useEffect, useState } from "react";
 
-const defaultTable: Table = {
-  no: "A1",
+const defaultTable = {
+  no: "A1" as const,
   status: "AVAILABLE" as const,
   seat: 4,
 };
 
 export const useTable = () => {
   const [table, setTable] = useState<Table>(defaultTable);
-
-  // get data from DB
+  const [isLoading, setLoading] = useState<boolean>(true);
   useEffect(() => {
-    console.log("server running");
-
-    getTable();
+    loadTable();
   }, []);
 
-  //read
-  const getTable = async () => {
+  const loadTable = async () => {
+    setLoading(true);
     const { data, error } = await supabase
       .from("tables")
-      .select()
-      .eq("no", table.no)
-      .single();
-
-    const transformData = transformKeysToCamelCase(data);
+      .select(" no , status , seat")
+      .eq("no", table.no);
     if (error) {
-      console.log(error, "can't fetch the data");
+      console.error("error", error);
+      setLoading(false);
       return;
     }
     if (data) {
-      console.log(transformData, " ");
-      setTable(transformData);
+      console.log(data);
+      setTable(data[0]);
     }
+    setLoading(false);
   };
 
-  // create
-
-  //1. submit  to create table
-  //2. variable tranform to snakeCase
-  //3. setTable
-
-  const submitTable = async (newTable: Table) => {
-    const createTable = transformKeysToSnakeCase(newTable);
-
-    await supabase.from("tables").insert(createTable).select();
-    await setTable({ ...createTable });
-
-    await getTable();
-  };
-
-  // update data
-
-  return { table, setTable, submitTable };
+  return { table, setTable, loadTable, isLoading };
 };
-
 export const defaultTableProvider = {
   table: defaultTable,
+  isLoading: true,
   setTable: () => null,
-  submitTable: () => Promise.resolve(),
+  loadTable: () => Promise.resolve(),
 };
