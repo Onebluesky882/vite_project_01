@@ -21,7 +21,7 @@ function App() {
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/tables/:tableId" element={<TableNo />} />
+          <Route path="/tables/:no" element={<TableNo />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

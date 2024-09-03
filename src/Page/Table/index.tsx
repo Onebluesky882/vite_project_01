@@ -1,30 +1,28 @@
 import {
   TableCard,
-  TableLeftSide,
-  TableRightSide,
-} from "@/Components/Table/TableCard";
-import tableDetail from "@/Data/TableData";
-import TableShape from "@/Components/Table/TableShape";
-import path from "path";
-import { useContext } from "react";
-import { GlobalContext } from "@/Hooks/GlobalContext";
+  TableContainer,
+  TablesMap,
+} from "@/Components/Table/Tables";
+import { table } from "@/Data/TableData";
 
-const { table } = useContext(GlobalContext).tableProvider;
-
-const Tables = () => {
-  const leftSide = tableDetail.filter((item) => item.potition === "right");
-  const rightSide = tableDetail.filter((item) => item.potition === "left");
+const Table = () => {
+  const tablesLeftSide = table.filter((t) => t.position === "left");
+  const tablesRightSide = table.filter((t) => t.position === "right");
 
   return (
-    <TableCard>
-      <TableLeftSide>{table.no}</TableLeftSide>
-      <TableRightSide>
-        {rightSide.map((table) => (
-          <TableShape key={table.id} slug={table.slug} />
+    <TableContainer>
+      <TableCard>
+        {tablesRightSide.map((p) => (
+          <TablesMap key={p.no} no={p.no} tables={[p]} />
         ))}
-      </TableRightSide>
-    </TableCard>
+      </TableCard>
+      <TableCard>
+        {tablesLeftSide.map((p) => (
+          <TablesMap key={p.no} no={p.no} tables={[p]} />
+        ))}
+      </TableCard>
+    </TableContainer>
   );
 };
 
-export default Tables;
+export default Table;
