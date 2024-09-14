@@ -2,7 +2,6 @@ import { SideBarItemProps } from "./SidebarItem";
 import { Link } from "react-router-dom";
 
 export const SideBarItemBase = ({
-  id,
   name,
   slug,
   img,
@@ -62,13 +61,12 @@ export const SideBarItemBase = ({
 
   return (
     <div style={{ display: "flex" }}>
-      <Link to={slug} key={id} style={{ textDecoration: "none" }}>
+      <Link to={slug} style={{ textDecoration: "none" }}>
         <li
           style={{
             ...commonStyles[position],
             ...roundedStyles[position],
           }}
-          key={id}
         >
           <div style={{ position: "relative", display: "flex" }}>
             <img style={imgStyles[position]} src={img} />

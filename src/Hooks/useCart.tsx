@@ -54,11 +54,11 @@ export const useCart = () => {
     return submitOrders;
   };
 
-  const removeCart = () => {
+  const resetOrder = () => {
     setOrders([]);
     return;
   };
-  return { orders, setOrders, onAdd, onMinus, submitCart, removeCart };
+  return { orders, setOrders, onAdd, onMinus, submitCart, resetOrder };
 };
 
 export const defaultCartProvider = {
@@ -67,5 +67,5 @@ export const defaultCartProvider = {
   onAdd: () => null,
   onMinus: () => null,
   submitCart: () => [],
-  removeCart: () => [],
+  resetOrder: () => null,
 };

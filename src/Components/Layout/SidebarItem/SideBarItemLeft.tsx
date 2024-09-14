@@ -4,3 +4,5 @@ import { SideBarItemBase } from "./SideBarItemBase";
 export const SideBarItemLeft = (props: SideBarItemProps) => {
   return <SideBarItemBase {...props} position="left" />;
 };
+
+export * from "./SideBarItemLeft";

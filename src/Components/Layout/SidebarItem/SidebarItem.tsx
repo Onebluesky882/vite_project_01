@@ -1,11 +1,11 @@
 import { SVG } from "@/assets/svg/SVG";
 
-export interface SideBarItemProps {
+export type SideBarItemProps = {
   id: number;
   name: string;
   slug: string;
   img: string;
-}
+};
 export const leftMenuList = [
   { id: 0, name: "Pork", slug: "menu/pork", img: SVG.pork },
   { id: 1, name: "Beef", slug: "menu/beef", img: SVG.beef },
@@ -20,5 +20,5 @@ export const rightMenuList = [
   { id: 3, name: "Drinks", slug: "menu/drink", img: SVG.drinks },
 ];
 
-export * from "./SideBarItemLeft";
 export * from "./SideBarItemRight";
+export * from "./SideBarItemLeft";

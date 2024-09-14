@@ -6,12 +6,6 @@ type TableProps = {
   tables?: Table[];
 };
 
-// todo comfrim button pop up with status
-
-// todo chage status
-
-// todo setState to write table supabase
-
 export const TableContainer = ({ children }: React.PropsWithChildren) => {
   return (
     <div
@@ -40,18 +34,11 @@ export const TableCard = ({ children }: React.PropsWithChildren) => {
 };
 
 export const TablesMap = ({ no, tables }: TableProps) => {
-  const statusTable = tables?.find((t) => t.no === no);
-  const findTableStatus = statusTable?.status;
-
-  const backgroundColor = findTableStatus && GetStatusStyles(findTableStatus);
-
-  const slug = statusTable?.no.toString().toLowerCase() ?? "/";
-
+  // todo Link
   return (
-    <Link style={{ textDecoration: "none", color: "black" }} to={slug}>
+    <Link style={{ textDecoration: "none", color: "black" }} to={"blank"}>
       <div
         style={{
-          ...backgroundColor,
           padding: "25px",
           borderRadius: "999px",
           margin: "10px",
@@ -62,9 +49,7 @@ export const TablesMap = ({ no, tables }: TableProps) => {
         >
           {no}{" "}
         </p>
-        <p style={{ textAlign: "center", fontSize: "14px" }}>
-          {findTableStatus}
-        </p>
+        <p style={{ textAlign: "center", fontSize: "14px" }}></p>
       </div>
     </Link>
   );

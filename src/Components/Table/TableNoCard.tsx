@@ -1,5 +1,3 @@
-import { useParams } from "react-router-dom";
-
 import { Table } from "@/types/TableOrder";
 
 type TableNoProps = {
@@ -9,11 +7,8 @@ type TableNoProps = {
   id: string;
 };
 
-const TableNoCard = ({ tableNo }: TableNoProps) => {
-  const { no } = useParams<string>();
-  const matchTable = tableNo.find((t) => t.no.toLowerCase() === no);
-
-  const getTableNo = matchTable?.no;
+const TableNoCard = ({ no }: Pick<TableNoProps, "no">) => {
+  const getTableNo = no;
 
   return (
     <div style={{ display: "flex", border: "1px solid black" }}>
