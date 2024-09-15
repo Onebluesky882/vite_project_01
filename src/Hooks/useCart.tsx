@@ -4,6 +4,11 @@ import { useState } from "react";
 export const useCart = () => {
   const [orders, setOrders] = useState<CartOrder[]>([]);
 
+  // useEffect(() => {
+  //   console.log('orders', orders)
+
+  // }, [orders])
+
   const onAdd = ({ menuId }: Pick<CartOrder, "menuId">) => {
     const menuItem = orders.find((item) => item.menuId === menuId);
     const amount = menuItem?.amount ?? 0;

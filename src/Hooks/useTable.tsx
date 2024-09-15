@@ -17,6 +17,8 @@ const useTable = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
 
+  const [popup, setPopup] = useState<boolean>(false);
+
   useEffect(() => {
     loadOrder();
 
@@ -73,7 +75,28 @@ const useTable = () => {
     setOrders([...orders, ...prepareOrder]);
   };
 
-  return { orders, setOrders, submitCart, table, setTable };
+  // todo
+
+  const openPopup = () => {
+    setPopup(true);
+  };
+  const closePopup = () => {
+    setPopup(false);
+  };
+  const submitChangeStatusTable = () => {};
+
+  return {
+    orders,
+    setOrders,
+    submitCart,
+    table,
+    setTable,
+    popup,
+    setPopup,
+    openPopup,
+    closePopup,
+    submitChangeStatusTable,
+  };
 };
 
 export const defaultTableProvider = {
@@ -82,5 +105,10 @@ export const defaultTableProvider = {
   setOrders: () => null,
   submitCart: () => Promise.resolve(),
   setTable: () => null,
+  popup: false,
+  setPopup: () => null,
+  openPopup: () => null,
+  closePopup: () => null,
+  submitChangeStatusTable: () => Promise.resolve(),
 };
 export default useTable;

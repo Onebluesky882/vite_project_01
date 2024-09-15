@@ -13,12 +13,12 @@ const Table = () => {
     <TableContainer>
       <TableCard>
         {tablesRightSide.map((p) => (
-          <TablesMap key={p.no} no={p.no} tables={[p]} />
+          <TablesMap key={p.no} no={p.no} table={p.no} status={p.status} />
         ))}
       </TableCard>
       <TableCard>
         {tablesLeftSide.map((p) => (
-          <TablesMap key={p.no} no={p.no} tables={[p]} />
+          <TablesMap key={p.no} no={p.no} table={p.no} status={p.status} />
         ))}
       </TableCard>
     </TableContainer>

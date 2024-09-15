@@ -1,9 +1,10 @@
-import { Table } from "@/types/TableOrder";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import PopupStatus from "./PopupStatus";
 
 type TableProps = {
   no: string;
-  tables?: Table[];
+
+  status: string;
 };
 
 export const TableContainer = ({ children }: React.PropsWithChildren) => {
@@ -14,6 +15,7 @@ export const TableContainer = ({ children }: React.PropsWithChildren) => {
         margin: "auto",
         padding: "20px",
         justifyContent: "center",
+        background: "#F2F2F2",
       }}
     >
       <div
@@ -33,25 +35,53 @@ export const TableCard = ({ children }: React.PropsWithChildren) => {
   );
 };
 
-export const TablesMap = ({ no, tables }: TableProps) => {
+export const TablesMap = ({ no, status }: TableProps) => {
+  const navigate = useNavigate();
   // todo Link
   return (
-    <Link style={{ textDecoration: "none", color: "black" }} to={"blank"}>
-      <div
+    <div>
+      <button
+        //Link
         style={{
-          padding: "25px",
-          borderRadius: "999px",
-          margin: "10px",
+          textDecoration: "none",
+          color: "black",
+        }}
+        // to={no.toLowerCase()}
+        onClick={() => {
+          // # Strategy 1
+          // call some action
+          // update the table status => call supabase
+
+          // navigate to next page
+          navigate(no.toLowerCase());
+
+          // # Strategy 2
+          // Call popup
+          // openPopup()
         }}
       >
-        <p
-          style={{ fontSize: "18px", fontWeight: "bold", textAlign: "center" }}
+        <div
+          style={{
+            ...GetStatusStyles(status),
+            padding: "25px",
+            borderRadius: "999px",
+            margin: "10px",
+          }}
         >
-          {no}{" "}
-        </p>
-        <p style={{ textAlign: "center", fontSize: "14px" }}></p>
-      </div>
-    </Link>
+          <p
+            style={{
+              fontSize: "18px",
+              fontWeight: "bold",
+              textAlign: "center",
+            }}
+          >
+            {no}{" "}
+          </p>
+          <p style={{ textAlign: "center", fontSize: "14px" }}>{status}</p>
+        </div>
+      </button>
+      <PopupStatus tableNo={no} />
+    </div>
   );
 };
 
