@@ -1,5 +1,3 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext } from "react";
 import { IoIosCloseCircle } from "react-icons/io";
 
 type PopupStatusProps = {
@@ -7,16 +5,11 @@ type PopupStatusProps = {
 };
 
 const PopupStatus = ({ tableNo }: PopupStatusProps) => {
-  const { openPopup, closePopup, popup } =
-    useContext(GlobalContext).tableProvider;
-
-  // if (!popup) return null;
-
   return (
     <div style={popupOverlayStyle}>
       <div style={popupContentStyle}>
         <IoIosCloseCircle
-          onClick={closePopup}
+          onClick={() => {}}
           style={{
             fontSize: "50px",
             position: "absolute",
@@ -35,13 +28,11 @@ const PopupStatus = ({ tableNo }: PopupStatusProps) => {
         <div style={{ marginTop: "20px" }}>
           <button
             style={{ ...buttonStyle, backgroundColor: "#f44336" }}
-            onClick={closePopup}
+            onClick={() => {}}
           >
             Cancel
           </button>
-          <button style={buttonStyle} onClick={openPopup}>
-            Confirm
-          </button>
+          <button style={buttonStyle} onClick={() => {}}></button>
         </div>
       </div>
     </div>

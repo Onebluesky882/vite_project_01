@@ -3,7 +3,6 @@ import PopupStatus from "./PopupStatus";
 
 type TableProps = {
   no: string;
-
   status: string;
 };
 
@@ -46,15 +45,12 @@ export const TablesMap = ({ no, status }: TableProps) => {
           textDecoration: "none",
           color: "black",
         }}
-        // to={no.toLowerCase()}
         onClick={() => {
           // # Strategy 1
           // call some action
           // update the table status => call supabase
-
           // navigate to next page
           navigate(no.toLowerCase());
-
           // # Strategy 2
           // Call popup
           // openPopup()
