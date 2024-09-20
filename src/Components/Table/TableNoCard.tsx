@@ -1,19 +1,24 @@
-import { Table } from "@/types/TableOrder";
-import { RightArrow } from "../Animations/RightArrow";
-import { LeftArrow } from "../Animations/LeftArrow";
-import { TableProps } from "./Tables";
 import { useParams } from "react-router-dom";
+import { transformKeysToSnakeCase } from "../../utils/string";
+import supabase from "@/utils/supabase";
+import { TableProps } from "./Tables";
+
+export type Table = {
+  tableNo: "A1" | "A2" | "A3" | "A4" | "A5" | "B1" | "B2" | "B3" | "B4";
+  seat?: number;
+  status: "AVAILABLE" | "OCCUPIED" | "RESERVED" | "CLEANING";
+  position?: string;
+};
 
 const TableNoCard = ({ status, no }: Partial<TableProps>) => {
   // find table No
   const { no: tableNumber } = useParams<{ no: string }>();
 
   // confirm Table
-  const defaultTable: Table = {
-    status: "OCCUPIED",
-    tableNo: "A1",
-    seat: 4,
-  };
+
+  // get table data from ui -> to BE  -> update
+
+  // Confirm table status - define function to handle the confirm button click
 
   return (
     <div
@@ -41,6 +46,7 @@ const TableNoCard = ({ status, no }: Partial<TableProps>) => {
         }}
       >
         <p> {status}</p>
+
         {/*  // confirm to booking */}
         <div style={{ justifyContent: "center", display: "flex" }}>
           <button onClick={() => {}}>Confirm Table</button>
@@ -50,9 +56,6 @@ const TableNoCard = ({ status, no }: Partial<TableProps>) => {
       <h2 style={{ textAlign: "center" }}>
         <div>
           <h3>เลือกเมนูอาหาร</h3>
-          <LeftArrow />
-          Categories
-          <RightArrow />
         </div>
       </h2>
     </div>

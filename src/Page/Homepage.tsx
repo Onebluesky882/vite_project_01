@@ -11,7 +11,7 @@ const HomePage = () => {
         margin: "20px",
       }}
     >
-      <h1>ร้านวันของฉัน Made my day</h1>
+      <h1>ร้านวันของฉัน</h1>
       <div
         style={{
           display: "flex",
@@ -22,7 +22,7 @@ const HomePage = () => {
           width: "100%",
         }}
       >
-        <h1>Promotion</h1>
+        <h1>Promotions</h1>
       </div>
 
       <div>

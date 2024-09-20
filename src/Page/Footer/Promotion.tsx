@@ -1,5 +1,5 @@
 const Promotion = () => {
-  return <>Promotion</>;
+  return <>Promotions</>;
 };
 
 export default Promotion;

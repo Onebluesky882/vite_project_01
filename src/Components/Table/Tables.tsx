@@ -1,9 +1,5 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Alert } from "../Animations/Alert";
-import table from "../../Data/TableData";
-import { Table } from "@/types/TableOrder";
 
 export type TableProps = {
   no: string;
@@ -72,7 +68,6 @@ export const TablesMap = ({ no, status }: TableProps) => {
     }
   };
 
-  // todo Link
   return (
     <div>
       <button
