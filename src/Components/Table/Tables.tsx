@@ -2,6 +2,8 @@ import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "../Animations/Alert";
+import table from "../../Data/TableData";
+import { Table } from "@/types/TableOrder";
 
 type TableProps = {
   no: string;
@@ -56,8 +58,25 @@ export const TableCard = ({
 export const TablesMap = ({ no, status }: TableProps) => {
   const navigate = useNavigate();
   const [showAlert, setShowAlert] = useState(false);
-  const { table } = useContext(GlobalContext).tableProvider;
+  const [table, setOrders] = useState<Table[]>([]);
+  const [confirm, setConfirm] = useState(false);
 
+  const defaultTable: Table = {
+    status: "AVAILABLE",
+    tableNo: "A1" as const,
+    seat: 3,
+  };
+  // find item what do you want to find ? match with ?
+  const submitTable = ({ tableNo: no }: Pick<Table, "tableNo">) => {
+    const tableItem = table.find((t) => t.tableNo === no);
+
+    const handleConfirm = () => {
+      if (confirm) {
+        setConfirm(true);
+        const newTable = [...table];
+      }
+    };
+  };
   // todo Link
   return (
     <div>

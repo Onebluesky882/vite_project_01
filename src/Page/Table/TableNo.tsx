@@ -4,12 +4,11 @@ import { useParams } from "react-router-dom";
 
 const TableNo = () => {
   const { no } = useParams<string>();
-
   const tableNo = table.filter((t) => t.no.toLowerCase() === no);
   return (
     <div>
       {tableNo.map((t) => (
-        <TableNoCard no={t.no} key={t.no} status={t.status} />
+        <TableNoCard tableNo={t.no} key={t.no} />
       ))}
     </div>
   );

@@ -8,6 +8,8 @@ const Cart = () => {
   const { orders } = useContext(GlobalContext).cartProvider;
 
   const { orders: tableOrders } = useContext(GlobalContext).tableProvider;
+
+  const orderStatus = tableOrders.filter((s) => s.status == "ORDERED");
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
       {orders.map((order) => (
@@ -15,7 +17,7 @@ const Cart = () => {
       ))}
       <ButtonCartOrder />
 
-      {tableOrders.map((order) => (
+      {orderStatus.map((order) => (
         <TableOrderCard key={order.id} order={order} />
       ))}
     </div>

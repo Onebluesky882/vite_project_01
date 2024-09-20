@@ -1,17 +1,31 @@
 import { Table } from "@/types/TableOrder";
 import { RightArrow } from "../Animations/RightArrow";
 import { LeftArrow } from "../Animations/LeftArrow";
+import { useState } from "react";
+import { Console } from "console";
+import TableNo from "@/Page/Table/TableNo";
 
 type TableNoProps = {
-  tableNo: Table[];
+  table: Table[];
   no: string;
   //   cartOrder: CartOrder[];
   id: string;
   status: string;
 };
 
-const TableNoCard = ({ no, status }: Partial<TableNoProps>) => {
-  const getTableNo = no;
+const TableNoCard = ({ status, table, no }: Partial<TableNoProps>) => {
+  // find table No
+  const tableNo = table?.find((t) => t.tableNo === no);
+  console.log(tableNo);
+  // log(find table)
+  // submit table to db
+
+  // const [tableList, setTableList] = useState<Table[]>([]);
+  // const addTable = ({ tableNo: no }: Partial<Table>) => {
+  //   const tables = tableList.find((t) => t.tableNo === no);
+  //   console.log(tables);
+  //   setTableList(tableList);
+  // };
 
   return (
     <div
@@ -23,13 +37,26 @@ const TableNoCard = ({ no, status }: Partial<TableNoProps>) => {
         justifyContent: "center",
       }}
     >
+      {/*  //table */}
       <div style={{ display: "flex", margin: " auto" }}>
         <h1>โต๊ะ :</h1> <span style={{ marginLeft: "10px" }}></span>
-        <h1>{getTableNo ? `  ${getTableNo}` : "Table not found"}</h1>
+        <h1>{tableNo ? `  ${tableNo}` : "Table not found"}</h1>
       </div>
-      <div style={{ display: "flex", margin: " auto" }}>
+      {/*  // table status */}
+      <div
+        style={{
+          display: "flex",
+          margin: " auto",
+          flexDirection: "column",
+        }}
+      >
         <p> {status}</p>
+        {/*  // confirm to booking */}
+        <div style={{ justifyContent: "center", display: "flex" }}>
+          <button onClick={() => {}}>Confirm Table</button>
+        </div>
       </div>
+
       <h2 style={{ textAlign: "center" }}>
         <div>
           <h3>เลือกเมนูอาหาร</h3>

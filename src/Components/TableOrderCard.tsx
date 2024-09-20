@@ -55,8 +55,9 @@ const TableOrderCard = ({ order }: TableOrderCardProps) => {
                 paddingLeft: "30px",
               }}
             >
-              <p>{`status : ${order.status}`}</p>
-              <p>{menuItem.name}</p>
+              <h3 style={{ fontSize: "25px", color: "#4B4E54" }}>
+                {menuItem.name}
+              </h3>
               <p style={{ color: "red", fontWeight: "bold" }}>
                 {`฿${menuItem.price * amount}`}
               </p>
