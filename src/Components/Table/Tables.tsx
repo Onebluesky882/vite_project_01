@@ -5,7 +5,7 @@ import { Alert } from "../Animations/Alert";
 import table from "../../Data/TableData";
 import { Table } from "@/types/TableOrder";
 
-type TableProps = {
+export type TableProps = {
   no: string;
   status: string;
 };
@@ -57,35 +57,24 @@ export const TableCard = ({
 
 export const TablesMap = ({ no, status }: TableProps) => {
   const navigate = useNavigate();
-  const [showAlert, setShowAlert] = useState(false);
-  const [table, setOrders] = useState<Table[]>([]);
+
   const [confirm, setConfirm] = useState(false);
 
-  const defaultTable: Table = {
-    status: "AVAILABLE",
-    tableNo: "A1" as const,
-    seat: 3,
-  };
   // find item what do you want to find ? match with ?
-  const submitTable = ({ tableNo: no }: Pick<Table, "tableNo">) => {
-    const tableItem = table.find((t) => t.tableNo === no);
 
-    const handleConfirm = () => {
-      if (confirm) {
-        setConfirm(true);
-        const newTable = [...table];
-      }
-    };
+  const handleConfirm = () => {
+    setConfirm(true);
+    if (confirm) {
+      setConfirm(true);
+      console.log("Confirmed table:", no);
+
+      navigate(`/tables/${no.toLowerCase()}`);
+    }
   };
+
   // todo Link
   return (
     <div>
-      {showAlert && (
-        <Alert
-          message="confirm to booking"
-          onClose={() => setShowAlert(false)}
-        />
-      )}
       <button
         //Link
         style={{
@@ -94,18 +83,17 @@ export const TablesMap = ({ no, status }: TableProps) => {
           borderStyle: "none",
           backgroundColor: "Background",
         }}
-        onClick={() => {
+        onClick={
+          handleConfirm
           // # Strategy 1
           // call some action
           // update the table status => call supabase
           // navigate to next page
 
-          navigate(no.toLowerCase());
-
           // # Strategy 2
           // Call popup
           // openPopup()
-        }}
+        }
       >
         <div
           style={{

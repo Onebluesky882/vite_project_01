@@ -1,31 +1,19 @@
 import { Table } from "@/types/TableOrder";
 import { RightArrow } from "../Animations/RightArrow";
 import { LeftArrow } from "../Animations/LeftArrow";
-import { useState } from "react";
-import { Console } from "console";
-import TableNo from "@/Page/Table/TableNo";
+import { TableProps } from "./Tables";
+import { useParams } from "react-router-dom";
 
-type TableNoProps = {
-  table: Table[];
-  no: string;
-  //   cartOrder: CartOrder[];
-  id: string;
-  status: string;
-};
-
-const TableNoCard = ({ status, table, no }: Partial<TableNoProps>) => {
+const TableNoCard = ({ status, no }: Partial<TableProps>) => {
   // find table No
-  const tableNo = table?.find((t) => t.tableNo === no);
-  console.log(tableNo);
-  // log(find table)
-  // submit table to db
+  const { no: tableNumber } = useParams<{ no: string }>();
 
-  // const [tableList, setTableList] = useState<Table[]>([]);
-  // const addTable = ({ tableNo: no }: Partial<Table>) => {
-  //   const tables = tableList.find((t) => t.tableNo === no);
-  //   console.log(tables);
-  //   setTableList(tableList);
-  // };
+  // confirm Table
+  const defaultTable: Table = {
+    status: "OCCUPIED",
+    tableNo: "A1",
+    seat: 4,
+  };
 
   return (
     <div
@@ -40,7 +28,9 @@ const TableNoCard = ({ status, table, no }: Partial<TableNoProps>) => {
       {/*  //table */}
       <div style={{ display: "flex", margin: " auto" }}>
         <h1>โต๊ะ :</h1> <span style={{ marginLeft: "10px" }}></span>
-        <h1>{tableNo ? `  ${tableNo}` : "Table not found"}</h1>
+        <h1>
+          {tableNumber ? ` ${tableNumber.toUpperCase()}` : "Table not found"}
+        </h1>
       </div>
       {/*  // table status */}
       <div
