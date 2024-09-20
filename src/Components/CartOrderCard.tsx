@@ -69,7 +69,6 @@ export const CartOrderCard = ({ order }: CartOrderCardProps) => {
               menuItem.price * amount
             }`}</p>
           </div>
-          {/* <p>จำนวน</p> */}
 
           <div
             style={{

@@ -1,9 +1,15 @@
-import { Link, useNavigate } from "react-router-dom";
-import PopupStatus from "./PopupStatus";
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Alert } from "../Animations/Alert";
 
 type TableProps = {
   no: string;
   status: string;
+};
+
+type TableCardProps = {
+  position: string;
 };
 
 export const TableContainer = ({ children }: React.PropsWithChildren) => {
@@ -15,10 +21,17 @@ export const TableContainer = ({ children }: React.PropsWithChildren) => {
         padding: "20px",
         justifyContent: "center",
         background: "#F2F2F2",
+        flexDirection: "column",
       }}
     >
+      <h1 style={{ textAlign: "center" }}>ด้านหน้า</h1>
       <div
-        style={{ display: "flex", background: "white", borderRadius: "10px" }}
+        style={{
+          display: "flex",
+          background: "white",
+          borderRadius: "10px",
+          margin: "auto",
+        }}
       >
         {children}
       </div>
@@ -26,9 +39,15 @@ export const TableContainer = ({ children }: React.PropsWithChildren) => {
   );
 };
 
-export const TableCard = ({ children }: React.PropsWithChildren) => {
+export const TableCard = ({
+  children,
+  position,
+}: React.PropsWithChildren<TableCardProps>) => {
   return (
     <div style={{ padding: "0px" }}>
+      <p style={{ textAlign: "center", margin: "-20px", marginTop: "20px" }}>
+        {position}
+      </p>
       <div style={{ padding: "20px" }}>{children}</div>
     </div>
   );
@@ -36,21 +55,34 @@ export const TableCard = ({ children }: React.PropsWithChildren) => {
 
 export const TablesMap = ({ no, status }: TableProps) => {
   const navigate = useNavigate();
+  const [showAlert, setShowAlert] = useState(false);
+  const { table } = useContext(GlobalContext).tableProvider;
+
   // todo Link
   return (
     <div>
+      {showAlert && (
+        <Alert
+          message="confirm to booking"
+          onClose={() => setShowAlert(false)}
+        />
+      )}
       <button
         //Link
         style={{
           textDecoration: "none",
           color: "black",
+          borderStyle: "none",
+          backgroundColor: "Background",
         }}
         onClick={() => {
           // # Strategy 1
           // call some action
           // update the table status => call supabase
           // navigate to next page
+
           navigate(no.toLowerCase());
+
           // # Strategy 2
           // Call popup
           // openPopup()
@@ -76,7 +108,6 @@ export const TablesMap = ({ no, status }: TableProps) => {
           <p style={{ textAlign: "center", fontSize: "14px" }}>{status}</p>
         </div>
       </button>
-      <PopupStatus tableNo={no} />
     </div>
   );
 };

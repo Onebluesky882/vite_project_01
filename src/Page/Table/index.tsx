@@ -1,3 +1,4 @@
+import { ButtonNav } from "@/Components/Global/ButtonNav";
 import {
   TableCard,
   TableContainer,
@@ -10,18 +11,20 @@ const Table = () => {
   const tablesRightSide = table.filter((t) => t.position === "right");
 
   return (
-    <TableContainer>
-      <TableCard>
-        {tablesRightSide.map((p) => (
-          <TablesMap key={p.no} no={p.no} table={p.no} status={p.status} />
-        ))}
-      </TableCard>
-      <TableCard>
-        {tablesLeftSide.map((p) => (
-          <TablesMap key={p.no} no={p.no} table={p.no} status={p.status} />
-        ))}
-      </TableCard>
-    </TableContainer>
+    <div>
+      <TableContainer>
+        <TableCard position="ซ้าย">
+          {tablesRightSide.map((p) => (
+            <TablesMap key={p.no} no={p.no} status={p.status} />
+          ))}
+        </TableCard>
+        <TableCard position="ขวา">
+          {tablesLeftSide.map((p) => (
+            <TablesMap key={p.no} no={p.no} status={p.status} />
+          ))}
+        </TableCard>
+      </TableContainer>
+    </div>
   );
 };
 

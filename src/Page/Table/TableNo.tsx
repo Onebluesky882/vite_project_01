@@ -9,7 +9,7 @@ const TableNo = () => {
   return (
     <div>
       {tableNo.map((t) => (
-        <TableNoCard no={t.no} key={t.no} />
+        <TableNoCard no={t.no} key={t.no} status={t.status} />
       ))}
     </div>
   );

@@ -11,6 +11,7 @@ export function HomeIcon() {
         justifyContent: "center",
         alignItems: "center",
         display: "flex",
+        position: "relative",
       }}
     >
       <Link
@@ -24,9 +25,21 @@ export function HomeIcon() {
         <FaHome
           style={{
             display: "flex",
-            alignItems: "center",
+            position: "absolute",
+            top: "10px",
+            left: "280px",
           }}
         />
+        <p
+          style={{
+            textAlign: "center",
+            color: "#D3A045",
+            fontWeight: "normal",
+            fontSize: "15px",
+          }}
+        >
+          <u>หน้าหลัก</u>
+        </p>
       </Link>
     </div>
   );
