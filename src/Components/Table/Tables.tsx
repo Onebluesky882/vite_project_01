@@ -1,5 +1,4 @@
 import { GlobalContext } from "@/Hooks/GlobalContext";
-import { Table } from "@/types/TableOrder";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -56,10 +55,10 @@ export const TableCard = ({
 
 export const TablesMap = ({ tableNo, status }: TableProps) => {
   const navigate = useNavigate();
-  const { addTable } = useContext(GlobalContext).tableProvider;
+  const { submitTable } = useContext(GlobalContext).tableProvider;
 
   const hadleSubmit = () => {
-    addTable(tableNo as Table["tableNo"]);
+    submitTable();
   };
   return (
     <div>
@@ -118,3 +117,6 @@ export const GetStatusStyles = (status: string): React.CSSProperties => {
       };
   }
 };
+function submitTable(arg0: string) {
+  throw new Error("Function not implemented.");
+}

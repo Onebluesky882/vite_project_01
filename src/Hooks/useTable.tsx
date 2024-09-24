@@ -17,14 +17,17 @@ const useTable = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
 
-  const addTable = (tableNo: Table["tableNo"]) => {
-    setTable({ ...table, tableNo });
-    console.log(table);
+  const submitTable = async ({ seat, status, tableNo }: Table) => {
+    const newTable: Table = {
+      status,
+      tableNo,
+      seat,
+    };
+    const transformKey = transformKeysToSnakeCase(newTable);
 
-    // const transform  = props.map((t) => transformKeysToSnakeCase(t));
-
-    // await supabase.from("tables").insert(transform);
-    // await supabase.from("tables");
+    await supabase.from("tables").insert([transformKey]);
+    await supabase.from("tables").select();
+    setTable(newTable);
   };
 
   useEffect(() => {
@@ -89,7 +92,7 @@ const useTable = () => {
     submitCart,
     table,
     setTable,
-    addTable,
+    submitTable,
   };
 };
 
@@ -99,6 +102,6 @@ export const defaultTableProvider = {
   setOrders: () => null,
   submitCart: () => Promise.resolve(),
   setTable: () => null,
-  addTable: () => null,
+  submitTable: () => null,
 };
 export default useTable;
