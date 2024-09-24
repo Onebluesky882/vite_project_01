@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 
 export const SideBarItemBase = ({
   name,
-  slug,
   img,
   position,
 }: SideBarItemProps & { position: "left" | "right" }) => {
@@ -61,19 +60,17 @@ export const SideBarItemBase = ({
 
   return (
     <div style={{ display: "flex" }}>
-      <Link to={slug} style={{ textDecoration: "none" }}>
-        <li
-          style={{
-            ...commonStyles[position],
-            ...roundedStyles[position],
-          }}
-        >
-          <div style={{ position: "relative", display: "flex" }}>
-            <img style={imgStyles[position]} src={img} />
-            <p style={textStyles[position]}>{name}</p>
-          </div>
-        </li>
-      </Link>
+      <li
+        style={{
+          ...commonStyles[position],
+          ...roundedStyles[position],
+        }}
+      >
+        <div style={{ position: "relative", display: "flex" }}>
+          <img style={imgStyles[position]} src={img} />
+          <p style={textStyles[position]}>{name}</p>
+        </div>
+      </li>
     </div>
   );
 };

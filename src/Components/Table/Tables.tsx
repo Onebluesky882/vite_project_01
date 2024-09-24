@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { Table } from "@/types/TableOrder";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import TableNo from "../../Page/Table/TableNo";
 
 export type TableProps = {
-  no: string;
+  tableNo: string;
   status: string;
+  seat: number;
 };
 
 type TableCardProps = {
@@ -51,22 +55,9 @@ export const TableCard = ({
   );
 };
 
-export const TablesMap = ({ no, status }: TableProps) => {
+export const TablesMap = ({ tableNo, seat, status }: TableProps) => {
   const navigate = useNavigate();
-
-  const [confirm, setConfirm] = useState(false);
-
-  // find item what do you want to find ? match with ?
-
-  const handleConfirm = () => {
-    setConfirm(true);
-    if (confirm) {
-      setConfirm(true);
-      console.log("Confirmed table:", no);
-
-      navigate(`/tables/${no.toLowerCase()}`);
-    }
-  };
+  const { addTable } = useContext(GlobalContext).tableProvider;
 
   return (
     <div>
@@ -79,17 +70,15 @@ export const TablesMap = ({ no, status }: TableProps) => {
           backgroundColor: "Background",
         }}
         onClick={
-          handleConfirm
-          // # Strategy 1
-          // call some action
-          // update the table status => call supabase
-          // navigate to next page
+          () => addTable(tableNo as Table["tableNo"])
 
-          // # Strategy 2
-          // Call popup
-          // openPopup()
+          // # Strategy 1
+          // click to get value
+
+          // navigate to next page
         }
       >
+        {" "}
         <div
           style={{
             ...GetStatusStyles(status),
@@ -105,7 +94,7 @@ export const TablesMap = ({ no, status }: TableProps) => {
               textAlign: "center",
             }}
           >
-            {no}{" "}
+            {tableNo}{" "}
           </p>
           <p style={{ textAlign: "center", fontSize: "14px" }}>{status}</p>
         </div>

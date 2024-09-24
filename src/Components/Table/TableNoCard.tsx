@@ -1,24 +1,8 @@
 import { useParams } from "react-router-dom";
-import { transformKeysToSnakeCase } from "../../utils/string";
-import supabase from "@/utils/supabase";
 import { TableProps } from "./Tables";
-
-export type Table = {
-  tableNo: "A1" | "A2" | "A3" | "A4" | "A5" | "B1" | "B2" | "B3" | "B4";
-  seat?: number;
-  status: "AVAILABLE" | "OCCUPIED" | "RESERVED" | "CLEANING";
-  position?: string;
-};
-
-const TableNoCard = ({ status, no }: Partial<TableProps>) => {
+const TableNoCard = ({ status }: Partial<TableProps>) => {
   // find table No
   const { no: tableNumber } = useParams<{ no: string }>();
-
-  // confirm Table
-
-  // get table data from ui -> to BE  -> update
-
-  // Confirm table status - define function to handle the confirm button click
 
   return (
     <div
@@ -49,7 +33,15 @@ const TableNoCard = ({ status, no }: Partial<TableProps>) => {
 
         {/*  // confirm to booking */}
         <div style={{ justifyContent: "center", display: "flex" }}>
-          <button onClick={() => {}}>Confirm Table</button>
+          <button
+            onClick={() => {
+              // update supabase of table's status
+              // navigate
+              // change table
+            }}
+          >
+            Confirm Table
+          </button>
         </div>
       </div>
 
@@ -63,3 +55,25 @@ const TableNoCard = ({ status, no }: Partial<TableProps>) => {
 };
 
 export default TableNoCard;
+
+const no: string = "A1";
+
+// const tableNo: Table["tableNo"] = no as unknown as Table["tableNo"];
+// const tableNo: Table["tableNo"] = transformNo(no);
+
+// function transformNo(no: string): Table["tableNo"] {
+//   tableNo as string;
+// }
+
+// const tanfomNo = (no: string): Table["tableNo"] => {
+//   tableNo as string;
+
+//   return tableNo;
+// };
+
+// const stringNo: string = tableNo;
+
+// type Index = 1 | 2 | 3;
+// let index = 5;
+
+// const someIndex: Index = index as Index;

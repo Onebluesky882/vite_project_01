@@ -16,12 +16,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
-          <Route path="/menu/:type" element={<Menu />} />
           <Route path="/tables" element={<Table />} />
           <Route path="/promotion" element={<Promotion />} />
           <Route path="/waiter" element={<Waiter />} />
           <Route path="/cart" element={<Cart />} />
-          <Route path="/tables/:no" element={<TableNo />} />
+          <Route path="/tables/:tableNo" element={<TableNo />} />
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

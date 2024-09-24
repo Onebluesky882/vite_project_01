@@ -3,13 +3,14 @@ import table from "@/Data/TableData";
 import { useParams } from "react-router-dom";
 
 const TableNo = () => {
-  const { no } = useParams<string>();
-  const tableNo = table.filter((t) => t.no.toLowerCase() === no);
+  const { tableNo } = useParams<string>();
+  const tables = table.filter((t) => t.tableNo === tableNo);
+  console.log(tables);
 
   return (
     <div>
-      {tableNo.map((t) => (
-        <TableNoCard key={t.no} />
+      {tables.map((t) => (
+        <TableNoCard key={t.tableNo} />
       ))}
     </div>
   );

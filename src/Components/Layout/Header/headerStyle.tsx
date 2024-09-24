@@ -27,7 +27,7 @@ export function HomeIcon() {
             display: "flex",
             position: "absolute",
             top: "10px",
-            left: "280px",
+            left: "150px",
           }}
         />
         <p

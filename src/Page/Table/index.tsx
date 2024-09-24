@@ -1,4 +1,3 @@
-import { ButtonNav } from "@/Components/Global/ButtonNav";
 import {
   TableCard,
   TableContainer,
@@ -15,12 +14,12 @@ const Table = () => {
       <TableContainer>
         <TableCard position="ซ้าย">
           {tablesRightSide.map((p) => (
-            <TablesMap key={p.no} no={p.no} status={p.status} />
+            <TablesMap key={p.tableNo} tableNo={p.tableNo} status={p.status} />
           ))}
         </TableCard>
         <TableCard position="ขวา">
           {tablesLeftSide.map((p) => (
-            <TablesMap key={p.no} no={p.no} status={p.status} />
+            <TablesMap key={p.tableNo} tableNo={p.tableNo} status={p.status} />
           ))}
         </TableCard>
       </TableContainer>

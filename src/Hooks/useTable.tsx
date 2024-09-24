@@ -17,6 +17,16 @@ const useTable = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
 
+  const addTable = (tableNo: Table["tableNo"]) => {
+    setTable({ ...table, tableNo });
+    console.log(table);
+
+    // const transform  = props.map((t) => transformKeysToSnakeCase(t));
+
+    // await supabase.from("tables").insert(transform);
+    // await supabase.from("tables");
+  };
+
   useEffect(() => {
     loadOrder();
 
@@ -73,14 +83,13 @@ const useTable = () => {
     setOrders([...orders, ...prepareOrder]);
   };
 
-  // const upDateCart = ()=>{}
-
   return {
     orders,
     setOrders,
     submitCart,
     table,
     setTable,
+    addTable,
   };
 };
 
@@ -90,5 +99,6 @@ export const defaultTableProvider = {
   setOrders: () => null,
   submitCart: () => Promise.resolve(),
   setTable: () => null,
+  addTable: () => null,
 };
 export default useTable;
