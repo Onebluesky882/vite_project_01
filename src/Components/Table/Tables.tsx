@@ -2,7 +2,6 @@ import { GlobalContext } from "@/Hooks/GlobalContext";
 import { Table } from "@/types/TableOrder";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import TableNo from "../../Page/Table/TableNo";
 
 export type TableProps = {
   tableNo: string;
@@ -55,10 +54,13 @@ export const TableCard = ({
   );
 };
 
-export const TablesMap = ({ tableNo, seat, status }: TableProps) => {
+export const TablesMap = ({ tableNo, status }: TableProps) => {
   const navigate = useNavigate();
   const { addTable } = useContext(GlobalContext).tableProvider;
 
+  const hadleSubmit = () => {
+    addTable(tableNo as Table["tableNo"]);
+  };
   return (
     <div>
       <button
@@ -70,8 +72,7 @@ export const TablesMap = ({ tableNo, seat, status }: TableProps) => {
           backgroundColor: "Background",
         }}
         onClick={
-          () => addTable(tableNo as Table["tableNo"])
-
+          hadleSubmit
           // # Strategy 1
           // click to get value
 
