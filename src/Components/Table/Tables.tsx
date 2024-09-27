@@ -1,4 +1,5 @@
 import { GlobalContext } from "@/Hooks/GlobalContext";
+import { Table } from "@/types/TableOrder";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -57,8 +58,14 @@ export const TablesMap = ({ tableNo, status }: TableProps) => {
   const navigate = useNavigate();
   const { submitTable } = useContext(GlobalContext).tableProvider;
 
-  const hadleSubmit = () => {
-    submitTable();
+  const handleSubmit = () => {
+    submitTable(tableNo as Table["tableNo"]);
+
+    if (status === "AVAILABLE") {
+      navigate(`/${tableNo}`);
+    } else {
+      alert("tables't available");
+    }
   };
   return (
     <div>
@@ -71,10 +78,9 @@ export const TablesMap = ({ tableNo, status }: TableProps) => {
           backgroundColor: "Background",
         }}
         onClick={
-          hadleSubmit
+          handleSubmit
           // # Strategy 1
           // click to get value
-
           // navigate to next page
         }
       >
@@ -117,6 +123,3 @@ export const GetStatusStyles = (status: string): React.CSSProperties => {
       };
   }
 };
-function submitTable(arg0: string) {
-  throw new Error("Function not implemented.");
-}

@@ -5,7 +5,11 @@ import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
 
 const Menu = () => {
-  const MenuPage = menuCategory.filter((item) => item.category === type);
+  const {cart} = useContext(GlobalContext).cartProvider
+
+  // todo
+  let type = cart
+  const MenuPage = menuCategory.filter((item) => item.category === );
   const { table } = useContext(GlobalContext).tableProvider;
   const { orders } = useContext(GlobalContext).cartProvider;
 

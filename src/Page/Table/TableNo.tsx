@@ -1,15 +1,19 @@
 import TableNoCard from "@/Components/Table/TableNoCard";
-import table from "@/Data/TableData";
+import { table as tableData } from "@/Data/TableData";
+import { GlobalContext } from "@/Hooks/GlobalContext";
+import { useContext } from "react";
 import { useParams } from "react-router-dom";
 
 const TableNo = () => {
-  const { tableNo } = useParams<string>();
-  const tables = table.filter((t) => t.tableNo === tableNo);
-  console.log(tables);
+  const { tableNo } = useParams();
+
+  const { table } = useContext(GlobalContext).tableProvider;
+
+  const filterTable = tableData.filter((t) => t.tableNo === tableNo);
 
   return (
     <div>
-      {tables.map((t) => (
+      {filterTable.map((t) => (
         <TableNoCard key={t.tableNo} />
       ))}
     </div>

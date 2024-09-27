@@ -17,17 +17,19 @@ const useTable = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
 
-  const submitTable = async ({ seat, status, tableNo }: Table) => {
-    const newTable: Table = {
-      status,
-      tableNo,
-      seat,
-    };
-    const transformKey = transformKeysToSnakeCase(newTable);
+  const submitTable = (tableNo: Table["tableNo"]) => {
+    // get value from parameter  tableNo
 
-    await supabase.from("tables").insert([transformKey]);
-    await supabase.from("tables").select();
-    setTable(newTable);
+    // set the value tableNo to heap an defaultTable
+    const updateTable: Table = { ...defaultTable, tableNo };
+
+    //update array of table
+
+    setTable(updateTable);
+  };
+
+  const chageTableStatus = (status: Table["status"]) => {
+    setTable({ ...table, status });
   };
 
   useEffect(() => {
@@ -56,6 +58,10 @@ const useTable = () => {
       channels.unsubscribe();
     };
   }, []);
+
+  const loadTable = async () => {
+    const { data } = await supabase.from("tables").select();
+  };
 
   const loadOrder = async () => {
     const { data } = await supabase
@@ -93,6 +99,7 @@ const useTable = () => {
     table,
     setTable,
     submitTable,
+    chageTableStatus,
   };
 };
 
@@ -103,5 +110,6 @@ export const defaultTableProvider = {
   submitCart: () => Promise.resolve(),
   setTable: () => null,
   submitTable: () => null,
+  chageTableStatus: () => null,
 };
 export default useTable;

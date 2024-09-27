@@ -1,7 +1,4 @@
-import {
-  SideBarItemRight,
-  rightMenuList,
-} from "./Layout/SidebarItem/SidebarItem";
+import { SideBarItemRight, menuList } from "./Layout/SidebarItem/SidebarItem";
 
 export default function SidebarRight() {
   return (
@@ -15,13 +12,12 @@ export default function SidebarRight() {
         right: "0px",
       }}
     >
-      {rightMenuList.map((right) => (
+      {menuList.map((right) => (
         <SideBarItemRight
           key={right.id}
-          id={right.id}
           name={right.name}
-          slug={right.slug}
           img={right.img}
+          id={0}
         />
       ))}
     </div>
