@@ -8,8 +8,8 @@ export default function Header() {
       <HomeIcon />
       <Logo />
       <OrderList />
-      <SidebarLeft />
-      <SidebarRight />
+      {/* <SidebarLeft />
+      <SidebarRight /> */}
     </header>
   );
 }

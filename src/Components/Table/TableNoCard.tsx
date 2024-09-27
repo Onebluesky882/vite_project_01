@@ -1,17 +1,18 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "@/Hooks/GlobalContext";
-import { log } from "console";
+import { menu as menuCategory } from "@/Data/Menu";
 import { MenuCard } from "../menuCard/MenuCard";
-import { CartOrderCard } from "../CartOrderCard";
+import { log } from "console";
+import { div } from "framer-motion/client";
 
-type TableNoProps = {
-  tableNo: string;
-  status: string;
-};
 const TableNoCard = () => {
   const { table } = useContext(GlobalContext).tableProvider;
   const [confirm, setConfirm] = useState(false);
 
+  const handleConfirm = () => {
+    setConfirm(true);
+    console.log(confirm);
+  };
   return (
     <div
       style={{
@@ -22,31 +23,41 @@ const TableNoCard = () => {
         justifyContent: "center",
       }}
     >
-      {/*  //table */}
       <div style={{ display: "flex", margin: " auto" }}>
         <h1>โต๊ะ : {table.tableNo}</h1>{" "}
       </div>
       <div style={{ display: "flex", margin: "auto" }}>
         <button
           style={{ padding: " 10px", margin: "20px" }}
-          onClick={() => setConfirm(true)}
+          onClick={handleConfirm}
         >
-          confirm to seat
+          confirm
         </button>
       </div>
-      {confirm}
+
+      <div style={{ backgroundColor: "blue", display: "flex" }}></div>
+      <div>{confirm && <CallMenu />}</div>
     </div>
   );
 };
 
 // function to  set value  return (goal)
 // useState to set
-export const TableStatus = () => {
-  console.log("hello");
+const CallMenu = () => {
+  const showMenu = menuCategory.filter((type) => type.category === "beef");
 
   return (
-    <div>
-      <h1>hello</h1>
+    <div style={{ display: "flex", margin: "auto", justifyContent: "center" }}>
+      {showMenu.map((menu) => (
+        <MenuCard
+          key={menu.id}
+          image={menu.image}
+          name={menu.name}
+          price={menu.price}
+          id={menu.id}
+          category={menu.category}
+        />
+      ))}
     </div>
   );
 };

@@ -1,4 +1,5 @@
-import { menuList, SideBarItemLeft } from "./Layout/SidebarItem/SidebarItem";
+import { menuList } from "@/Data/MenuCategory";
+import { SideBarItemLeft } from "./Layout/SidebarItem/SideBarItemLeft";
 
 export default function SidebarLeft() {
   return (

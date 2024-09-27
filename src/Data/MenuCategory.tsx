@@ -1,12 +1,13 @@
 import { SVG } from "@/assets/svg/SVG";
 
-export type SideBarItemProps = {
-  id: number;
+export type MenuGroup = {
+  id: string;
   name: string;
   img: string;
+  position: string;
 };
 
-export const menuList = [
+export const menuList: MenuGroup[] = [
   {
     id: "be8a7141-be3f-41b7-b5ee-171ffe83ec2d",
     name: "Pork",
@@ -57,5 +58,6 @@ export const menuList = [
   },
 ];
 
-export * from "./SideBarItemRight";
-export * from "./SideBarItemLeft";
+export const getMenuCategory = (category: string) => {
+  return menuList.find((id) => id.name === category) ?? ({} as MenuGroup);
+};

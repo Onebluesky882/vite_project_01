@@ -1,6 +1,6 @@
 import { MenuItem } from "@/types/MenuItem";
 
-export const Menu: MenuItem[] = [
+export const menu: MenuItem[] = [
   {
     id: "60baa77d-9d71-46e6-957f-a7786ba7ea79",
     name: "เนื้อสามชั้น",
@@ -453,5 +453,5 @@ export const Menu: MenuItem[] = [
 
 // function to find id index each item
 export const getMenuItem = (id: string) => {
-  return Menu.find((menuItem) => menuItem.id === id) ?? ({} as MenuItem);
+  return menu.find((menuItem) => menuItem.id === id) ?? ({} as MenuItem);
 };

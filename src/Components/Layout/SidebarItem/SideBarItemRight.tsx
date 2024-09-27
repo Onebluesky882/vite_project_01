@@ -1,4 +1,4 @@
-import { SideBarItemProps } from "./SidebarItem";
+import { SideBarItemProps } from "../../../types/MenuCategory";
 import { SideBarItemBase } from "./SideBarItemBase";
 
 export const SideBarItemRight = (props: SideBarItemProps) => {

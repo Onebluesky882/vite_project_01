@@ -1,15 +1,10 @@
 import { CartOrderCard } from "@/Components/CartOrderCard";
 import { MenuCard } from "@/Components/menuCard/MenuCard";
-import { Menu as menuCategory } from "@/Data/Menu";
+import { menu as menuCategory } from "@/Data/Menu";
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { useContext } from "react";
 
 const Menu = () => {
-  const {cart} = useContext(GlobalContext).cartProvider
-
-  // todo
-  let type = cart
-  const MenuPage = menuCategory.filter((item) => item.category === );
   const { table } = useContext(GlobalContext).tableProvider;
   const { orders } = useContext(GlobalContext).cartProvider;
 
@@ -23,7 +18,7 @@ const Menu = () => {
         ))}
       </h2>
       <div className="ProductCardContainer">
-        {MenuPage.map((menu) => (
+        {menuCategory.map((menu) => (
           <MenuCard
             key={menu.id}
             image={menu.image}

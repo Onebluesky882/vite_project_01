@@ -1,15 +1,10 @@
-import { SideBarItemProps } from "./SidebarItem";
+import { SideBarItemProps } from "../../../types/MenuCategory";
 
 export const SideBarItemBase = ({
   name,
   img,
   position,
 }: SideBarItemProps & { position: "left" | "right" }) => {
-  const handleSubmit = () => {
-    console.log(name);
-
-    return name;
-  };
   return (
     <div style={{ display: "flex" }}>
       <li
@@ -18,12 +13,7 @@ export const SideBarItemBase = ({
           ...roundedStyles[position],
         }}
       >
-        <div
-          style={{ position: "relative", display: "flex" }}
-          onClick={() => {
-            handleSubmit();
-          }}
-        >
+        <div style={{ position: "relative", display: "flex" }}>
           <img style={imgStyles[position]} src={img} />
           <p style={textStyles[position]}>{name}</p>
         </div>
