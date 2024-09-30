@@ -1,6 +1,6 @@
-import { SideBarItemProps } from "../../../types/MenuCategory";
+import { MenuGroup } from "@/Data/MenuCategory";
 import { SideBarItemBase } from "./SideBarItemBase";
 
-export const SideBarItemRight = (props: SideBarItemProps) => {
-  return <SideBarItemBase {...props} position="right" />;
+export const SideBarItemRight = (props: MenuGroup) => {
+  return <SideBarItemBase {...props} />;
 };

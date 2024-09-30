@@ -2,8 +2,9 @@ import { useContext, useEffect, useState } from "react";
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { menu as menuCategory } from "@/Data/Menu";
 import { MenuCard } from "../menuCard/MenuCard";
-import { log } from "console";
 import { div } from "framer-motion/client";
+import SidebarRight from "../SidebarRight";
+import SidebarLeft from "../SidebarLeft";
 
 const TableNoCard = () => {
   const { table } = useContext(GlobalContext).tableProvider;
@@ -11,18 +12,18 @@ const TableNoCard = () => {
 
   const handleConfirm = () => {
     setConfirm(true);
-    console.log(confirm);
   };
   return (
     <div
       style={{
         display: "flex",
-        border: "1px solid black",
         flexDirection: "column",
         margin: "auto",
         justifyContent: "center",
       }}
     >
+      <SidebarRight />
+      <SidebarLeft />
       <div style={{ display: "flex", margin: " auto" }}>
         <h1>โต๊ะ : {table.tableNo}</h1>{" "}
       </div>
@@ -36,28 +37,36 @@ const TableNoCard = () => {
       </div>
 
       <div style={{ backgroundColor: "blue", display: "flex" }}></div>
-      <div>{confirm && <CallMenu />}</div>
+      <CallMenu />
     </div>
   );
 };
 
-// function to  set value  return (goal)
-// useState to set
 const CallMenu = () => {
   const showMenu = menuCategory.filter((type) => type.category === "beef");
 
   return (
-    <div style={{ display: "flex", margin: "auto", justifyContent: "center" }}>
-      {showMenu.map((menu) => (
-        <MenuCard
-          key={menu.id}
-          image={menu.image}
-          name={menu.name}
-          price={menu.price}
-          id={menu.id}
-          category={menu.category}
-        />
-      ))}
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "repeat(4, 1fr)", // 5 equal-width columns
+          gap: "10px",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        {showMenu.map((menu) => (
+          <MenuCard
+            key={menu.id}
+            image={menu.image}
+            name={menu.name}
+            price={menu.price}
+            id={menu.id}
+            category={menu.category}
+          />
+        ))}
+      </div>
     </div>
   );
 };

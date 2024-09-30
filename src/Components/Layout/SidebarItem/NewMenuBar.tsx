@@ -1,5 +1,4 @@
-import { menuList } from "@/Data/MenuCategory";
-import { MenuGroup } from "@/types/MenuCategory";
+import { MenuGroup, menuList } from "@/Data/MenuCategory";
 import { useState } from "react";
 
 const NewMenuBar = () => {

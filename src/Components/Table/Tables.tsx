@@ -1,5 +1,6 @@
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import { Table } from "@/types/TableOrder";
+import { log } from "console";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -55,13 +56,14 @@ export const TableCard = ({
 };
 
 export const TablesMap = ({ tableNo, status }: TableProps) => {
+  const { table } = useContext(GlobalContext).tableProvider;
   const navigate = useNavigate();
   const { submitTable } = useContext(GlobalContext).tableProvider;
 
   const handleSubmit = () => {
-    submitTable(tableNo as Table["tableNo"]);
+    submitTable(table.tableNo as Table["tableNo"]);
 
-    if (status === "AVAILABLE") {
+    if (table.status === "AVAILABLE") {
       navigate(`/${tableNo}`);
     } else {
       alert("tables't available");

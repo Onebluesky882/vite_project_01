@@ -13,12 +13,13 @@ export default function SidebarRight() {
         right: "0px",
       }}
     >
-      {menuList.map((right) => (
+      {menuList.map((menu) => (
         <SideBarItemRight
-          key={right.id}
-          name={right.name}
-          img={right.img}
-          id={0}
+          key={menu.id}
+          name={menu.name}
+          img={menu.img}
+          id={menu.id}
+          position={menu.position}
         />
       ))}
     </div>

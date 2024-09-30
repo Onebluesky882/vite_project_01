@@ -1,10 +1,6 @@
-import { SideBarItemProps } from "../../../types/MenuCategory";
+import { MenuGroup } from "@/Data/TableData";
 
-export const SideBarItemBase = ({
-  name,
-  img,
-  position,
-}: SideBarItemProps & { position: "left" | "right" }) => {
+export const SideBarItemBase = ({ name, img, position }: MenuGroup) => {
   return (
     <div style={{ display: "flex" }}>
       <li
@@ -22,7 +18,7 @@ export const SideBarItemBase = ({
   );
 };
 
-export const roundedStyles = {
+export const roundedStyles: { [key: string]: React.CSSProperties } = {
   left: { borderTopRightRadius: "50px", borderBottomRightRadius: "50px" },
   right: { borderTopLeftRadius: "50px", borderBottomLeftRadius: "50px" },
 };

@@ -23,7 +23,7 @@ const useTable = () => {
     // set the value tableNo to heap an defaultTable
     const updateTable: Table = { ...defaultTable, tableNo };
 
-    //update array of table
+    // update array of table
 
     setTable(updateTable);
   };
