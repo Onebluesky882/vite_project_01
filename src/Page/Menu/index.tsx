@@ -1,13 +1,24 @@
 import { CartOrderCard } from "@/Components/CartOrderCard";
 import { MenuCard } from "@/Components/menuCard/MenuCard";
+import { SidebarLeft, SidebarRight } from "@/Components/Sidebar";
 import { menu as menuCategory } from "@/Data/Menu";
 import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 const Menu = () => {
   const { table } = useContext(GlobalContext).tableProvider;
   const { orders } = useContext(GlobalContext).cartProvider;
 
+  const [category, setCategory] = useState<string>("");
+  const handleSubmit = (cat: string) => {
+    setCategory(cat);
+  };
+
+  const menuFilter = category
+    ? menuCategory.filter(
+        (item) => item.category === category.toLocaleLowerCase()
+      )
+    : menuCategory;
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Table : {table.tableNo}</h1>
@@ -17,8 +28,10 @@ const Menu = () => {
           <CartOrderCard order={i} />
         ))}
       </h2>
+      <SidebarLeft submit={handleSubmit} />
+      <SidebarRight submit={handleSubmit} />
       <div className="ProductCardContainer">
-        {menuCategory.map((menu) => (
+        {menuFilter.map((menu) => (
           <MenuCard
             key={menu.id}
             image={menu.image}

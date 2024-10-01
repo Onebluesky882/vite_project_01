@@ -2,6 +2,7 @@ import { CiCircleMinus, CiCirclePlus } from "react-icons/ci";
 import { MenuItem } from "@/types/MenuItem";
 import { useContext } from "react";
 import { GlobalContext } from "@/Hooks/GlobalContext";
+import { MenuProps } from "../Layout/SidebarItem/SideBarItemBase";
 
 export type MenuCardProps = MenuItem;
 

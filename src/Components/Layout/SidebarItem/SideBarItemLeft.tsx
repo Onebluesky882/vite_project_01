@@ -1,6 +1,21 @@
 import { MenuGroup } from "@/Data/MenuCategory";
-import { SideBarItemBase } from "./SideBarItemBase";
+import { MenuProps, SideBarItemBase } from "./SideBarItemBase";
+import { useState } from "react";
 
-export const SideBarItemLeft = (props: MenuGroup) => {
-  return <SideBarItemBase {...props} />;
+export const SideBarItemLeft = ({
+  id,
+  img,
+  name,
+  position,
+  submit,
+}: MenuGroup & MenuProps) => {
+  return (
+    <SideBarItemBase
+      id={id}
+      name={name}
+      img={img}
+      position={position}
+      submit={submit}
+    />
+  );
 };

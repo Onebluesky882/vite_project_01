@@ -1,6 +1,20 @@
 import { MenuGroup } from "@/Data/TableData";
+import { log } from "console";
 
-export const SideBarItemBase = ({ name, img, position }: MenuGroup) => {
+export type MenuProps = {
+  submit: (cat: string) => void;
+};
+
+export const SideBarItemBase = ({
+  name,
+  img,
+  position,
+  submit,
+}: MenuGroup & MenuProps) => {
+  const handleSubmit = () => {
+    // let lowercase = name.toLowerCase();
+    submit(name);
+  };
   return (
     <div style={{ display: "flex" }}>
       <li
@@ -9,7 +23,10 @@ export const SideBarItemBase = ({ name, img, position }: MenuGroup) => {
           ...roundedStyles[position],
         }}
       >
-        <div style={{ position: "relative", display: "flex" }}>
+        <div
+          style={{ position: "relative", display: "flex" }}
+          onClick={() => handleSubmit()}
+        >
           <img style={imgStyles[position]} src={img} />
           <p style={textStyles[position]}>{name}</p>
         </div>
