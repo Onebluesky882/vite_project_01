@@ -1,5 +1,4 @@
 import { MenuGroup } from "@/Data/TableData";
-import { log } from "console";
 
 export type MenuProps = {
   submit: (cat: string) => void;
@@ -11,10 +10,6 @@ export const SideBarItemBase = ({
   position,
   submit,
 }: MenuGroup & MenuProps) => {
-  const handleSubmit = () => {
-    // let lowercase = name.toLowerCase();
-    submit(name);
-  };
   return (
     <div style={{ display: "flex" }}>
       <li
@@ -25,7 +20,7 @@ export const SideBarItemBase = ({
       >
         <div
           style={{ position: "relative", display: "flex" }}
-          onClick={() => handleSubmit()}
+          onClick={() => submit(name)}
         >
           <img style={imgStyles[position]} src={img} />
           <p style={textStyles[position]}>{name}</p>

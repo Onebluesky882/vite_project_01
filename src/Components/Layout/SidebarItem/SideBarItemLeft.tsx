@@ -1,6 +1,5 @@
 import { MenuGroup } from "@/Data/MenuCategory";
 import { MenuProps, SideBarItemBase } from "./SideBarItemBase";
-import { useState } from "react";
 
 export const SideBarItemLeft = ({
   id,
