@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import Menu from "@/Page/Menu";
 
