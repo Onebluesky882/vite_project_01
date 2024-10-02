@@ -8,7 +8,7 @@ import supabase from "@/utils/supabase";
 import { useEffect, useState } from "react";
 
 const defaultTable: Table = {
-  status: "AVAILABLE",
+  status: "AVAILABLE" as const,
   tableNo: "A1",
   seat: 3,
 };
@@ -17,24 +17,27 @@ const useTable = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
 
-  const submitTable = (tableNo: Table["tableNo"]) => {
-    // get value from parameter  tableNo
-
+  const submitTable = async ({ status, tableNo, seat }: Table) => {
     // set the value tableNo to heap an defaultTable
-    const updateTable: Table = { ...defaultTable, tableNo };
+    const newTable = { ...defaultTable, status, tableNo, seat };
 
-    // update array of table
+    await supabase.from("tables").insert([transformKeysToSnakeCase(newTable)]);
 
-    setTable(updateTable);
+    await loadTable();
+    console.log("newtable : ", newTable);
+    setTable(newTable);
   };
 
-  const chageTableStatus = (status: Table["status"]) => {
-    setTable({ ...table, status });
+  const loadTable = async () => {
+    const { data } = await supabase.from("tables").select();
+    if (data) {
+      console.log("Table :", data);
+    }
   };
 
   useEffect(() => {
     loadOrder();
-
+    loadTable();
     // passive interaction, trigger based on changes of the order relate to this table
     const channels = supabase
       .channel("subscribe-order-table-channel")
@@ -58,10 +61,6 @@ const useTable = () => {
       channels.unsubscribe();
     };
   }, []);
-
-  const loadTable = async () => {
-    const { data } = await supabase.from("tables").select();
-  };
 
   const loadOrder = async () => {
     const { data } = await supabase
@@ -99,7 +98,7 @@ const useTable = () => {
     table,
     setTable,
     submitTable,
-    chageTableStatus,
+    loadTable,
   };
 };
 
@@ -109,7 +108,7 @@ export const defaultTableProvider = {
   setOrders: () => null,
   submitCart: () => Promise.resolve(),
   setTable: () => null,
-  submitTable: () => null,
-  chageTableStatus: () => null,
+  submitTable: () => Promise.resolve(),
+  loadTable: () => null,
 };
 export default useTable;

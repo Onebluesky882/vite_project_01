@@ -14,11 +14,10 @@ const Menu = () => {
     setCategory(cat);
   };
 
-  const menuFilter = category
-    ? menuCategory.filter(
-        (item) => item.category === category.toLocaleLowerCase()
-      )
-    : menuCategory;
+  const menuFilter = menuCategory.filter(
+    (item) => item.category === category.toLocaleLowerCase()
+  );
+
   return (
     <>
       <h1 style={{ textAlign: "center" }}>Table : {table.tableNo}</h1>
