@@ -1,37 +1,20 @@
-import { GlobalContext } from "@/Hooks/GlobalContext";
-import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-export type TableStatus = "AVAILABLE" | "OCCUPIED" | "RESERVED" | "CLEANING";
-export type TableNo =
-  | "A1"
-  | "A2"
-  | "A3"
-  | "A4"
-  | "A5"
-  | "B1"
-  | "B2"
-  | "B3"
-  | "B4";
+import { useState } from "react";
+import { ConfirmTable } from "./ConfirmTable";
 
-export type TableProps = {
-  tableNo: TableNo;
-  status: TableStatus;
-  seat: number;
+type TableProps = {
+  tableNo: string;
+  status: string;
 };
 
 type TableCardProps = {
   position: string;
 };
 
-export const TablesMap = ({ tableNo, status, seat }: TableProps) => {
-  const { table, submitTable } = useContext(GlobalContext).tableProvider;
+export const TablesMap = ({ tableNo, status }: TableProps) => {
   const navigate = useNavigate();
 
-  const handleSubmit = () => {
-    submitTable({ tableNo: tableNo, status: status, seat: seat });
-    navigate(`/${tableNo}`);
-  };
   return (
     <div>
       <button
@@ -42,7 +25,7 @@ export const TablesMap = ({ tableNo, status, seat }: TableProps) => {
           borderStyle: "none",
           backgroundColor: "Background",
         }}
-        onClick={handleSubmit}
+        onClick={() => navigate(`/${tableNo}`)}
       >
         {" "}
         <div
@@ -60,7 +43,7 @@ export const TablesMap = ({ tableNo, status, seat }: TableProps) => {
               textAlign: "center",
             }}
           >
-            {tableNo} {seat}{" "}
+            {tableNo}
           </p>
           <p style={{ textAlign: "center", fontSize: "14px" }}>{status}</p>
         </div>
@@ -69,14 +52,16 @@ export const TablesMap = ({ tableNo, status, seat }: TableProps) => {
   );
 };
 
-export const GetStatusStyles = (status: TableStatus): React.CSSProperties => {
+export const GetStatusStyles = (status: string): React.CSSProperties => {
   switch (status) {
     case "AVAILABLE":
       return { backgroundColor: "#B2D3AC" };
     case "OCCUPIED":
-      return { backgroundColor: "#E6A946" };
+      return { backgroundColor: "#E98874" };
     case "CLEANING":
-      return { backgroundColor: "#DCD3C1" };
+      return { backgroundColor: "#ADB2BF" };
+    case "RESERVED":
+      return { backgroundColor: "#F7CC43" };
     default:
       return {
         backgroundColor: "white",
@@ -96,7 +81,7 @@ export const TableContainer = ({ children }: React.PropsWithChildren) => {
         flexDirection: "column",
       }}
     >
-      <h1 style={{ textAlign: "center" }}>ด้านหน้า</h1>
+      <h1 style={{ textAlign: "center" }}> แผนผังที่นั่ง</h1>
       <div
         style={{
           display: "flex",

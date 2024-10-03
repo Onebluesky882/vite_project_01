@@ -10,13 +10,13 @@ export type MenuGroup = {
 export const table = [
   {
     tableNo: "A1",
-    status: "BOOKED",
+    status: "OCCUPIED",
     slug: "a1",
     position: "left",
   },
   {
     tableNo: "A2",
-    status: "CLEANING",
+    status: "AVAILABLE",
     slug: "a2",
     position: "left",
   },
@@ -63,8 +63,5 @@ export const table = [
     position: "right",
   },
 ];
-export const getTableId = (tableNo: string) => {
-  return table.find((item) => item.tableNo === tableNo) ?? ({} as Table);
-};
 
 export default table;

@@ -13,22 +13,12 @@ const Table = () => {
       <TableContainer>
         <TableCard position="ซ้าย">
           {tablesRightSide.map((p) => (
-            <TablesMap
-              key={p.tableNo}
-              tableNo={p.tableNo}
-              status={p.status}
-              seat={0}
-            />
+            <TablesMap key={p.tableNo} tableNo={p.tableNo} status={p.status} />
           ))}
         </TableCard>
         <TableCard position="ขวา">
           {tablesLeftSide.map((p) => (
-            <TablesMap
-              key={p.tableNo}
-              tableNo={p.tableNo}
-              status={p.status}
-              seat={0}
-            />
+            <TablesMap key={p.tableNo} tableNo={p.tableNo} status={p.status} />
           ))}
         </TableCard>
       </TableContainer>
