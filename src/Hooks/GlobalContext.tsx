@@ -19,8 +19,6 @@ export const GlobalContext = createContext<GlobalContextType>({
 export const GlobalProvider = ({ children }: React.PropsWithChildren) => {
   const cartProvider = useCart();
   const tableProvider = useTable();
-  // const orderProvider = useOrder();
-  // type OrderProvider = { orders, updateOrders }
 
   const submitCart = () => {
     const submitOrders = cartProvider.submitCart();

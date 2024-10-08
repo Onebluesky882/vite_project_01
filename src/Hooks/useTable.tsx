@@ -22,19 +22,13 @@ const useTable = () => {
 
     await supabase.from("tables").insert([transformKeysToSnakeCase(newTable)]);
 
-    const { data } = await await supabase
-      .from("tables")
-      .insert([transformKeysToSnakeCase(newTable)]);
     await loadTable();
     console.log("new tableNo : ", newTable);
     setTable(newTable);
   };
 
   const loadTable = async () => {
-    const { data } = await supabase.from("tables").select();
-    if (data) {
-      console.log("Table :", data);
-    }
+    await supabase.from("tables").select();
   };
 
   useEffect(() => {
@@ -111,6 +105,6 @@ export const defaultTableProvider = {
   submitCart: () => Promise.resolve(),
   setTable: () => null,
   submitTable: () => Promise.resolve(),
-  loadTable: () => null,
+  loadTable: () => Promise.resolve(),
 };
 export default useTable;
