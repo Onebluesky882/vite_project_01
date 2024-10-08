@@ -66,6 +66,7 @@ const useTable = () => {
 
     if (data) {
       const camelData = data.map((i) => transformKeysToCamelCase(i));
+      console.log("loadOrder :", table.tableNo);
       setOrders(camelData);
     }
   };
@@ -76,6 +77,7 @@ const useTable = () => {
       id: crypto.randomUUID(),
       createdAt: new Date().toISOString(),
       status: "ORDERED",
+      tableNo: table.tableNo as unknown as string,
     }));
 
     const transformKeys = prepareOrder.map((i) => transformKeysToSnakeCase(i));

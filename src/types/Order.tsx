@@ -10,4 +10,5 @@ export type Order = {
   amount: number; // การดึงค่า จาก CartOrder ทำการ map มาวางทับ
   createdAt: string;
   doneAt?: string;
+  tableNo: string;
 };
