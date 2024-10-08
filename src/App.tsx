@@ -17,7 +17,6 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="/tables/" element={<Table />} />
-          <Route path="/tables/:tableNo" element={<Table />} />
           <Route path="/:tableNo" element={<TableNo />} />
           <Route path="/menu" element={<Menu />} />
           <Route path="/promotion" element={<Promotion />} />

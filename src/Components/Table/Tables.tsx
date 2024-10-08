@@ -1,7 +1,4 @@
-import { useNavigate } from "react-router-dom";
-
-import { useState } from "react";
-import { ConfirmTable } from "./ConfirmTable";
+import { useNavigate, useParams } from "react-router-dom";
 
 type TableProps = {
   tableNo: string;
@@ -15,6 +12,9 @@ type TableCardProps = {
 export const TablesMap = ({ tableNo, status }: TableProps) => {
   const navigate = useNavigate();
 
+  const handleSubmit = () => {
+    navigate(`/${tableNo}`);
+  };
   return (
     <div>
       <button
@@ -25,7 +25,7 @@ export const TablesMap = ({ tableNo, status }: TableProps) => {
           borderStyle: "none",
           backgroundColor: "Background",
         }}
-        onClick={() => navigate(`/${tableNo}`)}
+        onClick={handleSubmit}
       >
         {" "}
         <div

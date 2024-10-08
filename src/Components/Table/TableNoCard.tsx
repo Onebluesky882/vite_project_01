@@ -2,21 +2,27 @@ import { useContext, useState } from "react";
 import { GlobalContext } from "@/Hooks/GlobalContext";
 import Menu from "@/Page/Menu";
 import { ConfirmTable } from "./ConfirmTable";
+import { useNavigate, useParams } from "react-router-dom";
+import { Table } from "@/types/TableOrder";
 
 const TableNoCard = () => {
-  const { table } = useContext(GlobalContext).tableProvider;
-  const { submitTable } = useContext(GlobalContext).tableProvider;
-
+  const { table, submitTable } = useContext(GlobalContext).tableProvider;
   const [isPopupOpen, setIsPopupOpen] = useState(false);
+  let navigate = useNavigate();
+  const { tableNo } = useParams();
 
-  // confirm
-  const handleConfirm = () => {
+  const handleConfirm = async () => {
+    setIsPopupOpen(false);
+    await submitTable(tableNo as Table["tableNo"]);
+    navigate(`/${tableNo}`);
     setIsPopupOpen(true);
   };
 
   const hadleCancel = () => {
-    setIsPopupOpen(true);
+    setIsPopupOpen(false);
+    navigate(`/tables`);
   };
+
   return (
     <div>
       {" "}
@@ -25,7 +31,7 @@ const TableNoCard = () => {
           message={"confirm to chose a table"}
           onConfirm={handleConfirm}
           onCancel={hadleCancel}
-          isOpen={false}
+          isOpen={isPopupOpen}
         />
       )}
       <div

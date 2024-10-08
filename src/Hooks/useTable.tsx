@@ -17,14 +17,16 @@ const useTable = () => {
   const [orders, setOrders] = useState<Order[]>([]);
   const [table, setTable] = useState<Table>(defaultTable);
 
-  const submitTable = async ({ status, tableNo, seat }: Table) => {
-    // set the value tableNo to heap an defaultTable
-    const newTable = { ...defaultTable, status, tableNo, seat };
+  const submitTable = async (tableNo: Table["tableNo"]) => {
+    const newTable = { ...defaultTable, tableNo };
 
     await supabase.from("tables").insert([transformKeysToSnakeCase(newTable)]);
 
+    const { data } = await await supabase
+      .from("tables")
+      .insert([transformKeysToSnakeCase(newTable)]);
     await loadTable();
-    console.log("newtable : ", newTable);
+    console.log("new tableNo : ", newTable);
     setTable(newTable);
   };
 
